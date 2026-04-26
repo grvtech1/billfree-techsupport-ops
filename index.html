@@ -1,0 +1,1294 @@
+<!DOCTYPE html>
+<html lang="hi" data-theme="light">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>BillFree CFT Training — Final Module</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#f0f4f5;--surface:#fff;--text:#0f1c1d;--muted:#5a7374;
+  --border:rgba(0,0,0,.07);--primary:#016d74;--p2:#024c52;--p3:#00a599;
+  --accent:#f97316;--green:#1b8a52;--red:#d62839;--blue:#1565c0;
+  --yellow:#d48806;--purple:#6a1b9a;--teal:#0097a7;
+  --r:18px;--rs:10px;
+  --sh:0 4px 18px rgba(0,0,0,.07);--sh2:0 12px 40px rgba(0,0,0,.13);
+  --font:'Plus Jakarta Sans',sans-serif
+}
+[data-theme=dark]{
+  --bg:#0c1616;--surface:#122020;--text:#e6f0ef;--muted:#7aaba8;
+  --border:rgba(255,255,255,.07);--primary:#3dbfb8;--p2:#09383b;--p3:#00c9bb;
+  --accent:#fb923c;--green:#4caf7d;--red:#ef5350;--blue:#42a5f5;
+  --yellow:#ffc107;--purple:#ce93d8;--teal:#26c6da;
+  --sh:0 4px 18px rgba(0,0,0,.3);--sh2:0 12px 40px rgba(0,0,0,.4)
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:var(--font);background:var(--bg);color:var(--text);line-height:1.65}
+a{text-decoration:none;color:inherit}
+button,input{font:inherit}
+img,svg{display:block;max-width:100%}
+
+/* NAV */
+.nav{position:sticky;top:0;z-index:1000;height:58px;background:var(--primary);color:#fff;display:flex;align-items:center;justify-content:space-between;padding:0 20px;box-shadow:0 2px 16px rgba(0,0,0,.2)}
+.brand{display:flex;align-items:center;gap:10px;font-weight:900;font-size:1rem}
+.logo-mark{width:36px;height:36px;border-radius:10px;background:rgba(255,255,255,.15);display:grid;place-items:center;font-size:1.1rem}
+.nav-actions{display:flex;gap:8px;align-items:center}
+.nav-pill{border:0;border-radius:999px;background:rgba(255,255,255,.16);color:#fff;padding:7px 14px;cursor:pointer;font-weight:700;font-size:.82rem}
+.theme-btn{width:38px;height:38px;border-radius:50%;border:0;background:rgba(255,255,255,.15);color:#fff;cursor:pointer;display:grid;place-items:center;font-size:1rem}
+.prog-bar{position:sticky;top:58px;z-index:999;height:3px;background:rgba(255,255,255,.15)}
+.prog-bar>div{height:100%;width:0;background:var(--accent);transition:width .1s}
+
+/* LAYOUT */
+.wrap{max-width:1060px;margin:0 auto;padding:28px 18px 90px}
+.section{margin-top:32px;scroll-margin-top:80px}
+.divider{height:1px;background:var(--border);margin:36px 0}
+
+/* CARDS */
+.card{background:var(--surface);border:1px solid var(--border);border-radius:var(--r);box-shadow:var(--sh);padding:22px}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+
+/* CALLOUTS */
+.callout{border-radius:12px;padding:13px 16px;display:flex;gap:11px;align-items:flex-start;font-size:.9rem}
+.callout.blue{background:color-mix(in srgb,var(--blue) 9%,transparent);border-left:4px solid var(--blue)}
+.callout.green{background:color-mix(in srgb,var(--green) 10%,transparent);border-left:4px solid var(--green)}
+.callout.orange{background:color-mix(in srgb,var(--accent) 10%,transparent);border-left:4px solid var(--accent)}
+.callout.red{background:color-mix(in srgb,var(--red) 9%,transparent);border-left:4px solid var(--red)}
+.callout.yellow{background:color-mix(in srgb,var(--yellow) 12%,transparent);border-left:4px solid var(--yellow)}
+.callout.teal{background:color-mix(in srgb,var(--teal) 10%,transparent);border-left:4px solid var(--teal)}
+
+/* SEC HEAD */
+.sec-head{display:flex;gap:12px;align-items:flex-start;margin-bottom:18px}
+.icon{width:46px;height:46px;border-radius:14px;display:grid;place-items:center;font-size:1.25rem;flex:0 0 auto}
+.sec-title{font-size:1.22rem;font-weight:900;margin-bottom:2px}
+.sec-sub{font-size:.85rem;color:var(--muted)}
+
+/* HERO */
+.hero{background:linear-gradient(135deg,#024c52 0%,#016d74 45%,#0aa28d 100%);color:#fff;border-radius:26px;padding:36px 30px 32px;position:relative;overflow:hidden;box-shadow:var(--sh2)}
+.hero::before{content:'';position:absolute;width:300px;height:300px;border-radius:50%;background:rgba(255,255,255,.06);right:-80px;top:-80px}
+.hero::after{content:'';position:absolute;width:200px;height:200px;border-radius:50%;background:rgba(255,255,255,.05);left:40%;bottom:-70px}
+.hero-badge{display:inline-flex;align-items:center;gap:7px;background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.2);padding:7px 14px;border-radius:999px;font-size:.73rem;font-weight:800;letter-spacing:.5px;text-transform:uppercase;margin-bottom:14px}
+.hero h1{font-size:clamp(1.9rem,4vw,3rem);line-height:1.08;font-weight:900;margin-bottom:12px}
+.hero h1 em{font-style:normal;color:#fde68a}
+.hero p{max-width:750px;font-size:.97rem;opacity:.92;margin-bottom:20px;line-height:1.7}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:26px}
+.chip{padding:8px 14px;border-radius:999px;background:rgba(255,255,255,.13);border:1px solid rgba(255,255,255,.15);font-size:.8rem;font-weight:700;display:flex;align-items:center;gap:5px}
+.stats-row{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.stat{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.12);border-radius:16px;padding:16px;text-align:center}
+.stat b{display:block;font-size:1.8rem;font-weight:900;color:#fde68a;line-height:1.2}
+.stat span{font-size:.76rem;opacity:.88;font-weight:600}
+
+/* AGENDA */
+.agenda{border-radius:18px;overflow:hidden;background:var(--surface);box-shadow:var(--sh)}
+.ag-item{display:flex;align-items:center;gap:14px;padding:14px 18px;border-bottom:1px solid var(--border);transition:background .2s}
+.ag-item:last-child{border-bottom:0}
+.ag-item:hover{background:color-mix(in srgb,var(--primary) 5%,transparent)}
+.ag-num{width:38px;height:38px;border-radius:50%;background:var(--primary);color:#fff;display:grid;place-items:center;font-weight:900;flex:0 0 auto;font-size:.95rem}
+.ag-info{flex:1}
+.ag-title{font-weight:800;font-size:.94rem}
+.ag-desc{font-size:.78rem;color:var(--muted);margin-top:1px}
+.ag-time{font-size:.71rem;background:color-mix(in srgb,var(--primary) 11%,transparent);color:var(--primary);padding:5px 11px;border-radius:999px;font-weight:800;white-space:nowrap}
+
+/* ══════ VISUAL FLOW ══════ */
+.vis-flow{display:flex;flex-direction:column;gap:0}
+.vf-step{display:flex;gap:0;align-items:stretch}
+.vf-left{display:flex;flex-direction:column;align-items:center;width:56px;flex:0 0 56px}
+.vf-dot{width:44px;height:44px;border-radius:50%;display:grid;place-items:center;color:#fff;font-weight:900;font-size:1rem;flex:0 0 44px;box-shadow:0 4px 12px rgba(0,0,0,.18)}
+.vf-line{flex:1;width:2px;background:var(--border);margin:4px auto}
+.vf-body{flex:1;padding:0 0 22px 16px}
+.vf-title{font-weight:800;font-size:.96rem;margin-bottom:4px}
+.vf-desc{font-size:.84rem;color:var(--muted);line-height:1.55}
+.vf-step:last-child .vf-line{display:none}
+.vf-step:last-child .vf-body{padding-bottom:0}
+
+/* ══════ PROCESS VISUAL (horizontal) ══════ */
+.process-vis{display:flex;align-items:center;gap:0;flex-wrap:nowrap;overflow-x:auto;padding:8px 0 12px;scrollbar-width:none}
+.process-vis::-webkit-scrollbar{display:none}
+.pv-node{display:flex;flex-direction:column;align-items:center;gap:8px;min-width:100px;padding:14px 10px;border-radius:16px;background:var(--surface);border:1.5px solid var(--border);box-shadow:var(--sh);text-align:center;position:relative;transition:transform .25s,box-shadow .25s}
+.pv-node:hover{transform:translateY(-4px);box-shadow:var(--sh2)}
+.pv-emoji{font-size:2rem;line-height:1}
+.pv-label{font-size:.76rem;font-weight:700;color:var(--text)}
+.pv-sub{font-size:.65rem;color:var(--muted);margin-top:1px}
+.pv-arrow{font-size:1.4rem;color:var(--primary);padding:0 4px;opacity:.7;flex:0 0 auto;align-self:center}
+.pv-node.highlight{border-color:var(--primary);background:color-mix(in srgb,var(--primary) 8%,transparent)}
+
+/* ══════ ISSUE PATHS ══════ */
+.paths-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+.path-card{border-radius:16px;padding:16px 10px;text-align:center;border:2px solid transparent;cursor:default;transition:transform .2s,box-shadow .2s}
+.path-card:hover{transform:translateY(-3px);box-shadow:var(--sh2)}
+.path-num{width:48px;height:48px;border-radius:50%;display:grid;place-items:center;font-weight:900;font-size:1.1rem;color:#fff;margin:0 auto 10px}
+.path-label{font-weight:800;font-size:.88rem;margin-bottom:3px}
+.path-sub{font-size:.74rem;color:var(--muted)}
+.path-tag{display:inline-block;margin-top:7px;padding:3px 10px;border-radius:999px;font-size:.68rem;font-weight:800}
+
+/* ══════ ISSUE CARDS (A B C D E) ══════ */
+.issue-block{border-radius:18px;overflow:hidden;background:var(--surface);box-shadow:var(--sh);margin-bottom:16px;border:1px solid var(--border)}
+.issue-header{display:flex;align-items:center;gap:14px;padding:16px 20px;cursor:pointer;user-select:none}
+.issue-badge{width:40px;height:40px;border-radius:12px;display:grid;place-items:center;font-weight:900;font-size:1rem;color:#fff;flex:0 0 40px}
+.issue-title-wrap{flex:1}
+.issue-title{font-weight:800;font-size:1rem;margin-bottom:2px}
+.issue-triggers{font-size:.75rem;color:var(--muted)}
+.issue-chevron{font-size:.85rem;color:var(--muted);transition:transform .3s}
+.issue-chevron.open{transform:rotate(180deg)}
+.issue-body{display:none;padding:18px 20px;border-top:1px solid var(--border)}
+.issue-body.open{display:block}
+.quick-tag{display:inline-flex;align-items:center;gap:5px;padding:5px 12px;border-radius:999px;font-size:.76rem;font-weight:800;margin-bottom:14px}
+.qt-green{background:color-mix(in srgb,var(--green) 14%,transparent);color:var(--green)}
+.qt-orange{background:color-mix(in srgb,var(--accent) 13%,transparent);color:var(--accent)}
+.qt-red{background:color-mix(in srgb,var(--red) 12%,transparent);color:var(--red)}
+
+/* Decision Table */
+.dtable{width:100%;border-collapse:collapse;border-radius:12px;overflow:hidden;font-size:.84rem}
+.dtable th{padding:10px 12px;background:var(--primary);color:#fff;text-align:left;font-weight:700}
+.dtable td{padding:10px 12px;border-bottom:1px solid var(--border)}
+.dtable tr:last-child td{border-bottom:none}
+.dtable tr:nth-child(even) td{background:color-mix(in srgb,var(--primary) 4%,transparent)}
+.decision-tag{display:inline-flex;align-items:center;gap:4px;padding:3px 9px;border-radius:999px;font-size:.72rem;font-weight:800}
+.dt-reset{background:color-mix(in srgb,var(--green) 14%,transparent);color:var(--green)}
+.dt-ticket{background:color-mix(in srgb,var(--accent) 13%,transparent);color:var(--accent)}
+
+/* DIRECT TICKET CARDS */
+.dt-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px}
+.dt-card{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:16px;border-left:4px solid var(--accent);box-shadow:var(--sh)}
+.dt-code{font-size:.68rem;font-weight:900;color:var(--accent);letter-spacing:.6px;text-transform:uppercase;margin-bottom:6px}
+.dt-title{font-weight:800;font-size:.9rem;margin-bottom:5px}
+.dt-trigger{font-size:.78rem;color:var(--muted);margin-bottom:10px}
+.dt-concern{font-family:monospace;background:color-mix(in srgb,var(--primary) 7%,transparent);border-radius:8px;padding:9px 10px;font-size:.77rem;line-height:1.55;color:var(--text)}
+
+/* VAGUE TRIGGER BOX */
+.vague-box{background:linear-gradient(135deg,var(--p2),var(--primary));color:#fff;border-radius:22px;padding:22px 24px;position:relative;overflow:hidden}
+.vague-box::after{content:'📞';position:absolute;right:18px;top:50%;transform:translateY(-50%);font-size:5rem;opacity:.08}
+.vague-crossout{text-decoration:line-through;opacity:.4;font-family:monospace;font-size:.88rem}
+.vague-good{background:rgba(255,255,255,.12);padding:11px 16px;border-left:3px solid #fde68a;border-radius:10px;font-weight:700;font-size:.9rem;margin:10px 0 14px}
+.copy-btn{border:1px solid rgba(255,255,255,.3);background:rgba(255,255,255,.12);color:#fff;padding:8px 16px;border-radius:999px;cursor:pointer;font-weight:800;font-size:.82rem;transition:background .2s}
+.copy-btn:hover{background:rgba(255,255,255,.22)}
+.copy-btn.done{background:var(--green);border-color:var(--green)}
+
+/* TABS */
+.tabs{display:flex;gap:0;border-bottom:1px solid var(--border);overflow-x:auto;scrollbar-width:none}
+.tabs::-webkit-scrollbar{display:none}
+.tab{border:0;background:none;padding:11px 14px;font-weight:700;color:var(--muted);cursor:pointer;border-bottom:2px solid transparent;white-space:nowrap;font-size:.85rem;transition:color .2s}
+.tab.active{color:var(--primary);border-bottom-color:var(--primary)}
+.panel{display:none;padding:16px 0 0}
+.panel.active{display:block}
+
+/* CHAT */
+.chat-wrap{background:color-mix(in srgb,var(--primary) 5%,transparent);border:1px solid var(--border);border-radius:16px;padding:16px}
+.msg{display:flex;gap:8px;align-items:flex-end;margin-bottom:10px}
+.msg.right{flex-direction:row-reverse}
+.av{width:32px;height:32px;border-radius:50%;display:grid;place-items:center;flex:0 0 32px;font-size:.9rem}
+.m{max-width:80%;padding:10px 14px;border-radius:16px;font-size:.84rem;line-height:1.55}
+.m.mer{background:#dcf8c6;color:#0f1c1d;border-bottom-left-radius:4px}
+.m.agent{background:color-mix(in srgb,var(--primary) 15%,transparent);color:var(--text);border-bottom-right-radius:4px}
+.who{font-size:.67rem;color:var(--muted);margin-bottom:2px}
+
+/* SCENARIOS */
+.scenario-block{border-radius:18px;overflow:hidden;background:var(--surface);box-shadow:var(--sh);margin-bottom:13px;border:1px solid var(--border)}
+.sc-head{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:15px 18px;color:#fff;cursor:pointer;user-select:none}
+.sc-head.green{background:var(--green)}
+.sc-head.purple{background:var(--purple)}
+.sc-head.primary{background:var(--primary)}
+.sc-body{display:none;padding:18px}
+.sc-body.open{display:block}
+.reveal-btn{width:100%;margin-top:12px;border:2px dashed var(--primary);background:none;color:var(--primary);padding:10px;border-radius:12px;font-weight:800;cursor:pointer;font-size:.85rem}
+.reveal-box{display:none;margin-top:10px;background:color-mix(in srgb,var(--primary) 9%,transparent);border-radius:12px;padding:14px;font-size:.86rem}
+.reveal-box.show{display:block}
+
+/* VS GAME */
+.vs-wrap{display:grid;gap:10px}
+.vs-item{display:flex;justify-content:space-between;align-items:center;gap:10px;background:var(--surface);border:2px solid var(--border);border-radius:14px;padding:12px 14px;font-size:.88rem;transition:border-color .3s}
+.vs-btns{display:flex;gap:8px;flex:0 0 auto}
+.vbtn{border:0;border-radius:8px;padding:8px 14px;font-weight:800;cursor:pointer;font-size:.8rem;transition:all .2s}
+.vbtn.v{background:color-mix(in srgb,var(--red) 12%,transparent);color:var(--red)}
+.vbtn.s{background:color-mix(in srgb,var(--green) 13%,transparent);color:var(--green)}
+.vs-item.ok-v{border-color:var(--red);background:color-mix(in srgb,var(--red) 8%,transparent)}
+.vs-item.ok-s{border-color:var(--green);background:color-mix(in srgb,var(--green) 8%,transparent)}
+
+/* QUIZ */
+.quiz-card{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:20px;margin-bottom:12px;box-shadow:var(--sh)}
+.q-text{font-weight:800;margin-bottom:12px;font-size:.94rem}
+.opts-grid{display:grid;gap:8px}
+.opt{border:2px solid var(--border);background:var(--bg);padding:10px 13px;border-radius:11px;text-align:left;cursor:pointer;font-size:.86rem;transition:border-color .2s,background .2s}
+.opt:hover{border-color:var(--primary);background:color-mix(in srgb,var(--primary) 6%,transparent)}
+.opt.good{border-color:var(--green);background:color-mix(in srgb,var(--green) 11%,transparent);color:var(--green)}
+.opt.bad{border-color:var(--red);background:color-mix(in srgb,var(--red) 9%,transparent);color:var(--red)}
+.q-fb{display:none;margin-top:10px;padding:10px 13px;border-radius:10px;font-size:.84rem}
+.q-fb.show{display:block}
+.q-fb.good{background:color-mix(in srgb,var(--green) 12%,transparent);color:var(--green)}
+.q-fb.bad{background:color-mix(in srgb,var(--red) 9%,transparent);color:var(--red)}
+
+/* SCORE BAR */
+.score-bar{display:flex;align-items:center;gap:14px;background:var(--surface);border:1px solid var(--border);padding:14px 18px;border-radius:14px;box-shadow:var(--sh);margin-bottom:16px}
+.score-num{font-size:2rem;font-weight:900;color:var(--primary)}
+
+/* COMPLETION */
+.completion{display:none;margin-top:20px;background:linear-gradient(135deg,var(--primary),#0aa28d);color:#fff;border-radius:24px;padding:34px;text-align:center;position:relative;overflow:hidden}
+.completion.show{display:block}
+.c-score{font-size:3.2rem;font-weight:900;color:#fde68a}
+.btn{border:0;border-radius:999px;padding:10px 18px;font-weight:800;cursor:pointer;font-size:.85rem}
+.btn-light{background:rgba(255,255,255,.16);color:#fff;border:1px solid rgba(255,255,255,.22)}
+.btn-dark{background:var(--surface);color:var(--text);border:1px solid var(--border)}
+
+/* TABLE */
+.table-wrap{overflow:auto;border-radius:14px;border:1px solid var(--border);box-shadow:var(--sh)}
+table.std{width:100%;border-collapse:collapse;background:var(--surface)}
+.std th,.std td{padding:10px 13px;border-bottom:1px solid var(--border);font-size:.84rem;text-align:left}
+.std thead th{background:var(--primary);color:#fff;font-weight:700}
+.std tbody tr:nth-child(even) td{background:color-mix(in srgb,var(--primary) 4%,transparent)}
+.std tbody tr:last-child td{border-bottom:none}
+
+/* CHEAT SHEET */
+.cheat{background:linear-gradient(135deg,var(--p2),var(--primary));color:#fff;border-radius:24px;padding:28px;box-shadow:var(--sh2)}
+.cheat-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:10px;margin-top:16px}
+.cheat-item{background:rgba(255,255,255,.11);border-radius:12px;padding:13px;font-size:.8rem;line-height:1.55}
+.cheat-item strong{display:block;margin-bottom:3px;font-size:.82rem}
+
+/* MINI BADGES */
+.mini{display:inline-block;padding:3px 9px;border-radius:999px;font-size:.7rem;font-weight:800}
+.mini-g{background:color-mix(in srgb,var(--green) 14%,transparent);color:var(--green)}
+.mini-r{background:color-mix(in srgb,var(--red) 12%,transparent);color:var(--red)}
+.mini-b{background:color-mix(in srgb,var(--blue) 11%,transparent);color:var(--blue)}
+.mini-o{background:color-mix(in srgb,var(--accent) 12%,transparent);color:var(--accent)}
+
+/* ROLES */
+.roles{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.role-card{padding:20px;border-radius:18px;border:2px solid var(--border)}
+.role-card.you{border-color:var(--primary);background:color-mix(in srgb,var(--primary) 9%,transparent)}
+.role-card.bot{border-color:var(--accent);background:color-mix(in srgb,var(--accent) 9%,transparent)}
+.role-card h3{font-size:.97rem;font-weight:800;margin-bottom:12px}
+.role-card ul{list-style:none;display:grid;gap:7px}
+.role-card li{font-size:.86rem}
+
+/* ANIMATIONS */
+@keyframes fadeUp{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+.fade{animation:fadeUp .4s ease both}
+@keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.04)}}
+.pulse{animation:pulse 2.4s infinite}
+
+/* RESPONSIVE */
+@media(max-width:900px){.grid2,.grid3,.roles{grid-template-columns:1fr}.stats-row{grid-template-columns:1fr}}
+@media(max-width:700px){
+  .paths-grid{grid-template-columns:repeat(2,1fr)}
+  .dt-grid{grid-template-columns:1fr}
+  .vs-item{flex-direction:column;align-items:flex-start}
+  .vs-btns{width:100%}
+  .vbtn{flex:1}
+  .hero{padding:24px 18px}
+  .wrap{padding:18px 14px 70px}
+  .process-vis{gap:0}
+  .pv-node{min-width:80px;padding:10px 7px}
+  .pv-emoji{font-size:1.5rem}
+}
+@media print{
+  .nav,.prog-bar,.nav-actions,.copy-btn,.reveal-btn,.btn,.vbtn{display:none!important}
+  .sc-body,.issue-body,.reveal-box{display:block!important}
+  .completion{display:block!important;background:#fff!important;color:#000!important}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+  <a class="brand" href="#s0">
+    <div class="logo-mark">💸</div>
+    <div>BillFree CFT Training</div>
+  </a>
+  <div class="nav-actions">
+    <button class="nav-pill" onclick="window.print()">🖨️ Print</button>
+    <button class="theme-btn" id="themeBtn" aria-label="Theme">🌙</button>
+  </div>
+</nav>
+<div class="prog-bar"><div id="bar"></div></div>
+
+<div class="wrap">
+
+<!-- ═══════════════════════════════════════ -->
+<!-- HERO -->
+<!-- ═══════════════════════════════════════ -->
+<section class="hero section fade" id="s0">
+  <div class="hero-badge">🎓 BILLFREE — CROSS FUNCTIONAL TEAM TRAINING</div>
+  <h1>Become a BillFree Expert.<br><em>Deliver Instant QuickFixes.</em> 🚀</h1>
+  <p>Iss training mein hum deeply samjhenge ki BillFree actually kaise kaam karta hai. Kyun? Kyunki jab aapko process ka logic pata hota hai, toh aap call par ek <strong>true expert</strong> ki tarah sound karte hain. Merchants humesha confident agents par trust karte hain. Aap 20–30% issues directly call pe hi QuickFix se solve kar lenge—jisse CX instantly happy feel karenge! Jo issues complex hain, unke liye aapka precise diagnosis bot ko 30 seconds mein ekdam accurate ticket create karne mein madad karega. Call ko own karo, merchant ka trust jeeto, aur apni product knowledge ko level-up karo!</p>
+  <div class="chips">
+    <span class="chip">⏱️ 60 Minutes</span>
+    <span class="chip">🎯 Scenario-Based</span>
+    <span class="chip">🎮 Interactive Quiz</span>
+    <span class="chip">📋 Cheat Sheet Included</span>
+    <span class="chip">✅ Final Module</span>
+  </div>
+  <div class="stats-row">
+    <div class="stat"><b>Expert</b><span>Level Knowledge</span></div>
+    <div class="stat"><b>20–30%</b><span>Instant QuickFix</span></div>
+    <div class="stat"><b>100%</b><span>Merchant Trust</span></div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════ -->
+<!-- AGENDA -->
+<!-- ═══════════════════════════════════════ -->
+<section class="section" id="s1">
+  <div class="sec-head">
+    <div class="icon" style="background:color-mix(in srgb,var(--primary) 12%,transparent)">🗓️</div>
+    <div>
+      <div class="sec-title">Today's Agenda</div>
+      <div class="sec-sub">6 sessions — clear, practical, actionable</div>
+    </div>
+  </div>
+  <div class="agenda">
+    <a class="ag-item" href="#s2">
+      <div class="ag-num">1</div>
+      <div class="ag-info"><div class="ag-title">BillFree — What It Does?</div><div class="ag-desc">From merchant to customer — the digital bill journey 🚀</div></div>
+      <div class="ag-time">5 min</div>
+    </a>
+    <a class="ag-item" href="#s3">
+      <div class="ag-num">2</div>
+      <div class="ag-info"><div class="ag-title">Universal Setup — How It Works</div><div class="ag-desc">From virtual printer to WhatsApp — exactly how it functions</div></div>
+      <div class="ag-time">8 min</div>
+    </a>
+    <a class="ag-item" href="#s4">
+      <div class="ag-num">3</div>
+      <div class="ag-info"><div class="ag-title">Your Role vs Bot's Role</div><div class="ag-desc">You identify the issue, bot creates the ticket</div></div>
+      <div class="ag-time">4 min</div>
+    </a>
+    <a class="ag-item" href="#s5">
+      <div class="ag-num">4</div>
+      <div class="ag-info"><div class="ag-title">Identify the Issue — A / B / C / D 🔥</div><div class="ag-desc">Quick Fix first vs Direct Ticket — most important session</div></div>
+      <div class="ag-time">15 min</div>
+    </a>
+    <a class="ag-item" href="#s6">
+      <div class="ag-num">5</div>
+      <div class="ag-info"><div class="ag-title">Live Practice — Funny Merchants! 😂</div><div class="ag-desc">Real calls, real fun, real answers</div></div>
+      <div class="ag-time">12 min</div>
+    </a>
+    <a class="ag-item" href="#s7">
+      <div class="ag-num">6</div>
+      <div class="ag-info"><div class="ag-title">Quiz + Cheat Sheet 🧪</div><div class="ag-desc">Test karo, print karo, desk pe chipkao!</div></div>
+      <div class="ag-time">8 min</div>
+    </a>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ═══════════════════════════════════════ -->
+<!-- SESSION 1 — PRODUCT STORY -->
+<!-- ═══════════════════════════════════════ -->
+<section class="section" id="s2">
+  <div class="sec-head">
+    <div class="icon" style="background:color-mix(in srgb,var(--accent) 12%,transparent)">💡</div>
+    <div>
+      <div class="sec-title">Session 1 — What Does BillFree Do?</div>
+      <div class="sec-sub">Understand the product first, then the issue</div>
+    </div>
+  </div>
+
+  <div class="callout blue" style="margin-bottom:16px">
+    <div>🎤</div>
+    <div><strong>Remember:</strong> Merchant ne bill banaya, printer se print gaya — lekin customer ko kuch nahi mila. BillFree exactly yahi gap fill karta hai!</div>
+  </div>
+
+  <!-- Horizontal Process Visual -->
+  <div class="card" style="margin-bottom:16px">
+    <div style="font-weight:900;margin-bottom:16px;font-size:1rem">📦 BillFree Simple Flow — At a Glance</div>
+    <div class="process-vis">
+      <div class="pv-node highlight">
+        <div class="pv-emoji">🖥️</div>
+        <div class="pv-label">POS Software</div>
+        <div class="pv-sub">Create Bill</div>
+      </div>
+      <div class="pv-arrow">→</div>
+      <div class="pv-node">
+        <div class="pv-emoji">🖨️</div>
+        <div class="pv-label">Print Command</div>
+        <div class="pv-sub">Press Ctrl+P</div>
+      </div>
+      <div class="pv-arrow">→</div>
+      <div class="pv-node highlight">
+        <div class="pv-emoji">💸</div>
+        <div class="pv-label">BillFree</div>
+        <div class="pv-sub">Intercept!</div>
+      </div>
+      <div class="pv-arrow">→</div>
+      <div class="pv-node">
+        <div class="pv-emoji">💬</div>
+        <div class="pv-label">Popup</div>
+        <div class="pv-sub">Mobile no.?</div>
+      </div>
+      <div class="pv-arrow">→</div>
+      <div class="pv-node">
+        <div class="pv-emoji">📁</div>
+        <div class="pv-label">PDF+JSON</div>
+        <div class="pv-sub">C:\BillFree\Data</div>
+      </div>
+      <div class="pv-arrow">→</div>
+      <div class="pv-node">
+        <div class="pv-emoji">☁️</div>
+        <div class="pv-label">Server</div>
+        <div class="pv-sub">Upload</div>
+      </div>
+      <div class="pv-arrow">→</div>
+      <div class="pv-node highlight">
+        <div class="pv-emoji">📱</div>
+        <div class="pv-label">Customer</div>
+        <div class="pv-sub">WhatsApp+SMS</div>
+      </div>
+    </div>
+    <div class="callout green" style="margin-top:14px">
+      <div>✅</div>
+      <div><strong>Simple rule:</strong> Merchant koi bhi POS use kare — customer ko automatically WhatsApp aur SMS par digital bill milega. That's BillFree!</div>
+    </div>
+  </div>
+
+  <!-- Story -->
+  <div class="card">
+    <div style="font-weight:900;margin-bottom:12px">😂 Real Story — Pagal Paneer Dhaba (MID: 42069)</div>
+    <div class="chat-wrap">
+      <div class="msg"><div class="av" style="background:#dcf8c6">👨‍🍳</div><div><div class="who">Ramesh</div><div class="m mer">Bhai printer mein paper khatam ho gaya. 50 customers queue mein hain! 😱</div></div></div>
+      <div class="msg right"><div class="av" style="background:color-mix(in srgb,var(--primary) 16%,transparent)">😰</div><div><div class="who">Agent</div><div class="m agent">Erm... paper daalo?</div></div></div>
+      <div class="msg"><div class="av" style="background:#dcf8c6">👨‍🍳</div><div><div class="who">Ramesh (next day)</div><div class="m mer">Aaj BillFree se sab customers ko WhatsApp gaya. Paper nahi tha phir bhi! Rating 4.2 se 4.8! ⭐</div></div></div>
+    </div>
+    <div class="callout green" style="margin-top:14px">
+      <div>💰</div>
+      <div><strong>Business angle:</strong> Digital bill = professional image. Customers trust businesses more. BillFree is a business upgrade, not just software.</div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ═══════════════════════════════════════ -->
+<!-- SESSION 2 — UNIVERSAL SETUP VISUAL -->
+<!-- ═══════════════════════════════════════ -->
+<section class="section" id="s3">
+  <div class="sec-head">
+    <div class="icon" style="background:color-mix(in srgb,var(--blue) 12%,transparent)">⚙️</div>
+    <div>
+      <div class="sec-title">Session 2 — Universal Setup: How It Works Inside</div>
+      <div class="sec-sub">Understand the virtual printer — then you can troubleshoot with your eyes closed</div>
+    </div>
+  </div>
+
+  <div class="callout orange" style="margin-bottom:16px">
+    <div>🎤</div>
+    <div><strong>Note:</strong> Universal Setup is BillFree's most common method. Understand how it works — phir issues khud solve hone lagenge!</div>
+  </div>
+
+  <!-- Visual Step-by-Step Flow -->
+  <div class="card" style="margin-bottom:16px">
+    <div style="font-weight:900;margin-bottom:18px">🔄 Universal Setup — Visual Step-by-Step</div>
+
+    <!-- Big visual cards row -->
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:10px;margin-bottom:18px">
+      <div style="text-align:center;padding:16px 10px;border-radius:16px;background:color-mix(in srgb,var(--primary) 8%,transparent);border:2px solid color-mix(in srgb,var(--primary) 20%,transparent)">
+        <div style="font-size:2.2rem;margin-bottom:6px">🖥️</div>
+        <div style="font-weight:800;font-size:.85rem">POS Software</div>
+        <div style="font-size:.72rem;color:var(--muted);margin-top:3px">Generate Bill</div>
+        <div style="margin-top:8px;font-size:.68rem;font-weight:800;background:color-mix(in srgb,var(--primary) 15%,transparent);color:var(--primary);padding:3px 8px;border-radius:999px;display:inline-block">STEP 1</div>
+      </div>
+      <div style="display:flex;align-items:center;justify-content:center;font-size:1.5rem;color:var(--primary);font-weight:900">→</div>
+      <div style="text-align:center;padding:16px 10px;border-radius:16px;background:color-mix(in srgb,var(--blue) 8%,transparent);border:2px solid color-mix(in srgb,var(--blue) 20%,transparent)">
+        <div style="font-size:2.2rem;margin-bottom:6px">🖨️</div>
+        <div style="font-weight:800;font-size:.85rem">Virtual Printer</div>
+        <div style="font-size:.72rem;color:var(--muted);margin-top:3px">HP XPS driver se<br>intercept</div>
+        <div style="margin-top:8px;font-size:.68rem;font-weight:800;background:color-mix(in srgb,var(--blue) 13%,transparent);color:var(--blue);padding:3px 8px;border-radius:999px;display:inline-block">STEP 2</div>
+      </div>
+      <div style="display:flex;align-items:center;justify-content:center;font-size:1.5rem;color:var(--primary);font-weight:900">→</div>
+      <div style="text-align:center;padding:16px 10px;border-radius:16px;background:color-mix(in srgb,var(--purple) 8%,transparent);border:2px solid color-mix(in srgb,var(--purple) 20%,transparent)">
+        <div style="font-size:2.2rem;margin-bottom:6px">💬</div>
+        <div style="font-weight:800;font-size:.85rem">BillFree Popup</div>
+        <div style="font-size:.72rem;color:var(--muted);margin-top:3px">Ask mobile no.<br>Show 3 options</div>
+        <div style="margin-top:8px;font-size:.68rem;font-weight:800;background:color-mix(in srgb,var(--purple) 13%,transparent);color:var(--purple);padding:3px 8px;border-radius:999px;display:inline-block">STEP 3</div>
+      </div>
+      <div style="display:flex;align-items:center;justify-content:center;font-size:1.5rem;color:var(--primary);font-weight:900">→</div>
+      <div style="text-align:center;padding:16px 10px;border-radius:16px;background:color-mix(in srgb,var(--accent) 8%,transparent);border:2px solid color-mix(in srgb,var(--accent) 20%,transparent)">
+        <div style="font-size:2.2rem;margin-bottom:6px">📁</div>
+        <div style="font-weight:800;font-size:.85rem">Data Folder</div>
+        <div style="font-size:.72rem;color:var(--muted);margin-top:3px">PDF+JSON save<br>C:\BillFree\Data</div>
+        <div style="margin-top:8px;font-size:.68rem;font-weight:800;background:color-mix(in srgb,var(--accent) 13%,transparent);color:var(--accent);padding:3px 8px;border-radius:999px;display:inline-block">STEP 4</div>
+      </div>
+      <div style="display:flex;align-items:center;justify-content:center;font-size:1.5rem;color:var(--primary);font-weight:900">→</div>
+      <div style="text-align:center;padding:16px 10px;border-radius:16px;background:color-mix(in srgb,var(--green) 8%,transparent);border:2px solid color-mix(in srgb,var(--green) 20%,transparent)">
+        <div style="font-size:2.2rem;margin-bottom:6px">📱</div>
+        <div style="font-weight:800;font-size:.85rem">Customer</div>
+        <div style="font-size:.72rem;color:var(--muted);margin-top:3px">Gets WhatsApp<br>+ SMS ✅</div>
+        <div style="margin-top:8px;font-size:.68rem;font-weight:800;background:color-mix(in srgb,var(--green) 13%,transparent);color:var(--green);padding:3px 8px;border-radius:999px;display:inline-block">STEP 5</div>
+      </div>
+    </div>
+
+    <!-- Popup 3 Options Visual -->
+    <div style="margin-bottom:16px">
+      <div style="font-weight:800;margin-bottom:10px;font-size:.9rem">💬 Popup — 3 Buttons Explained</div>
+      <div class="grid3">
+        <div style="padding:14px;border-radius:14px;background:color-mix(in srgb,var(--green) 10%,transparent);border:1.5px solid color-mix(in srgb,var(--green) 25%,transparent);text-align:center">
+          <div style="font-size:1.4rem">📲</div>
+          <div style="font-weight:800;font-size:.82rem;margin:6px 0 4px;color:var(--green)">Send to BillFree</div>
+          <div style="font-size:.72rem;color:var(--muted)">Customer gets digital bill only. No physical print.</div>
+        </div>
+        <div style="padding:14px;border-radius:14px;background:color-mix(in srgb,var(--blue) 9%,transparent);border:1.5px solid color-mix(in srgb,var(--blue) 22%,transparent);text-align:center">
+          <div style="font-size:1.4rem">📲🖨️</div>
+          <div style="font-weight:800;font-size:.82rem;margin:6px 0 4px;color:var(--blue)">BillFree + Print</div>
+          <div style="font-size:.72rem;color:var(--muted)">Customer gets digital bill + physical print both.</div>
+        </div>
+        <div style="padding:14px;border-radius:14px;background:color-mix(in srgb,var(--muted) 10%,transparent);border:1.5px solid color-mix(in srgb,var(--muted) 20%,transparent);text-align:center">
+          <div style="font-size:1.4rem">🖨️</div>
+          <div style="font-weight:800;font-size:.82rem;margin:6px 0 4px;color:var(--muted)">Print Only</div>
+          <div style="font-size:.72rem;color:var(--muted)">Physical print only. BillFree does not receive the bill.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="callout red" style="margin-bottom:10px">
+      <div>⚠️</div>
+      <div><strong>Internet down?</strong> No worries — files are safe in the Data folder. They auto-upload as soon as internet is back. No data loss!</div>
+    </div>
+  </div>
+
+  <!-- Important Files + Print Types -->
+  <div class="grid2">
+    <div class="card">
+      <div style="font-weight:900;margin-bottom:14px;font-size:.95rem">📂 Important Files — Where to Find Them</div>
+      <div class="vis-flow">
+        <div class="vf-step">
+          <div class="vf-left"><div class="vf-dot" style="background:var(--primary);font-size:.75rem">📁</div><div class="vf-line"></div></div>
+          <div class="vf-body"><div class="vf-title">C:\BillFree\Data\</div><div class="vf-desc">All merchant PDF + JSON bills stored here. Auto-uploads when internet is available.</div></div>
+        </div>
+        <div class="vf-step">
+          <div class="vf-left"><div class="vf-dot" style="background:var(--blue);font-size:.75rem">⚙️</div><div class="vf-line"></div></div>
+          <div class="vf-body"><div class="vf-title">.comp file</div><div class="vf-desc">MID + printer configuration saved here.</div></div>
+        </div>
+        <div class="vf-step">
+          <div class="vf-left"><div class="vf-dot" style="background:var(--purple);font-size:.75rem">📋</div><div class="vf-line"></div></div>
+          <div class="vf-body"><div class="vf-title">config.ini</div><div class="vf-desc">Parsing rules — how to extract mobile number from the bill.</div></div>
+        </div>
+        <div class="vf-step">
+          <div class="vf-left"><div class="vf-dot" style="background:var(--green);font-size:.8rem">🔁</div></div>
+          <div class="vf-body"><div class="vf-title">Reset_Billfree.exe</div><div class="vf-desc">Restarts the process. <strong>Always try this first!</strong></div></div>
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <div style="font-weight:900;margin-bottom:14px;font-size:.95rem">🖨️ Print Format — Types</div>
+      <div style="display:grid;gap:10px">
+        <div class="callout green">
+          <div>✅</div>
+          <div><strong>Windows XPS</strong><br><span style="font-size:.82rem;color:var(--muted)">Text is selectable → mobile extracted automatically</span></div>
+        </div>
+        <div class="callout yellow">
+          <div>⚠️</div>
+          <div><strong>Non-XPS (Image)</strong><br><span style="font-size:.82rem;color:var(--muted)">Image print → mobile must be typed manually each time</span></div>
+        </div>
+        <div class="callout blue">
+          <div>✅</div>
+          <div><strong>Text / DMP (Dot Matrix)</strong><br><span style="font-size:.82rem;color:var(--muted)">Raw text → mobile extracted automatically</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="callout green" style="margin-top:14px">
+    <div>🧠</div>
+    <div><strong>Golden Rule:</strong> First question always — <strong>"Is popup appearing?"</strong> — Not appearing → Reset. Appearing but print/delivery issue → diagnose further.</div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ═══════════════════════════════════════ -->
+<!-- SESSION 3 — ROLE vs BOT -->
+<!-- ═══════════════════════════════════════ -->
+<section class="section" id="s4">
+  <div class="sec-head">
+    <div class="icon" style="background:color-mix(in srgb,var(--purple) 12%,transparent)">🤝</div>
+    <div>
+      <div class="sec-title">Session 3 — Your Role vs Bot's Role</div>
+      <div class="sec-sub">Simple rule: You identify the issue → Bot creates the ticket</div>
+    </div>
+  </div>
+  <div class="roles">
+    <div class="role-card you">
+      <h3>🧑‍💼 You — Support Agent</h3>
+      <ul>
+        <li>✅ Talk to merchant, understand the problem</li>
+        <li>✅ Try quick fix on call first</li>
+        <li>✅ Identify issue: A, B, C, D </li>
+        <li>✅ Send clear, specific concern to bot</li>
+        <li>✅ Share Ticket ID with merchant</li>
+      </ul>
+    </div>
+    <div class="role-card bot">
+      <h3>🤖 BillFree Bot</h3>
+      <ul>
+        <li>🤖 Takes your concern and creates a ticket</li>
+        <li>🤖 Generates a real Ticket ID</li>
+        <li>🤖 Routes to the right team</li>
+        <li>🤖 Maintains session memory</li>
+        <li>🤖 24×7 available — never sleeps 😴</li>
+      </ul>
+    </div>
+  </div>
+  <div class="callout orange" style="margin-top:14px">
+    <div>⚠️</div>
+    <div><strong>Remember:</strong> Bot can't do everything on its own. Writing "nothing is working" wastes time. The more specific you are, the faster the bot acts.</div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ═══════════════════════════════════════ -->
+<!-- SESSION 4 — ISSUE CLASSIFICATION -->
+<!-- ═══════════════════════════════════════ -->
+<section class="section" id="s5">
+  <div class="sec-head">
+    <div class="icon" style="background:color-mix(in srgb,var(--red) 10%,transparent)">🔥</div>
+    <div>
+      <div class="sec-title">Session 4 — Identify the Issue: A / B / C / D → Quick Fix or Ticket</div>
+      <div class="sec-sub">This is the most important session — pay close attention!</div>
+    </div>
+  </div>
+
+  <!-- When merchant calls vague -->
+  <div class="vague-box" style="margin-bottom:18px">
+    <div style="font-size:.72rem;font-weight:900;opacity:.75;letter-spacing:.5px;text-transform:uppercase;margin-bottom:8px">📞 Jab Merchant Bole...</div>
+    <div style="display:flex;flex-wrap:wrap;gap:6px;margin-bottom:12px">
+      <span style="background:rgba(255,255,255,.12);padding:5px 12px;border-radius:999px;font-size:.82rem;font-weight:600">"BillFree kaam nahi kar raha"</span>
+      <span style="background:rgba(255,255,255,.12);padding:5px 12px;border-radius:999px;font-size:.82rem;font-weight:600">"Service issue hai"</span>
+      <span style="background:rgba(255,255,255,.12);padding:5px 12px;border-radius:999px;font-size:.82rem;font-weight:600">"Kuch nahi chal raha"</span>
+      <span style="background:rgba(255,255,255,.12);padding:5px 12px;border-radius:999px;font-size:.82rem;font-weight:600">"Bill nahi ja raha customer ko"</span>
+      <span style="background:rgba(255,255,255,.12);padding:5px 12px;border-radius:999px;font-size:.82rem;font-weight:600">"Printer se kuch nahi aa raha"</span>
+    </div>
+    <div style="font-size:.8rem;opacity:.7;margin-bottom:6px">Don't say this:</div>
+    <div class="vague-crossout">Okay bhai, ticket raise karte hain</div>
+    <div class="vague-good" id="vscript">Sir, ek quick check karte hain — popup screen pe aa raha hai, bill customer tak nahi pahuncha, ya print nahi aa raha?</div>
+    <button class="copy-btn" onclick="copyText('vscript',this)">📋 Copy Script</button>
+  </div>
+
+  <!-- 5 Paths Overview -->
+  <div class="card" style="margin-bottom:18px">
+    <div style="font-weight:900;margin-bottom:14px;font-size:1rem">🎯 5 Issue Types — Identify Instantly</div>
+    <div class="paths-grid">
+      <div class="path-card" style="background:color-mix(in srgb,var(--primary) 8%,transparent);border-color:color-mix(in srgb,var(--primary) 25%,transparent)">
+        <div class="path-num" style="background:var(--primary)">A</div>
+        <div class="path-label">💬 Popup</div>
+        <div class="path-sub">Popup not appearing on screen</div>
+        <div class="path-tag" style="background:color-mix(in srgb,var(--green) 14%,transparent);color:var(--green)">⚡ Quick Fix First</div>
+      </div>
+      <div class="path-card" style="background:color-mix(in srgb,var(--green) 8%,transparent);border-color:color-mix(in srgb,var(--green) 22%,transparent)">
+        <div class="path-num" style="background:var(--green)">B</div>
+        <div class="path-label">📦 Bill Delivery</div>
+        <div class="path-sub">Bill not received by customer</div>
+        <div class="path-tag" style="background:color-mix(in srgb,var(--green) 14%,transparent);color:var(--green)">⚡ Quick Fix First</div>
+      </div>
+      <div class="path-card" style="background:color-mix(in srgb,var(--accent) 8%,transparent);border-color:color-mix(in srgb,var(--accent) 22%,transparent)">
+        <div class="path-num" style="background:var(--accent)">C</div>
+        <div class="path-label">🖨️ Wrong Print</div>
+        <div class="path-sub">Print coming but incorrect format</div>
+        <div class="path-tag" style="background:color-mix(in srgb,var(--accent) 13%,transparent);color:var(--accent)">🎫 Ticket</div>
+      </div>
+      <div class="path-card" style="background:color-mix(in srgb,var(--purple) 8%,transparent);border-color:color-mix(in srgb,var(--purple) 22%,transparent)">
+        <div class="path-num" style="background:var(--purple)">D</div>
+        <div class="path-label">🚫 No Print</div>
+        <div class="path-sub">Nothing coming from printer</div>
+        <div class="path-tag" style="background:color-mix(in srgb,var(--green) 14%,transparent);color:var(--green)">⚡ Quick Fix First</div>
+    </div>
+  </div>
+
+  <!-- PATH A -->
+  <div class="issue-block">
+    <div class="issue-header" onclick="toggleIssue('a')">
+      <div class="issue-badge" style="background:var(--primary)">A</div>
+      <div class="issue-title-wrap">
+        <div class="issue-title">💬 Path A — Popup Not Appearing on Screen</div>
+        <div class="issue-triggers">When merchant says: "Popup nahi aa raha" / "Screen pe kuch nahi dikhta" / "Print command diya, kuch nahi hua"</div>
+      </div>
+      <div class="issue-chevron" id="ch-a">▼</div>
+    </div>
+    <div class="issue-body" id="body-a">
+      <span class="quick-tag qt-green">⚡ Try Quick Fix First</span>
+      <div class="tabs" data-t="a">
+        <button class="tab active" data-tab="ask">❓ What to Ask</button>
+        <button class="tab" data-tab="fix">⚡ Quick Fix</button>
+        <button class="tab" data-tab="script">💬 Script</button>
+        <button class="tab" data-tab="ticket">🎫 When to Ticket</button>
+      </div>
+      <div class="panel active" data-panel="ask">
+        <div style="font-weight:800;margin-bottom:12px">Ask these first:</div>
+        <div class="grid2" style="margin-bottom:14px">
+          <div class="callout blue"><div>❓</div><div><strong>Q1:</strong> Is any print coming from the printer right now? (Yes/No)</div></div>
+          <div class="callout blue"><div>❓</div><div><strong>Q2:</strong> Popup bilkul nahi aa raha ya sirf slow/late aa raha hai?</div></div>
+        </div>
+        <div class="table-wrap">
+          <table class="std"><thead><tr><th>Print Coming?</th><th>Popup</th><th>Action</th></tr></thead>
+          <tbody>
+            <tr><td>❌ No</td><td>❌ No</td><td><span class="decision-tag dt-reset">⚡ Run Reset</span></td></tr>
+            <tr><td>✅ Yes</td><td>❌ No</td><td><span class="decision-tag dt-ticket">🎫 Wrong Printer → Ticket</span></td></tr>
+            <tr><td>—</td><td>⏳ Slow</td><td><span class="decision-tag dt-reset">⚡ Run Reset</span></td></tr>
+          </tbody></table>
+        </div>
+      </div>
+      <div class="panel" data-panel="fix">
+        <div class="callout green">
+          <div>⚡</div>
+          <div>
+            <strong>BillFree Reset Steps:</strong>
+            <ol style="margin:8px 0 0 16px;display:grid;gap:4px;font-size:.88rem">
+              <li>Find <strong>"Billfree Reset"</strong> icon on Desktop</li>
+              <li>Double-click it</li>
+              <li>Wait 2-3 seconds</li>
+              <li>Print one test bill</li>
+              <li>Popup appeared? ✅ Resolved! Still not? 🎫 Raise Ticket.</li>
+            </ol>
+          </div>
+        </div>
+      </div>
+      <div class="panel" data-panel="script">
+        <div id="aScript" class="callout blue"><div>💬</div><div>Sir, please find the <strong>BillFree Reset</strong> icon on Desktop and double-click it. It takes about 2-3 seconds. Then try one test print.</div></div>
+        <div style="height:10px"></div>
+        <button class="copy-btn" onclick="copyText('aScript',this)">📋 Copy</button>
+      </div>
+      <div class="panel" data-panel="ticket">
+        <div class="callout orange"><div>🎫</div><div><strong>When to raise ticket:</strong> Reset done → popup still not appearing. Or print is coming but no popup. Send this concern to bot:</div></div>
+        <div style="margin-top:12px;font-family:monospace;background:color-mix(in srgb,var(--primary) 7%,transparent);border-radius:10px;padding:12px;font-size:.82rem;line-height:1.7">
+          Billfree Popup — screen pe nahi aa raha. Print bhi nahi. Reset try kiya — koi farak nahi.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PATH B -->
+  <div class="issue-block">
+    <div class="issue-header" onclick="toggleIssue('b')">
+      <div class="issue-badge" style="background:var(--green)">B</div>
+      <div class="issue-title-wrap">
+        <div class="issue-title">📦 Path B — Bill Not Delivered to Customer</div>
+        <div class="issue-triggers">When merchant says: "WhatsApp nahi aaya" / "Customer ko kuch nahi mila" / "Bill nahi gaye customer ko"</div>
+      </div>
+      <div class="issue-chevron" id="ch-b">▼</div>
+    </div>
+    <div class="issue-body" id="body-b">
+      <span class="quick-tag qt-green">⚡ Usually Resolved on Call Itself</span>
+      <div class="tabs" data-t="b">
+        <button class="tab active" data-tab="ask">❓ What to Ask</button>
+        <button class="tab" data-tab="fix">⚡ Quick Fix</button>
+        <button class="tab" data-tab="script">💬 Script</button>
+        <button class="tab" data-tab="ticket">🎫 When to Ticket</button>
+      </div>
+      <div class="panel active" data-panel="ask">
+        <div style="font-weight:800;margin-bottom:12px">Ask these first (order matters!):</div>
+        <div class="grid2" style="margin-bottom:14px">
+          <div class="callout green"><div>❓</div><div><strong>Q1:</strong> On the PC where BillFree is installed, can any website open? (Internet check)</div></div>
+          <div class="callout green"><div>❓</div><div><strong>Q2:</strong> Did customer receive a BillFree SMS? (Not WhatsApp — check SMS!)</div></div>
+        </div>
+        <div class="table-wrap">
+          <table class="std"><thead><tr><th>Internet</th><th>SMS Received?</th><th>Action</th></tr></thead>
+          <tbody>
+            <tr><td>❌ No</td><td>—</td><td><span class="decision-tag dt-reset">✅ Wait — Bills will auto-send</span></td></tr>
+            <tr><td>✅ Yes</td><td>✅ Yes</td><td><span class="decision-tag dt-reset">✅ Wait 5-10 min for WhatsApp</span></td></tr>
+            <tr><td>✅ Yes</td><td>❌ No</td><td><span class="decision-tag dt-ticket">🎫 Real Failure → Raise Ticket</span></td></tr>
+          </tbody></table>
+        </div>
+        <div class="callout orange" style="margin-top:12px"><div>⚠️</div><div><strong>Always check SMS first!</strong> SMS received = delivery successful. WhatsApp delay is normal.</div></div>
+      </div>
+      <div class="panel" data-panel="fix">
+        <div class="callout green"><div>⚡</div><div>
+          <strong>Decision tree:</strong>
+          <ol style="margin:8px 0 0 16px;display:grid;gap:5px;font-size:.88rem">
+            <li>Internet down hai → tell merchant: "Bills are safe, will auto-send when internet is back"</li>
+            <li>SMS aaya → tell merchant: "WhatsApp takes 5-10 min — please wait"</li>
+            <li>Internet hai + SMS nahi → real problem → raise ticket!</li>
+          </ol>
+        </div></div>
+      </div>
+      <div class="panel" data-panel="script">
+        <div id="bScript" class="callout green"><div>💬</div><div>Sir, please check if any website opens on the BillFree PC. If SMS was received by customer, WhatsApp may take 5–10 minutes — please wait!</div></div>
+        <div style="height:10px"></div>
+        <button class="copy-btn" onclick="copyText('bScript',this)">📋 Copy</button>
+      </div>
+      <div class="panel" data-panel="ticket">
+        <div class="callout orange"><div>🎫</div><div>Raise ticket when: Internet is working + SMS also not received. Send this concern to bot:</div></div>
+        <div style="margin-top:12px;font-family:monospace;background:color-mix(in srgb,var(--primary) 7%,transparent);border-radius:10px;padding:12px;font-size:.82rem;line-height:1.7">Bill Delivery — Internet chal raha hai, SMS bhi nahi aaya customer ko.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PATH C -->
+  <div class="issue-block">
+    <div class="issue-header" onclick="toggleIssue('c')">
+      <div class="issue-badge" style="background:var(--accent)">C</div>
+      <div class="issue-title-wrap">
+        <div class="issue-title">🖨️ Path C — Print Coming But Incorrect Format</div>
+        <div class="issue-triggers">When merchant says: "Print is cutting" / "Bill not straight" / "Size is wrong" / "Print is distorted"</div>
+      </div>
+      <div class="issue-chevron" id="ch-c">▼</div>
+    </div>
+    <div class="issue-body" id="body-c">
+      <span class="quick-tag qt-orange">🎫 Direct Ticket — Tech Team Will Fix</span>
+      <div class="callout orange">
+        <div>ℹ️</div>
+        <div>This cannot be fixed on call. Popup is working fine, but print format is wrong — printer settings need adjustment. Raise a ticket directly.</div>
+      </div>
+      <div style="margin-top:12px;font-family:monospace;background:color-mix(in srgb,var(--primary) 7%,transparent);border-radius:10px;padding:12px;font-size:.82rem;line-height:1.7">
+        Print Format Issue — Popup is working. Print [cutting on side / wrong size / garbled text].
+      </div>
+    </div>
+  </div>
+
+  <!-- PATH D -->
+  <div class="issue-block">
+    <div class="issue-header" onclick="toggleIssue('d')">
+      <div class="issue-badge" style="background:var(--purple)">D</div>
+      <div class="issue-title-wrap">
+        <div class="issue-title">🚫 Path D — Nothing Coming from Printer</div>
+        <div class="issue-triggers">When merchant says: "No print" / "Printer is off" / "Bill didn't print"</div>
+      </div>
+      <div class="issue-chevron" id="ch-d">▼</div>
+    </div>
+    <div class="issue-body" id="body-d">
+      <span class="quick-tag qt-green">⚡ First Check — Is Popup Appearing?</span>
+      <div class="callout blue" style="margin-bottom:14px"><div>ℹ️</div><div>Print issue and popup issue are not the same. First ask if popup is appearing — that determines the correct path!</div></div>
+      <div class="table-wrap">
+        <table class="std"><thead><tr><th>Popup</th><th>Print</th><th>Action</th></tr></thead>
+        <tbody>
+          <tr><td>❌ No</td><td>❌ No</td><td><span class="decision-tag dt-reset">⚡ Run Reset</span></td></tr>
+          <tr><td>✅ Yes</td><td>❌ No</td><td><span class="decision-tag dt-ticket">🎫 Printer Changed? → Ticket (PRINT_FAIL)</span></td></tr>
+          <tr><td>✅ Yes</td><td>⚠️ Wrong</td><td><span class="decision-tag dt-ticket">🎫 Direct Ticket (Path C)</span></td></tr>
+        </tbody></table>
+      </div>
+      <div class="callout green" style="margin-top:12px"><div>⚡</div><div><strong>Reset Steps:</strong> Find BillFree Reset icon on Desktop → Double-click → Wait 2-3 sec → Test print. Fixed? Done! Still not? Raise ticket.</div></div>
+    </div>
+  </div>
+
+
+  <!-- Direct Ticket Types -->
+  <div style="height:20px"></div>
+  <div class="sec-head">
+    <div class="icon" style="background:color-mix(in srgb,var(--accent) 12%,transparent)">🎫</div>
+    <div>
+      <div class="sec-title">Direct Ticket — Send Directly to Bot</div>
+      <div class="sec-sub">These issues cannot be fixed on call</div>
+    </div>
+  </div>
+  <div class="dt-grid">
+    <div class="dt-card" style="border-left-color:var(--red)">
+      <div class="dt-code" style="color:var(--red)">PC_SLOW</div>
+      <div class="dt-title">🐌 PC Hanging or Slow</div>
+      <div class="dt-trigger">Computer became slow or hangs after BillFree was installed</div>
+      <div class="dt-concern">PC Hang / Slow — [only with BillFree / always]</div>
+    </div>
+    <div class="dt-card" style="border-left-color:var(--blue)">
+      <div class="dt-code" style="color:var(--blue)">NEW_INTEGRATION</div>
+      <div class="dt-title">🆕 New Setup Required</div>
+      <div class="dt-trigger">New merchant, needs BillFree installed for the first time</div>
+      <div class="dt-concern">New Integration — New BillFree setup required.</div>
+    </div>
+    <div class="dt-card" style="border-left-color:var(--purple)">
+      <div class="dt-code" style="color:var(--purple)">REINSTALL</div>
+      <div class="dt-title">🔄 Reinstall Required</div>
+      <div class="dt-trigger">PC formatted, new PC, or software corrupted</div>
+      <div class="dt-concern">Reinstallation — [PC formatted / new PC / software corrupted]</div>
+    </div>
+    <div class="dt-card" style="border-left-color:var(--teal)">
+      <div class="dt-code" style="color:var(--teal)">CONFIG</div>
+      <div class="dt-title">⚙️ Mobile Not Auto-Filling</div>
+      <div class="dt-trigger">Popup not auto-filling mobile number from bill</div>
+      <div class="dt-concern">Config Issue — Mobile number not auto-filling in popup.</div>
+    </div>
+    <div class="dt-card" style="border-left-color:var(--yellow)">
+      <div class="dt-code" style="color:var(--yellow)">BG_MERGE</div>
+      <div class="dt-title">🖼️ Background Not Appearing on Bill</div>
+      <div class="dt-trigger">Letterhead or pre-print not visible on digital bill</div>
+      <div class="dt-concern">Background Merging — Letterhead not visible on digital bill.</div>
+    </div>
+    <div class="dt-card" style="border-left-color:var(--green)">
+      <div class="dt-code" style="color:var(--green)">LOGO_STAMP</div>
+      <div class="dt-title">🏷️ Logo or Stamp Missing</div>
+      <div class="dt-trigger">Logo or stamp is missing or showing incorrectly</div>
+      <div class="dt-concern">Logo/Stamp Issue — [missing / incorrect]. Setup: [Universal/Portal]</div>
+    </div>
+    <div class="dt-card" style="border-left-color:var(--accent)">
+      <div class="dt-code" style="color:var(--accent)">PRINT_FORMAT</div>
+      <div class="dt-title">🖨️ Wrong Print Format</div>
+      <div class="dt-trigger">Print cutting on one side, wrong size, garbled text</div>
+      <div class="dt-concern">Print Format Issue — Popup is fine. Print [cutting / wrong size / garbled].</div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ═══════════════════════════════════════ -->
+<!-- SESSION 5 — LIVE PRACTICE -->
+<!-- ═══════════════════════════════════════ -->
+<section class="section" id="s6">
+  <div class="sec-head">
+    <div class="icon" style="background:color-mix(in srgb,var(--purple) 12%,transparent)">😂</div>
+    <div>
+      <div class="sec-title">Session 5 — Live Practice (Funny Merchants!)</div>
+      <div class="sec-sub">Real calls — except these folks are a little extra dramatic!</div>
+    </div>
+  </div>
+
+  <!-- VS Game -->
+  <div class="card" style="margin-bottom:16px">
+    <div style="font-weight:900;margin-bottom:6px">🎮 Warm Up — Clear or Unclear?</div>
+    <div style="color:var(--muted);font-size:.84rem;margin-bottom:14px">Check each concern — is it Clear or Unclear? Click to answer!</div>
+    <div class="vs-wrap" id="vsGame">
+      <div class="vs-item" data-ans="v">
+        <div>"BillFree is not working"</div>
+        <div class="vs-btns"><button class="vbtn v">❌ Unclear</button><button class="vbtn s">✅ Clear</button></div>
+      </div>
+      <div class="vs-item" data-ans="s">
+        <div>"Billfree Popup — not appearing. No print either. Reset tried — no change."</div>
+        <div class="vs-btns"><button class="vbtn v">❌ Unclear</button><button class="vbtn s">✅ Clear</button></div>
+      </div>
+      <div class="vs-item" data-ans="v">
+        <div>"Nothing is working"</div>
+        <div class="vs-btns"><button class="vbtn v">❌ Unclear</button><button class="vbtn s">✅ Clear</button></div>
+      </div>
+      <div class="vs-item" data-ans="s">
+        <div>"Bill Delivery — Internet is working. SMS not received by customer."</div>
+        <div class="vs-btns"><button class="vbtn v">❌ Unclear</button><button class="vbtn s">✅ Clear</button></div>
+      </div>
+      <div class="vs-item" data-ans="v">
+        <div>"Bill not going to customer"</div>
+        <div class="vs-btns"><button class="vbtn v">❌ Unclear</button><button class="vbtn s">✅ Clear</button></div>
+      </div>
+      <div class="vs-item" data-ans="s">
+        <div>"No print — Popup is appearing. New printer installed."</div>
+        <div class="vs-btns"><button class="vbtn v">❌ Unclear</button><button class="vbtn s">✅ Clear</button></div>
+      </div>
+    </div>
+    <div style="margin-top:12px;font-weight:800">Score: <span id="vsScore">0/6</span></div>
+  </div>
+
+  <!-- Scenarios -->
+  <div class="scenario-block">
+    <div class="sc-head primary" data-sc="one">
+      <div>🍛 Paneer Dhaba — MID 42069 | Path A — Popup Issue</div><div>▼</div>
+    </div>
+    <div class="sc-body" id="one">
+      <div class="chat-wrap">
+        <div class="msg"><div class="av" style="background:#dcf8c6">👨‍🍳</div><div><div class="who">Ramesh</div><div class="m mer">BRO! Billfree popup not appearing! 50 customers in queue! 😱</div></div></div>
+        <div class="msg right"><div class="av" style="background:color-mix(in srgb,var(--primary) 16%,transparent)">😅</div><div><div class="who">You</div><div class="m agent">Sir, is any print coming from the printer right now?</div></div></div>
+        <div class="msg"><div class="av" style="background:#dcf8c6">👨‍🍳</div><div><div class="who">Ramesh</div><div class="m mer">No bro! Nothing! Shop will close! 😭</div></div></div>
+        <div class="msg right"><div class="av" style="background:color-mix(in srgb,var(--primary) 16%,transparent)">😎</div><div><div class="who">You</div><div class="m agent">Please double-click the BillFree Reset icon on Desktop, wait 15 seconds!</div></div></div>
+        <div class="msg"><div class="av" style="background:#dcf8c6">👨‍🍳</div><div><div class="who">Ramesh</div><div class="m mer">...clicked... OMG POPUP APPEARED! BILLFREE ZINDABAD! 🎉🎉🎉</div></div></div>
+      </div>
+      <button class="reveal-btn" data-rev="r1">✅ Show Correct Answer</button>
+      <div class="reveal-box" id="r1">
+        <strong>Path A → No Print → Reset → Fixed!</strong><br>
+        No ticket needed. Rule: No popup + no print = ALWAYS Reset first!
+      </div>
+    </div>
+  </div>
+
+  <div class="scenario-block">
+    <div class="sc-head green" data-sc="two">
+      <div>🐟 Fish Market — MID 31337 | Path B — Delivery</div><div>▼</div>
+    </div>
+    <div class="sc-body" id="two">
+      <div class="chat-wrap">
+        <div class="msg"><div class="av" style="background:#dcf8c6">🧑‍🍼</div><div><div class="who">Pappu</div><div class="m mer">Bro customer says he didn't get WhatsApp! He is very angry!</div></div></div>
+        <div class="msg right"><div class="av" style="background:color-mix(in srgb,var(--primary) 16%,transparent)">😅</div><div><div class="who">You</div><div class="m agent">Did the customer receive a BillFree SMS? (Not WhatsApp — check SMS!)</div></div></div>
+        <div class="msg"><div class="av" style="background:#dcf8c6">🧑‍🍼</div><div><div class="who">Pappu</div><div class="m mer">Yes, SMS was received!</div></div></div>
+        <div class="msg right"><div class="av" style="background:color-mix(in srgb,var(--primary) 16%,transparent)">😎</div><div><div class="who">You</div><div class="m agent">Then BillFree is working perfectly! WhatsApp takes 5–10 min — that is normal.</div></div></div>
+        <div class="msg"><div class="av" style="background:#dcf8c6">🧑‍🍼</div><div><div class="who">Pappu</div><div class="m mer">Okay! 10 min later WhatsApp arrived! Thanks! 🙏</div></div></div>
+      </div>
+      <button class="reveal-btn" data-rev="r2">✅ Show Correct Answer</button>
+      <div class="reveal-box" id="r2"><strong>Path B → Internet OK → SMS Check → SMS received = Delivery OK!</strong><br>No ticket. SMS received = bill reached server successfully. WhatsApp delay is normal.</div>
+    </div>
+  </div>
+
+  <div class="scenario-block">
+    <div class="sc-head purple" data-sc="three">
+      <div>🍬 Sweets Shop — MID 88888 | Path D — No Print</div><div>▼</div>
+    </div>
+    <div class="sc-body" id="three">
+      <div class="chat-wrap">
+        <div class="msg"><div class="av" style="background:#dcf8c6">😴</div><div><div class="who">Bunty</div><div class="m mer">bro...nothing coming from printer...made sweets all night...tired...😴</div></div></div>
+        <div class="msg right"><div class="av" style="background:color-mix(in srgb,var(--primary) 16%,transparent)">😅</div><div><div class="who">You</div><div class="m agent">Is the BillFree popup appearing on screen?</div></div></div>
+        <div class="msg"><div class="av" style="background:#dcf8c6">😴</div><div><div class="who">Bunty</div><div class="m mer">yes popup is appearing...but printer is silent...</div></div></div>
+        <div class="msg right"><div class="av" style="background:color-mix(in srgb,var(--primary) 16%,transparent)">😎</div><div><div class="who">You</div><div class="m agent">Did you install a new printer recently? The printer name needs to be updated — raising a ticket now.</div></div></div>
+        <div class="msg"><div class="av" style="background:#dcf8c6">😴</div><div><div class="who">Bunty</div><div class="m mer">yes bought new printer 2 days ago...okay...I will sleep...zzz 😴</div></div></div>
+      </div>
+      <button class="reveal-btn" data-rev="r3">✅ Show Correct Answer</button>
+      <div class="reveal-box" id="r3"><strong>Path D → Popup APPEARING + Print NOT COMING → Ticket (PRINT_FAIL)</strong><br>Printer changed = printer name in .comp file must be updated. Tech team's job.</div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ═══════════════════════════════════════ -->
+<!-- SESSION 6 — QUIZ + CHEAT SHEET -->
+<!-- ═══════════════════════════════════════ -->
+<section class="section" id="s7">
+  <div class="sec-head">
+    <div class="icon" style="background:color-mix(in srgb,var(--yellow) 12%,transparent)">🧪</div>
+    <div>
+      <div class="sec-title">Session 6 — Quiz + Cheat Sheet</div>
+      <div class="sec-sub">Test yourself, then print it and stick it on your desk!</div>
+    </div>
+  </div>
+
+  <!-- CONCERN REFERENCE TABLE -->
+  <div class="card" style="margin-bottom:20px">
+    <div style="font-weight:900;font-size:1rem;margin-bottom:14px">📝 Concern Reference — What to Send to Bot</div>
+    <div style="font-size:.82rem;color:var(--muted);margin-bottom:14px">Read all concerns below before the quiz. These are the exact messages you type to the bot when raising a ticket.</div>
+    <div style="display:grid;gap:8px">
+
+      <!-- Path A -->
+      <div style="border-radius:12px;border:1.5px solid color-mix(in srgb,var(--primary) 25%,transparent);overflow:hidden">
+        <div style="background:color-mix(in srgb,var(--primary) 10%,transparent);padding:9px 14px;display:flex;align-items:center;gap:10px">
+          <span style="background:var(--primary);color:#fff;border-radius:8px;padding:3px 10px;font-weight:900;font-size:.8rem">A</span>
+          <span style="font-weight:800;font-size:.88rem">💬 Popup Not Appearing</span>
+          <span style="margin-left:auto;font-size:.72rem;font-weight:800;background:color-mix(in srgb,var(--green) 14%,transparent);color:var(--green);padding:3px 9px;border-radius:999px">⚡ Quick Fix Check Required</span>
+        </div>
+        <div style="padding:10px 14px;font-family:monospace;font-size:.8rem;line-height:1.65;background:color-mix(in srgb,var(--primary) 4%,transparent)">
+          <div><strong>After Reset (Fixed):</strong> No concern needed — issue resolved on call.</div>
+          <div style="margin-top:6px"><strong>After Reset (Still failing):</strong> Billfree Popup — not appearing on screen. No print either. Reset tried — no change.</div>
+          <div style="margin-top:6px"><strong>Print coming, Popup not:</strong> Billfree Popup — not appearing. Print is coming from printer. Wrong printer selected in POS.</div>
+        </div>
+      </div>
+
+      <!-- Path B -->
+      <div style="border-radius:12px;border:1.5px solid color-mix(in srgb,var(--green) 25%,transparent);overflow:hidden">
+        <div style="background:color-mix(in srgb,var(--green) 10%,transparent);padding:9px 14px;display:flex;align-items:center;gap:10px">
+          <span style="background:var(--green);color:#fff;border-radius:8px;padding:3px 10px;font-weight:900;font-size:.8rem">B</span>
+          <span style="font-weight:800;font-size:.88rem">📦 Bill Delivery Issue</span>
+          <span style="margin-left:auto;font-size:.72rem;font-weight:800;background:color-mix(in srgb,var(--green) 14%,transparent);color:var(--green);padding:3px 9px;border-radius:999px">⚡ Quick Fix Check Required</span>
+        </div>
+        <div style="padding:10px 14px;font-family:monospace;font-size:.8rem;line-height:1.65;background:color-mix(in srgb,var(--green) 4%,transparent)">
+          <div><strong>Internet down / SMS aaya:</strong> No concern needed — guide merchant, no ticket.</div>
+          <div style="margin-top:6px"><strong>Internet OK + SMS not received:</strong> Bill Delivery — Internet is working. SMS not received by customer. BillFree not delivering.</div>
+        </div>
+      </div>
+
+      <!-- Path C -->
+      <div style="border-radius:12px;border:1.5px solid color-mix(in srgb,var(--accent) 25%,transparent);overflow:hidden">
+        <div style="background:color-mix(in srgb,var(--accent) 10%,transparent);padding:9px 14px;display:flex;align-items:center;gap:10px">
+          <span style="background:var(--accent);color:#fff;border-radius:8px;padding:3px 10px;font-weight:900;font-size:.8rem">C</span>
+          <span style="font-weight:800;font-size:.88rem">🖨️ Wrong Print Format</span>
+          <span style="margin-left:auto;font-size:.72rem;font-weight:800;background:color-mix(in srgb,var(--red) 12%,transparent);color:var(--red);padding:3px 9px;border-radius:999px">🎫 Direct Ticket — No Quick Fix</span>
+        </div>
+        <div style="padding:10px 14px;font-family:monospace;font-size:.8rem;line-height:1.65;background:color-mix(in srgb,var(--accent) 4%,transparent)">
+          <div><strong>Concern:</strong> Print Format Issue — Popup is working. Print [cutting on side / wrong size / garbled text].</div>
+        </div>
+      </div>
+
+      <!-- Path D -->
+      <div style="border-radius:12px;border:1.5px solid color-mix(in srgb,var(--purple) 25%,transparent);overflow:hidden">
+        <div style="background:color-mix(in srgb,var(--purple) 10%,transparent);padding:9px 14px;display:flex;align-items:center;gap:10px">
+          <span style="background:var(--purple);color:#fff;border-radius:8px;padding:3px 10px;font-weight:900;font-size:.8rem">D</span>
+          <span style="font-weight:800;font-size:.88rem">🚫 No Print (Popup working)</span>
+          <span style="margin-left:auto;font-size:.72rem;font-weight:800;background:color-mix(in srgb,var(--green) 14%,transparent);color:var(--green);padding:3px 9px;border-radius:999px">⚡ Quick Fix Check Required</span>
+        </div>
+        <div style="padding:10px 14px;font-family:monospace;font-size:.8rem;line-height:1.65;background:color-mix(in srgb,var(--purple) 4%,transparent)">
+          <div><strong>After Reset (Fixed):</strong> No concern needed — issue resolved.</div>
+          <div style="margin-top:6px"><strong>Popup OK + No print (new printer):</strong> Print Not Coming — Popup is appearing. No print. New printer installed recently. (PRINT_FAIL)</div>
+        </div>
+      </div>
+
+      <!-- Direct Tickets -->
+      <div style="border-radius:12px;border:1.5px solid color-mix(in srgb,var(--red) 22%,transparent);overflow:hidden">
+        <div style="background:color-mix(in srgb,var(--red) 10%,transparent);padding:9px 14px;display:flex;align-items:center;gap:10px">
+          <span style="background:var(--red);color:#fff;border-radius:8px;padding:3px 10px;font-weight:900;font-size:.8rem">🎫</span>
+          <span style="font-weight:800;font-size:.88rem">Other Direct Tickets (No path check needed)</span>
+        </div>
+        <div style="padding:10px 14px;font-family:monospace;font-size:.8rem;line-height:1.65;background:color-mix(in srgb,var(--red) 3%,transparent);display:grid;gap:5px">
+          <div><strong>PC Slow/Hang:</strong> PC Hang / Slow — [always / only with BillFree].</div>
+          <div><strong>New Setup:</strong> New Integration — New BillFree setup required for [merchant name].</div>
+          <div><strong>Reinstall:</strong> Reinstallation — [PC formatted / new PC / software corrupted].</div>
+          <div><strong>Config (Mobile not filling):</strong> Config Issue — Mobile number not auto-filling in popup.</div>
+          <div><strong>Background Merge:</strong> Background Merging — Letterhead not visible on digital bill.</div>
+          <div><strong>Logo/Stamp:</strong> Logo/Stamp Issue — [missing / incorrect]. Setup: [Universal/Portal].</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="score-bar">
+    <div class="score-num" id="quizScore">0/8</div>
+    <div>
+      <div style="font-weight:900">Live Score</div>
+      <div style="font-size:.8rem;color:var(--muted)">Answer and see your score</div>
+    </div>
+    <div style="margin-left:auto"><button class="btn btn-dark" onclick="submitQuiz()">Submit Quiz</button></div>
+  </div>
+
+  <div id="quizWrap"></div>
+
+  <div class="completion" id="complete">
+    <div style="font-size:2rem">🎉🏆🎓</div>
+    <h2 style="margin:10px 0">Training Complete!</h2>
+    <div class="c-score" id="finalScore">0/8</div>
+    <p id="finalMsg" style="margin:10px 0;opacity:.9"></p>
+    <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:14px">
+      <button class="btn btn-light" onclick="window.print()">🖨️ Print Certificate</button>
+      <button class="btn btn-light" onclick="resetQuiz()">🔁 Try Again</button>
+    </div>
+  </div>
+
+  <div style="height:20px"></div>
+
+  <!-- CHEAT SHEET -->
+  <div class="cheat">
+    <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px">
+      <div>
+        <div style="font-size:1.2rem;font-weight:900">BillFree CFT — Quick Reference Card</div>
+        <div style="opacity:.88;font-size:.85rem;margin-top:3px">Print and stick on your desk — for live calls!</div>
+      </div>
+      <button class="btn btn-light" onclick="window.print()">🖨️ Print</button>
+    </div>
+    <div class="cheat-grid">
+      <div class="cheat-item"><strong>Unclear problem</strong>Ask: popup issue / bill not delivered / print not coming?</div>
+      <div class="cheat-item"><strong>Path A: No popup + No print</strong>→ BillFree Reset (2-3 sec)</div>
+      <div class="cheat-item"><strong>Path A: Print coming + No popup</strong>→ Wrong printer in POS → Ticket</div>
+      <div class="cheat-item"><strong>Path A/D: Still failing after Reset</strong>→ Raise a Ticket</div>
+      <div class="cheat-item"><strong>Path B: Internet down</strong>→ Wait; bills will auto-send</div>
+      <div class="cheat-item"><strong>Path B: SMS received, no WhatsApp</strong>→ Wait 5–10 min; no ticket needed</div>
+      <div class="cheat-item"><strong>Path B: No SMS + Internet working</strong>→ Delivery Ticket</div>
+      <div class="cheat-item"><strong>Path C: Wrong print format</strong>→ Direct Ticket (PRINT_FORMAT)</div>
+      <div class="cheat-item"><strong>Path D: Popup OK + No print</strong>→ Printer changed? → Ticket (PRINT_FAIL)</div>
+      <div class="cheat-item"><strong>PC Slow / Config / Logo / Reinstall / New Setup</strong>→ Direct Ticket — no call fix</div>
+    </div>
+    <div style="margin-top:14px;font-size:.84rem;background:rgba(255,255,255,.11);border-radius:10px;padding:10px 14px">
+      <strong>How to write concern:</strong> [Issue Type] — [What happened]. [What was tried]. [Result].<br>
+      <span style="opacity:.8">Example: Billfree Popup — not appearing on screen. No print either. Reset tried — no change.</span>
+    </div>
+  </div>
+</section>
+
+</div><!-- /wrap -->
+
+<script>
+// ── Theme ──
+const root=document.documentElement, themeBtn=document.getElementById('themeBtn'), bar=document.getElementById('bar');
+function setTheme(t){root.setAttribute('data-theme',t);themeBtn.textContent=t==='dark'?'☀️':'🌙';localStorage.setItem('bf-theme',t)}
+setTheme(localStorage.getItem('bf-theme')||'light');
+themeBtn.onclick=()=>setTheme(root.getAttribute('data-theme')==='dark'?'light':'dark');
+
+// ── Progress bar ──
+addEventListener('scroll',()=>{const d=document.documentElement;const p=(d.scrollTop||document.body.scrollTop)/(d.scrollHeight-d.clientHeight)*100;bar.style.width=p+'%'});
+
+// ── Copy ──
+function copyText(id,el){
+  const t=document.getElementById(id).innerText;
+  navigator.clipboard.writeText(t);
+  const old=el.textContent; el.textContent='✅ Copied!'; el.classList.add('done');
+  setTimeout(()=>{el.textContent=old;el.classList.remove('done')},1600);
+}
+
+// ── Toggle issue paths ──
+function toggleIssue(id){
+  const body=document.getElementById('body-'+id);
+  const ch=document.getElementById('ch-'+id);
+  body.classList.toggle('open');
+  ch.classList.toggle('open');
+}
+
+// ── Tabs ──
+document.querySelectorAll('[data-t]').forEach(wrap=>{
+  const tabs=[...wrap.querySelectorAll('.tab')];
+  const card=wrap.parentElement;
+  tabs.forEach(tab=>tab.onclick=()=>{
+    tabs.forEach(t=>t.classList.remove('active'));
+    tab.classList.add('active');
+    const name=tab.dataset.tab;
+    card.querySelectorAll('.panel').forEach(p=>p.classList.toggle('active',p.dataset.panel===name));
+  });
+});
+
+// ── Scenarios ──
+document.querySelectorAll('[data-sc]').forEach(h=>h.onclick=()=>{
+  const b=h.parentElement.querySelector('.sc-body');
+  b.classList.toggle('open');
+});
+document.querySelectorAll('[data-rev]').forEach(btn=>btn.onclick=()=>{
+  document.getElementById(btn.dataset.rev).classList.toggle('show');
+});
+
+// ── VS Game ──
+let vsScore=0, vsDone=new Set();
+document.getElementById('vsGame').querySelectorAll('.vs-item').forEach(item=>{
+  item.querySelector('.v').onclick=()=>markVs(item,'v');
+  item.querySelector('.s').onclick=()=>markVs(item,'s');
+});
+function markVs(item,ans){
+  if(vsDone.has(item))return;
+  vsDone.add(item);
+  const ok=item.dataset.ans===ans;
+  item.classList.add(ok?'ok-s':'ok-v');
+  if(ok)vsScore++;
+  document.getElementById('vsScore').textContent=vsScore+'/6';
+}
+
+// ── Quiz ──
+const quizData=[
+  ['Merchant says "BillFree is not working". What do you ask first?',
+   ['Raise ticket directly','Is it a popup issue, bill not delivered, or no print?','Run Reset immediately','Check internet'],1],
+  ['Popup not appearing + No print at all. What is the first action?',
+   ['Raise a ticket','Double-click BillFree Reset icon','Check internet','Reinstall printer'],1],
+  ['Print is coming from printer but popup is NOT appearing. What does this mean?',
+   ['BillFree is working fine','Internet issue','Wrong printer selected in POS — raise ticket','PC is slow'],2],
+  ['SMS received by customer but WhatsApp not received. What do you do?',
+   ['Raise a ticket immediately','Check internet','Wait 5–10 min — SMS = delivery confirmed, no ticket needed','Reinstall BillFree'],2],
+  ['Mobile number is not auto-filling in popup. Which concern to raise:',
+   ['Billfree Popup — not appearing','Config Issue — Mobile number not auto-filling in popup.','Reinstallation — PC formatted','Print Format Issue — Popup is working.'],1],
+  ['Letterhead is not visible on the digital bill. Which concern to raise:',
+   ['Logo/Stamp Issue — missing','Print Format Issue — Popup is working.','Background Merging — Letterhead not visible on digital bill.','Config Issue — Mobile number not auto-filling.'],2],
+  ['PC was formatted. BillFree needs to be set up again. Which concern to raise:',
+   ['Config Issue — Mobile number not auto-filling in popup.','New Integration — New BillFree setup required.','Reinstallation — PC formatted / software corrupted.','Print Format Issue — Popup is working.'],2],
+  ['Print is cutting on one side. Popup is working fine. Which concern to raise:',
+   ['Print Not Coming — Popup is appearing. No print. New printer installed. (PRINT_FAIL)','Print Format Issue — Popup is working. Print [cutting on side / wrong size / garbled text].','Config Issue — Mobile number not auto-filling in popup.','Bill Delivery — Internet is working. SMS not received.'],1]
+];
+
+const qWrap=document.getElementById('quizWrap');
+let qAnswered=new Array(quizData.length).fill(false), qScore=0;
+
+quizData.forEach((q,idx)=>{
+  const el=document.createElement('div');
+  el.className='quiz-card';
+  el.innerHTML=`<div class="q-text">Q${idx+1}. ${q[0]}</div><div class="opts-grid"></div><div class="q-fb"></div>`;
+  const opts=el.querySelector('.opts-grid');
+  q[1].forEach((o,i)=>{
+    const b=document.createElement('button');
+    b.className='opt'; b.textContent=o;
+    b.onclick=()=>answerQ(idx,i,b,el,q[2]);
+    opts.appendChild(b);
+  });
+  qWrap.appendChild(el);
+});
+
+function answerQ(idx,i,b,card,correct){
+  if(qAnswered[idx])return;
+  qAnswered[idx]=true;
+  const bs=[...card.querySelectorAll('.opt')];
+  bs.forEach(x=>x.disabled=true);
+  const fb=card.querySelector('.q-fb');
+  if(i===correct){
+    b.classList.add('good'); qScore++;
+    fb.className='q-fb show good'; fb.textContent='✅ Bilkul sahi!';
+  } else {
+    b.classList.add('bad'); bs[correct].classList.add('good');
+    fb.className='q-fb show bad'; fb.textContent='❌ Galat. Sahi answer highlight ho gaya.';
+  }
+  document.getElementById('quizScore').textContent=qScore+'/8';
+}
+
+function submitQuiz(){
+  document.getElementById('complete').classList.add('show');
+  document.getElementById('finalScore').textContent=qScore+'/8';
+  const msg=qScore>=8?'You are a legend! Ramesh, Pappu, Bunty — all will learn from you! 🏆':
+    qScore>=6?'Excellent! Almost a pro — review the concern table once more! 💪':
+    qScore>=4?'Good effort! Read the Concern Reference once more! 📚':
+    'No worries! Read again — you can do this! 😄';
+  document.getElementById('finalMsg').textContent=msg;
+}
+function resetQuiz(){location.reload()}
+</script>
+</body>
+</html>

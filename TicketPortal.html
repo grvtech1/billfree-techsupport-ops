@@ -1,0 +1,1489 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="BillFree QuickFix — Create and track IT support tickets instantly.">
+    <title>BillFree QuickFix</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <style>
+        /* ══════════════════════════════════════════════════
+           DESIGN SYSTEM — BillFree Support Hub
+           ══════════════════════════════════════════════════ */
+        :root {
+            --primary: #4F46E5;
+            --primary-light: #818CF8;
+            --primary-dark: #3730A3;
+            --accent: #7C3AED;
+            --success: #10B981;
+            --success-light: #D1FAE5;
+            --warning: #F59E0B;
+            --warning-light: #FEF3C7;
+            --danger: #EF4444;
+            --danger-light: #FEE2E2;
+            --gray-50: #F8FAFC;
+            --gray-100: #F1F5F9;
+            --gray-200: #E2E8F0;
+            --gray-300: #CBD5E1;
+            --gray-400: #94A3B8;
+            --gray-500: #64748B;
+            --gray-600: #475569;
+            --gray-700: #334155;
+            --gray-800: #1E293B;
+            --gray-900: #0F172A;
+            --bg-body: #F0F2F8;
+            --bg-card: #FFFFFF;
+            --border: #E2E8F0;
+            --radius: 16px;
+            --radius-sm: 10px;
+            --radius-xs: 6px;
+            --shadow-sm: 0 1px 3px rgba(0,0,0,0.04), 0 1px 2px rgba(0,0,0,0.06);
+            --shadow-md: 0 4px 14px rgba(0,0,0,0.06), 0 2px 6px rgba(0,0,0,0.04);
+            --shadow-lg: 0 12px 40px rgba(0,0,0,0.08);
+            --shadow-glow: 0 0 30px rgba(79,70,229,0.15);
+        }
+
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            font-family: 'Inter', -apple-system, sans-serif;
+            background: var(--bg-body);
+            color: var(--gray-800);
+            min-height: 100vh;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* ── HEADER ──────────────────────────────────── */
+        .header {
+            background: linear-gradient(135deg, #1E1B4B 0%, #312E81 30%, #4338CA 70%, #6D28D9 100%);
+            padding: 48px 24px 56px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .header::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(ellipse at 30% 20%, rgba(129,140,248,0.2) 0%, transparent 60%),
+                        radial-gradient(ellipse at 70% 80%, rgba(124,58,237,0.15) 0%, transparent 50%);
+            pointer-events: none;
+        }
+        .header-inner { position: relative; z-index: 1; max-width: 640px; margin: 0 auto; }
+        .header-logo {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 12px;
+        }
+        .header-logo-icon {
+            width: 44px; height: 44px;
+            background: rgba(255,255,255,0.15);
+            backdrop-filter: blur(12px);
+            border-radius: 12px;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 22px;
+            border: 1px solid rgba(255,255,255,0.12);
+        }
+        .header-logo-text {
+            font-size: 14px;
+            font-weight: 700;
+            color: rgba(255,255,255,0.7);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+        .header h1 {
+            font-size: 32px;
+            font-weight: 800;
+            color: #FFFFFF;
+            margin-bottom: 8px;
+            letter-spacing: -0.5px;
+        }
+        .header p {
+            font-size: 15px;
+            color: rgba(255,255,255,0.65);
+            font-weight: 400;
+        }
+
+        /* ── CONTAINER ───────────────────────────────── */
+        .container {
+            max-width: 640px;
+            margin: -32px auto 40px;
+            padding: 0 16px;
+            position: relative;
+            z-index: 2;
+        }
+
+        /* ── TAB SWITCHER ────────────────────────────── */
+        .tabs {
+            display: flex;
+            background: var(--bg-card);
+            border-radius: var(--radius);
+            padding: 6px;
+            box-shadow: var(--shadow-md);
+            margin-bottom: 24px;
+            border: 1px solid var(--border);
+            position: relative;
+        }
+        .tab-btn {
+            flex: 1;
+            padding: 14px 16px;
+            border: none;
+            background: transparent;
+            font-family: inherit;
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--gray-500);
+            cursor: pointer;
+            border-radius: 12px;
+            transition: all 0.3s cubic-bezier(0.4,0,0.2,1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            position: relative;
+            z-index: 1;
+        }
+        .tab-btn.active {
+            color: #FFFFFF;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+            box-shadow: 0 4px 16px rgba(79,70,229,0.3);
+        }
+        .tab-btn:not(.active):hover {
+            color: var(--primary);
+            background: rgba(79,70,229,0.06);
+        }
+        .tab-btn i { font-size: 15px; }
+
+        /* ── TAB PANELS ──────────────────────────────── */
+        .tab-panel { display: none; animation: fadeSlide 0.35s ease; }
+        .tab-panel.active { display: block; }
+        @keyframes fadeSlide {
+            from { opacity: 0; transform: translateY(12px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+
+        /* ── CARD ────────────────────────────────────── */
+        .card {
+            background: var(--bg-card);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow-md);
+            border: 1px solid var(--border);
+            overflow: hidden;
+        }
+        .card-body { padding: 28px; }
+
+        /* ── FORM ────────────────────────────────────── */
+        .form-group { margin-bottom: 20px; }
+        .form-label {
+            display: block;
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--gray-700);
+            margin-bottom: 6px;
+            letter-spacing: 0.01em;
+        }
+        .form-label .label-icon {
+            display: inline-flex;
+            width: 18px;
+            color: var(--gray-400);
+            margin-right: 2px;
+        }
+        .form-input,
+        .form-select,
+        .form-textarea {
+            width: 100%;
+            padding: 12px 14px;
+            border: 1.5px solid var(--gray-200);
+            border-radius: var(--radius-sm);
+            font-family: inherit;
+            font-size: 14px;
+            color: var(--gray-800);
+            background: var(--gray-50);
+            transition: all 0.25s ease;
+            outline: none;
+        }
+        .form-input::placeholder,
+        .form-textarea::placeholder {
+            color: var(--gray-400);
+        }
+        .form-input:focus,
+        .form-select:focus,
+        .form-textarea:focus {
+            border-color: var(--primary-light);
+            background: #FFFFFF;
+            box-shadow: 0 0 0 4px rgba(79,70,229,0.08);
+        }
+        .form-textarea { resize: vertical; min-height: 100px; }
+        .form-select {
+            cursor: pointer;
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%2394A3B8' d='M6 8.825a.5.5 0 0 1-.354-.146l-4-4a.5.5 0 0 1 .708-.708L6 7.617l3.646-3.646a.5.5 0 0 1 .708.708l-4 4A.5.5 0 0 1 6 8.825z'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 14px center;
+            padding-right: 36px;
+        }
+
+        /* Phone input with flag */
+        .phone-wrap {
+            display: flex;
+            align-items: stretch;
+            gap: 0;
+        }
+        .phone-prefix {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            padding: 0 12px;
+            background: var(--gray-100);
+            border: 1.5px solid var(--gray-200);
+            border-right: none;
+            border-radius: var(--radius-sm) 0 0 var(--radius-sm);
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--gray-600);
+            white-space: nowrap;
+        }
+        .phone-wrap .form-input {
+            border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+        }
+
+        /* ── SUBMIT BUTTON ───────────────────────────── */
+        .btn-submit {
+            width: 100%;
+            padding: 15px 24px;
+            border: none;
+            border-radius: var(--radius-sm);
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+            color: #FFFFFF;
+            font-family: inherit;
+            font-size: 15px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 28px;
+            position: relative;
+            overflow: hidden;
+        }
+        .btn-submit:hover:not(:disabled) {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 28px rgba(79,70,229,0.35);
+        }
+        .btn-submit:active:not(:disabled) {
+            transform: translateY(0);
+        }
+        .btn-submit:disabled {
+            opacity: 0.7;
+            cursor: not-allowed;
+        }
+        .btn-submit .spinner {
+            width: 18px; height: 18px;
+            border: 2.5px solid rgba(255,255,255,0.3);
+            border-top-color: #FFFFFF;
+            border-radius: 50%;
+            animation: spin 0.7s linear infinite;
+            display: none;
+        }
+        .btn-submit.loading .spinner { display: block; }
+        .btn-submit.loading .btn-text { display: none; }
+        @keyframes spin { to { transform: rotate(360deg); } }
+
+        /* ── SUCCESS CARD ────────────────────────────── */
+        .success-card {
+            display: none;
+            text-align: center;
+            padding: 36px 28px;
+            animation: successPop 0.5s cubic-bezier(0.34,1.56,0.64,1);
+        }
+        .success-card.show { display: block; }
+        @keyframes successPop {
+            from { opacity: 0; transform: scale(0.85); }
+            to   { opacity: 1; transform: scale(1); }
+        }
+        .success-icon {
+            width: 72px; height: 72px;
+            background: linear-gradient(135deg, #D1FAE5, #A7F3D0);
+            border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            margin: 0 auto 20px;
+            font-size: 32px;
+            color: var(--success);
+            box-shadow: 0 8px 30px rgba(16,185,129,0.2);
+        }
+        .success-card h3 {
+            font-size: 22px;
+            font-weight: 800;
+            color: var(--gray-900);
+            margin-bottom: 8px;
+        }
+        .success-card p {
+            color: var(--gray-500);
+            font-size: 14px;
+            margin-bottom: 20px;
+        }
+        .ticket-id-display {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: linear-gradient(135deg, #EEF2FF, #E0E7FF);
+            padding: 14px 22px;
+            border-radius: 12px;
+            font-size: 18px;
+            font-weight: 800;
+            color: var(--primary-dark);
+            letter-spacing: 0.5px;
+            border: 1px solid rgba(79,70,229,0.15);
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        .ticket-id-display:hover {
+            background: linear-gradient(135deg, #E0E7FF, #C7D2FE);
+            box-shadow: 0 4px 16px rgba(79,70,229,0.15);
+        }
+        .ticket-id-display i {
+            font-size: 14px;
+            color: var(--primary-light);
+        }
+        .btn-new-ticket {
+            margin-top: 20px;
+            padding: 12px 28px;
+            border: 2px solid var(--primary);
+            background: transparent;
+            color: var(--primary);
+            font-family: inherit;
+            font-size: 14px;
+            font-weight: 600;
+            border-radius: var(--radius-sm);
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        .btn-new-ticket:hover {
+            background: var(--primary);
+            color: #FFFFFF;
+        }
+
+        /* ── SEARCH ──────────────────────────────────── */
+        .search-group {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+        .search-group .form-input { flex: 1; }
+        .btn-search {
+            padding: 12px 20px;
+            border: none;
+            border-radius: var(--radius-sm);
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            color: #FFFFFF;
+            font-family: inherit;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            white-space: nowrap;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .btn-search:hover:not(:disabled) {
+            box-shadow: 0 4px 16px rgba(79,70,229,0.3);
+            transform: translateY(-1px);
+        }
+        .btn-search:disabled { opacity: 0.7; cursor: not-allowed; }
+        .search-hint {
+            font-size: 12px;
+            color: var(--gray-400);
+            margin-bottom: 16px;
+        }
+        .search-hint i { color: var(--primary-light); margin-right: 4px; }
+
+        /* ── RESULTS TABLE ────────────────────────────── */
+        .results-empty {
+            text-align: center;
+            padding: 48px 20px;
+            color: var(--gray-400);
+        }
+        .results-empty i {
+            font-size: 42px;
+            margin-bottom: 14px;
+            color: var(--gray-300);
+        }
+        .results-empty p {
+            font-size: 14px;
+            line-height: 1.6;
+        }
+        .result-card {
+            border: 1px solid var(--border);
+            border-radius: var(--radius-sm);
+            padding: 18px;
+            margin-bottom: 14px;
+            background: var(--gray-50);
+            transition: all 0.2s ease;
+            animation: fadeSlide 0.3s ease;
+        }
+        .result-card:hover {
+            border-color: var(--primary-light);
+            box-shadow: var(--shadow-sm);
+        }
+        .result-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 12px;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+        .result-ticket-id {
+            font-size: 14px;
+            font-weight: 800;
+            color: var(--primary-dark);
+            font-family: 'Inter', monospace;
+            letter-spacing: 0.3px;
+        }
+        .result-date {
+            font-size: 12px;
+            color: var(--gray-400);
+            font-weight: 500;
+        }
+        .result-body {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+        }
+        .result-field {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
+        .result-field.full { grid-column: 1 / -1; }
+        .result-field-label {
+            font-size: 11px;
+            font-weight: 600;
+            color: var(--gray-400);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .result-field-value {
+            font-size: 13px;
+            font-weight: 500;
+            color: var(--gray-700);
+            word-break: break-word;
+        }
+
+        /* ── STATUS BADGE ────────────────────────────── */
+        .status-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.3px;
+        }
+        .status-badge::before {
+            content: '';
+            width: 6px; height: 6px;
+            border-radius: 50%;
+        }
+        .status-not-completed { background: var(--warning-light); color: #B45309; }
+        .status-not-completed::before { background: var(--warning); }
+        .status-completed { background: var(--success-light); color: #065F46; }
+        .status-completed::before { background: var(--success); }
+        .status-closed { background: var(--gray-100); color: var(--gray-600); }
+        .status-closed::before { background: var(--gray-400); }
+        .status-cant-do { background: var(--danger-light); color: #991B1B; }
+        .status-cant-do::before { background: var(--danger); }
+        .status-pending { background: #FFF7ED; color: #C2410C; }
+        .status-pending::before { background: #F97316; }
+        .status-in-progress { background: #EFF6FF; color: #1E40AF; }
+        .status-in-progress::before { background: #3B82F6; }
+
+        /* ── TOAST ────────────────────────────────────── */
+        .toast {
+            position: fixed;
+            bottom: 24px;
+            left: 50%;
+            transform: translateX(-50%) translateY(100px);
+            background: var(--gray-900);
+            color: #FFFFFF;
+            padding: 14px 24px;
+            border-radius: 12px;
+            font-size: 14px;
+            font-weight: 500;
+            box-shadow: 0 12px 40px rgba(0,0,0,0.2);
+            z-index: 9999;
+            transition: transform 0.35s cubic-bezier(0.34,1.56,0.64,1);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            max-width: 90%;
+        }
+        .toast.show { transform: translateX(-50%) translateY(0); }
+        .toast.error { background: #991B1B; }
+        .toast.success { background: #065F46; }
+
+        /* ── FOOTER ───────────────────────────────────── */
+        .footer {
+            text-align: center;
+            padding: 24px 16px 32px;
+            font-size: 12px;
+            color: var(--gray-400);
+        }
+        .footer a { color: var(--primary-light); text-decoration: none; }
+
+        /* ── LOADING SKELETON ─────────────────────────── */
+        .skeleton {
+            background: linear-gradient(90deg, var(--gray-100) 25%, var(--gray-200) 50%, var(--gray-100) 75%);
+            background-size: 200% 100%;
+            animation: shimmer 1.4s ease infinite;
+            border-radius: var(--radius-xs);
+            height: 60px;
+            margin-bottom: 14px;
+        }
+        @keyframes shimmer {
+            0% { background-position: 200% 0; }
+            100% { background-position: -200% 0; }
+        }
+
+        /* ── VALIDATION ──────────────────────────────── */
+        .form-input.error, .form-textarea.error, .form-select.error {
+            border-color: var(--danger);
+            background: #FFF5F5;
+        }
+        .field-error {
+            font-size: 12px;
+            color: var(--danger);
+            margin-top: 4px;
+            display: none;
+        }
+        .field-error.show { display: block; }
+
+        /* ── OPTIONAL TAG ────────────────────────────── */
+        .label-optional {
+            font-size: 11px;
+            font-weight: 500;
+            color: var(--gray-400);
+            margin-left: 4px;
+        }
+
+        /* ── RESULTS COUNT ───────────────────────────── */
+        .results-count {
+            font-size: 13px;
+            color: var(--gray-500);
+            font-weight: 600;
+            margin-bottom: 14px;
+            padding-bottom: 14px;
+            border-bottom: 1px solid var(--border);
+        }
+        .results-count span { color: var(--primary); }
+
+        /* ── FOLLOW-UP TIMELINE ──────────────────────── */
+        .followup-section {
+            margin-top: 14px;
+            padding-top: 12px;
+            border-top: 1px dashed var(--gray-200);
+        }
+        .followup-title {
+            font-size: 11px;
+            font-weight: 700;
+            color: var(--gray-500);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .followup-title i { color: var(--primary-light); font-size: 12px; }
+        .followup-timeline {
+            position: relative;
+            padding-left: 18px;
+        }
+        .followup-timeline::before {
+            content: '';
+            position: absolute;
+            left: 5px;
+            top: 4px;
+            bottom: 4px;
+            width: 2px;
+            background: var(--gray-200);
+            border-radius: 2px;
+        }
+        .followup-entry {
+            position: relative;
+            margin-bottom: 10px;
+            padding-bottom: 2px;
+        }
+        .followup-entry:last-child { margin-bottom: 0; }
+        .followup-entry::before {
+            content: '';
+            position: absolute;
+            left: -18px;
+            top: 6px;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--primary-light);
+            border: 2px solid var(--bg-card);
+            box-shadow: 0 0 0 2px var(--gray-200);
+        }
+        .followup-date {
+            font-size: 10px;
+            font-weight: 600;
+            color: var(--gray-400);
+            margin-bottom: 2px;
+        }
+        .followup-text {
+            font-size: 12px;
+            color: var(--gray-700);
+            line-height: 1.5;
+            word-break: break-word;
+        }
+        .followup-none {
+            font-size: 12px;
+            color: var(--gray-400);
+            font-style: italic;
+        }
+
+        /* ── QUICKFIX ACCORDION CARDS ────────────────── */
+        .qf-intro {
+            font-size: 14px;
+            color: var(--gray-600);
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+        .qf-intro strong { color: var(--gray-800); }
+        .qf-card {
+            border: 1px solid var(--border);
+            border-radius: var(--radius-sm);
+            margin-bottom: 12px;
+            overflow: hidden;
+            transition: all 0.25s ease;
+            background: var(--bg-card);
+        }
+        .qf-card:hover { border-color: var(--primary-light); }
+        .qf-card.open { border-color: var(--primary-light); box-shadow: var(--shadow-sm); }
+        .qf-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 16px;
+            cursor: pointer;
+            user-select: none;
+            transition: background 0.2s ease;
+        }
+        .qf-header:hover { background: var(--gray-50); }
+        .qf-icon {
+            width: 38px; height: 38px;
+            border-radius: 10px;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 16px;
+            flex-shrink: 0;
+        }
+        .qf-icon.popup { background: linear-gradient(135deg, #EEF2FF, #E0E7FF); color: var(--primary); }
+        .qf-icon.delivery { background: linear-gradient(135deg, #FFF7ED, #FFEDD5); color: #EA580C; }
+        .qf-icon.print { background: linear-gradient(135deg, #F0FDF4, #DCFCE7); color: #16A34A; }
+        .qf-icon.general { background: linear-gradient(135deg, #FEF2F2, #FEE2E2); color: var(--danger); }
+        .qf-title-wrap { flex: 1; min-width: 0; }
+        .qf-title {
+            font-size: 14px;
+            font-weight: 700;
+            color: var(--gray-800);
+            margin-bottom: 2px;
+        }
+        .qf-subtitle {
+            font-size: 12px;
+            color: var(--gray-400);
+            line-height: 1.4;
+        }
+        .qf-chevron {
+            font-size: 12px;
+            color: var(--gray-400);
+            transition: transform 0.3s ease;
+            flex-shrink: 0;
+        }
+        .qf-card.open .qf-chevron { transform: rotate(180deg); color: var(--primary); }
+        .qf-body {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s cubic-bezier(0.4,0,0.2,1);
+        }
+        .qf-card.open .qf-body { max-height: 600px; }
+        .qf-content {
+            padding: 0 16px 18px;
+        }
+        .qf-section {
+            margin-bottom: 14px;
+        }
+        .qf-section:last-child { margin-bottom: 0; }
+        .qf-section-label {
+            font-size: 10px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.6px;
+            margin-bottom: 6px;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        .qf-section-label.fix { color: var(--success); }
+        .qf-section-label.ask { color: var(--primary); }
+        .qf-section-label.script { color: #EA580C; }
+        .qf-section-label.tech { color: var(--gray-500); }
+        .qf-section-text {
+            font-size: 13px;
+            color: var(--gray-700);
+            line-height: 1.6;
+            padding: 10px 12px;
+            background: var(--gray-50);
+            border-radius: 8px;
+            border-left: 3px solid transparent;
+        }
+        .qf-section-text.fix-text { border-left-color: var(--success); background: #F0FDF4; }
+        .qf-section-text.ask-text { border-left-color: var(--primary-light); background: #EEF2FF; }
+        .qf-section-text.script-text {
+            border-left-color: #EA580C;
+            background: #FFF7ED;
+            font-style: italic;
+        }
+        .qf-section-text.tech-text {
+            border-left-color: var(--gray-400);
+            font-size: 12px;
+            color: var(--gray-600);
+        }
+        .qf-divider {
+            height: 1px;
+            background: var(--gray-200);
+            margin: 12px 0;
+        }
+        .qf-cta {
+            margin-top: 20px;
+            padding: 18px;
+            background: linear-gradient(135deg, #EEF2FF 0%, #E8E0FF 100%);
+            border-radius: var(--radius-sm);
+            text-align: center;
+            border: 1px dashed rgba(79,70,229,0.25);
+        }
+        .qf-cta p {
+            font-size: 13px;
+            color: var(--gray-600);
+            margin-bottom: 10px;
+        }
+        .qf-cta-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 10px 22px;
+            border: none;
+            border-radius: 8px;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            color: #FFFFFF;
+            font-family: inherit;
+            font-size: 13px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        .qf-cta-btn:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 6px 20px rgba(79,70,229,0.3);
+        }
+
+        /* ── RESPONSIVE ──────────────────────────────── */
+        @media (max-width: 480px) {
+            .header { padding: 32px 16px 44px; }
+            .header h1 { font-size: 24px; }
+            .container { margin-top: -24px; }
+            .card-body { padding: 20px; }
+            .tab-btn { font-size: 13px; padding: 12px 10px; }
+            .search-group { flex-direction: column; }
+            .result-body { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ═══════ HEADER ═══════ -->
+    <header class="header">
+        <div class="header-inner">
+            <div class="header-logo">
+                <div class="header-logo-icon">⚡</div>
+                <span class="header-logo-text">BillFree</span>
+            </div>
+            <h1>QuickFix</h1>
+            <p>Self-help solutions · Raise tickets · Track status</p>
+        </div>
+    </header>
+
+    <!-- ═══════ MAIN ═══════ -->
+    <main class="container">
+
+        <!-- Tab Switcher — 3 tabs -->
+        <div class="tabs" role="tablist">
+            <button class="tab-btn active" role="tab" aria-selected="true"
+                    onclick="switchTab('quickfix')" id="tab-quickfix">
+                <i class="fas fa-bolt"></i> Quick Fix
+            </button>
+            <button class="tab-btn" role="tab" aria-selected="false"
+                    onclick="switchTab('create')" id="tab-create">
+                <i class="fas fa-plus-circle"></i> Create Ticket
+            </button>
+            <button class="tab-btn" role="tab" aria-selected="false"
+                    onclick="switchTab('track')" id="tab-track">
+                <i class="fas fa-search"></i> Track Ticket
+            </button>
+        </div>
+
+        <!-- ═══ TAB 1: Quick Fix Self-Help ═══ -->
+        <div class="tab-panel active" id="panel-quickfix" role="tabpanel">
+            <div class="card">
+                <div class="card-body">
+                    <div class="qf-intro">
+                        <strong>Try these quick fixes first!</strong> Most common issues can be resolved in seconds. Tap on an issue below to see the solution.
+                    </div>
+
+                    <!-- CARD 1: Popup Not Appearing -->
+                    <div class="qf-card" onclick="toggleQF(this)">
+                        <div class="qf-header">
+                            <div class="qf-icon popup"><i class="fas fa-window-restore"></i></div>
+                            <div class="qf-title-wrap">
+                                <div class="qf-title">Popup Not Appearing / Delayed</div>
+                                <div class="qf-subtitle">BillFree process may be stuck or POS using wrong printer</div>
+                            </div>
+                            <i class="fas fa-chevron-down qf-chevron"></i>
+                        </div>
+                        <div class="qf-body">
+                            <div class="qf-content">
+                                <div class="qf-section">
+                                    <div class="qf-section-label fix"><i class="fas fa-wrench"></i> Quick Fix</div>
+                                    <div class="qf-section-text fix-text">
+                                        Run <strong>BillFree Reset</strong> when no popup + no print, or when only popup is slow. Double-click the BillFree Reset icon and do a test print.
+                                    </div>
+                                </div>
+                                <div class="qf-section">
+                                    <div class="qf-section-label ask"><i class="fas fa-question-circle"></i> What to Ask</div>
+                                    <div class="qf-section-text ask-text">
+                                        Ask if any print is coming · Ask if popup is slow or completely absent
+                                    </div>
+                                </div>
+                                <div class="qf-section">
+                                    <div class="qf-section-label script"><i class="fas fa-headset"></i> Non-Tech Script</div>
+                                    <div class="qf-section-text script-text">
+                                        "Sir/Ma'am, ek baar BillFree Reset icon ko double-click karke test print kar dijiye."
+                                    </div>
+                                </div>
+                                <div class="qf-divider"></div>
+                                <div class="qf-section">
+                                    <div class="qf-section-label tech"><i class="fas fa-microchip"></i> Deep Tech Note</div>
+                                    <div class="qf-section-text tech-text">
+                                        If print is coming but popup is absent → wrong printer likely selected in POS settings.<br>
+                                        If only popup is slow → process buildup is likely, BillFree Reset clears the queue.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- CARD 2: Bill Not Delivering -->
+                    <div class="qf-card" onclick="toggleQF(this)">
+                        <div class="qf-header">
+                            <div class="qf-icon delivery"><i class="fas fa-paper-plane"></i></div>
+                            <div class="qf-title-wrap">
+                                <div class="qf-title">Bill Not Delivering</div>
+                                <div class="qf-subtitle">Digital delivery needs internet; SMS may mean server-side ok</div>
+                            </div>
+                            <i class="fas fa-chevron-down qf-chevron"></i>
+                        </div>
+                        <div class="qf-body">
+                            <div class="qf-content">
+                                <div class="qf-section">
+                                    <div class="qf-section-label fix"><i class="fas fa-wrench"></i> Quick Fix</div>
+                                    <div class="qf-section-text fix-text">
+                                        Check internet connection. If SMS is received by customer, explain that WhatsApp delivery may have a slight delay — ask them to wait 2-3 minutes.
+                                    </div>
+                                </div>
+                                <div class="qf-section">
+                                    <div class="qf-section-label ask"><i class="fas fa-question-circle"></i> What to Ask</div>
+                                    <div class="qf-section-text ask-text">
+                                        Ask if PC internet is working · Ask if SMS reached the customer
+                                    </div>
+                                </div>
+                                <div class="qf-section">
+                                    <div class="qf-section-label script"><i class="fas fa-headset"></i> Non-Tech Script</div>
+                                    <div class="qf-section-text script-text">
+                                        "Internet check kar lijiye; agar SMS aa gaya hai toh WhatsApp thoda delay ho sakta hai."
+                                    </div>
+                                </div>
+                                <div class="qf-divider"></div>
+                                <div class="qf-section">
+                                    <div class="qf-section-label tech"><i class="fas fa-microchip"></i> Deep Tech Note</div>
+                                    <div class="qf-section-text tech-text">
+                                        No SMS + no WhatsApp with internet working = real delivery failure → create a ticket.<br>
+                                        SMS received = server processed it; WhatsApp delay is provider-side, not BillFree.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- CARD 3: Print Not Coming -->
+                    <div class="qf-card" onclick="toggleQF(this)">
+                        <div class="qf-header">
+                            <div class="qf-icon print"><i class="fas fa-print"></i></div>
+                            <div class="qf-title-wrap">
+                                <div class="qf-title">Print Not Coming</div>
+                                <div class="qf-subtitle">BillFree process stuck or printer config mismatch</div>
+                            </div>
+                            <i class="fas fa-chevron-down qf-chevron"></i>
+                        </div>
+                        <div class="qf-body">
+                            <div class="qf-content">
+                                <div class="qf-section">
+                                    <div class="qf-section-label fix"><i class="fas fa-wrench"></i> Quick Fix</div>
+                                    <div class="qf-section-text fix-text">
+                                        If no popup <strong>and</strong> no print → run <strong>BillFree Reset</strong> first.<br>
+                                        If popup appears but no print → likely a printer config change in POS settings.
+                                    </div>
+                                </div>
+                                <div class="qf-section">
+                                    <div class="qf-section-label ask"><i class="fas fa-question-circle"></i> What to Ask</div>
+                                    <div class="qf-section-text ask-text">
+                                        Ask if the popup appears on screen · Ask if the printer was changed recently
+                                    </div>
+                                </div>
+                                <div class="qf-section">
+                                    <div class="qf-section-label script"><i class="fas fa-headset"></i> Non-Tech Script</div>
+                                    <div class="qf-section-text script-text">
+                                        "Ek baar dekhte hain popup aa raha hai ya nahi; usse exact path clear ho jayega."
+                                    </div>
+                                </div>
+                                <div class="qf-divider"></div>
+                                <div class="qf-section">
+                                    <div class="qf-section-label tech"><i class="fas fa-microchip"></i> Deep Tech Note</div>
+                                    <div class="qf-section-text tech-text">
+                                        Popup yes + no print = BillFree is working fine, but the physical printer mapping changed in the POS software. This needs POS-side printer reconfiguration.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- CARD 4: General "Not Working" -->
+                    <div class="qf-card" onclick="toggleQF(this)">
+                        <div class="qf-header">
+                            <div class="qf-icon general"><i class="fas fa-exclamation-circle"></i></div>
+                            <div class="qf-title-wrap">
+                                <div class="qf-title">BillFree Not Working / Service Down</div>
+                                <div class="qf-subtitle">Start with identifying the exact issue type</div>
+                            </div>
+                            <i class="fas fa-chevron-down qf-chevron"></i>
+                        </div>
+                        <div class="qf-body">
+                            <div class="qf-content">
+                                <div class="qf-section">
+                                    <div class="qf-section-label fix"><i class="fas fa-wrench"></i> Quick Fix</div>
+                                    <div class="qf-section-text fix-text">
+                                        First identify: Is it a <strong>popup issue</strong>, a <strong>delivery issue</strong>, or a <strong>print issue</strong>? Each has a different fix — check the cards above.
+                                    </div>
+                                </div>
+                                <div class="qf-section">
+                                    <div class="qf-section-label script"><i class="fas fa-headset"></i> Non-Tech Script</div>
+                                    <div class="qf-section-text script-text">
+                                        "Sir, exact issue samajhne ke liye ek quick check karte hain — BillFree popup issue hai, delivery issue hai, ya print issue hai?"
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- CTA: Still need help? -->
+                    <div class="qf-cta">
+                        <p>Still facing the issue? Create a support ticket and our team will help you.</p>
+                        <button class="qf-cta-btn" onclick="switchTab('create')">
+                            <i class="fas fa-plus-circle"></i> Create Support Ticket
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ═══ TAB 2: Create Ticket ═══ -->
+        <div class="tab-panel" id="panel-create" role="tabpanel">
+            <div class="card">
+                <!-- FORM -->
+                <div class="card-body" id="create-form-wrap">
+                    <div class="form-group">
+                        <label class="form-label" for="f-mid">
+                            <span class="label-icon"><i class="fas fa-fingerprint"></i></span>
+                            Merchant ID (MID)
+                        </label>
+                        <input type="text" class="form-input" id="f-mid"
+                               placeholder="e.g. 12345678" maxlength="20" inputmode="numeric" autocomplete="off">
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label" for="f-business">
+                            <span class="label-icon"><i class="fas fa-building"></i></span>
+                            Business Name
+                        </label>
+                        <input type="text" class="form-input" id="f-business"
+                               placeholder="e.g. StarBucks Café" maxlength="200" autocomplete="off">
+                        <div class="field-error" id="err-business">Please enter the business name</div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label" for="f-phone">
+                            <span class="label-icon"><i class="fas fa-phone"></i></span>
+                            Phone Number
+                        </label>
+                        <div class="phone-wrap">
+                            <div class="phone-prefix">🇮🇳 +91</div>
+                            <input type="tel" class="form-input" id="f-phone"
+                                   placeholder="98765 43210" maxlength="10"
+                                   pattern="[0-9]*" inputmode="numeric" autocomplete="tel">
+                        </div>
+                        <div class="field-error" id="err-phone">Please enter a valid 10-digit phone number</div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label" for="f-concern">
+                            <span class="label-icon"><i class="fas fa-exclamation-triangle"></i></span>
+                            Concern / Issue
+                        </label>
+                        <input type="text" class="form-input" id="f-concern"
+                               placeholder="e.g. POS terminal not connecting, settlement issue" maxlength="200" autocomplete="off">
+                        <div class="field-error" id="err-concern">Please describe the concern or issue</div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label" for="f-pos">
+                            <span class="label-icon"><i class="fas fa-cash-register"></i></span>
+                            POS Software <span class="label-optional">(Optional)</span>
+                        </label>
+                        <input type="text" class="form-input" id="f-pos"
+                               placeholder="e.g. Pine Labs, Worldline, Ezetap" maxlength="50" autocomplete="off">
+                    </div>
+
+                    <button class="btn-submit" id="btn-submit" onclick="submitTicket()">
+                        <span class="btn-text"><i class="fas fa-paper-plane"></i> Submit Ticket</span>
+                        <div class="spinner"></div>
+                    </button>
+                </div>
+
+                <!-- SUCCESS -->
+                <div class="success-card" id="success-card">
+                    <div class="success-icon"><i class="fas fa-check"></i></div>
+                    <h3>Ticket Created!</h3>
+                    <p>Your support ticket has been submitted successfully.<br>Our team will reach out to you shortly.</p>
+                    <div class="ticket-id-display" id="created-ticket-id" onclick="copyTicketId()" title="Click to copy">
+                        <span id="ticket-id-text">BF-TKT-2026-04-0001</span>
+                        <i class="fas fa-copy"></i>
+                    </div>
+                    <br>
+                    <button class="btn-new-ticket" onclick="resetForm()">
+                        <i class="fas fa-plus"></i> Create Another Ticket
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- ═══ TAB 2: Track Ticket ═══ -->
+        <div class="tab-panel" id="panel-track" role="tabpanel">
+            <div class="card">
+                <div class="card-body">
+                    <div class="search-group">
+                        <input type="text" class="form-input" id="search-input"
+                               placeholder="Enter Ticket ID, MID, or Business Name"
+                               autocomplete="off"
+                               onkeydown="if(event.key==='Enter') searchTickets()">
+                        <button class="btn-search" id="btn-search" onclick="searchTickets()">
+                            <i class="fas fa-search"></i> Search
+                        </button>
+                    </div>
+                    <div class="search-hint">
+                        <i class="fas fa-info-circle"></i>
+                        Search by Ticket ID (e.g. BF-TKT-2026-04-0001), MID, or Business Name
+                    </div>
+                    <div id="search-results">
+                        <div class="results-empty">
+                            <i class="fas fa-ticket-alt"></i>
+                            <p>Enter a Ticket ID, MID, or Business Name<br>to check your ticket status</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <footer class="footer">
+        <p>© 2026 BillFree QuickFix • <a href="mailto:support@billfree.in">support@billfree.in</a></p>
+    </footer>
+
+    <!-- ═══════ TOAST ═══════ -->
+    <div class="toast" id="toast"></div>
+
+    <!-- ═══════ SCRIPTS ═══════ -->
+    <script>
+        // ══════════════════════════════════════════════════
+        //  TAB SWITCHING (3 tabs)
+        // ══════════════════════════════════════════════════
+        function switchTab(tab) {
+            document.querySelectorAll('.tab-btn').forEach(b => {
+                b.classList.remove('active');
+                b.setAttribute('aria-selected', 'false');
+            });
+            document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+            document.getElementById('tab-' + tab).classList.add('active');
+            document.getElementById('tab-' + tab).setAttribute('aria-selected', 'true');
+            document.getElementById('panel-' + tab).classList.add('active');
+        }
+
+        // ══════════════════════════════════════════════════
+        //  QUICKFIX ACCORDION TOGGLE
+        // ══════════════════════════════════════════════════
+        function toggleQF(card) {
+            const wasOpen = card.classList.contains('open');
+            // Close all cards first (accordion behavior)
+            document.querySelectorAll('.qf-card').forEach(c => c.classList.remove('open'));
+            // Toggle the clicked one
+            if (!wasOpen) card.classList.add('open');
+        }
+
+        // ══════════════════════════════════════════════════
+        //  TOAST NOTIFICATIONS
+        // ══════════════════════════════════════════════════
+        let toastTimer = null;
+        function showToast(message, type = '', duration = 3500) {
+            const el = document.getElementById('toast');
+            el.textContent = message;
+            el.className = 'toast' + (type ? ' ' + type : '');
+            clearTimeout(toastTimer);
+            requestAnimationFrame(() => {
+                el.classList.add('show');
+                toastTimer = setTimeout(() => el.classList.remove('show'), duration);
+            });
+        }
+
+        // ══════════════════════════════════════════════════
+        //  FORM VALIDATION
+        // ══════════════════════════════════════════════════
+        function clearErrors() {
+            document.querySelectorAll('.form-input, .form-textarea, .form-select')
+                .forEach(el => el.classList.remove('error'));
+            document.querySelectorAll('.field-error').forEach(el => el.classList.remove('show'));
+        }
+
+        function showError(fieldId, errorId) {
+            document.getElementById(fieldId).classList.add('error');
+            document.getElementById(errorId).classList.add('show');
+        }
+
+        function validateForm() {
+            clearErrors();
+            let valid = true;
+
+            const business = document.getElementById('f-business').value.trim();
+            const phone = document.getElementById('f-phone').value.replace(/\D/g, '');
+            const concern = document.getElementById('f-concern').value.trim();
+
+            if (!business) {
+                showError('f-business', 'err-business');
+                valid = false;
+            }
+            if (!phone || phone.length !== 10) {
+                showError('f-phone', 'err-phone');
+                valid = false;
+            }
+            if (!concern) {
+                showError('f-concern', 'err-concern');
+                valid = false;
+            }
+            return valid;
+        }
+
+        // ══════════════════════════════════════════════════
+        //  SUBMIT TICKET
+        // ══════════════════════════════════════════════════
+        let isSubmitting = false;
+
+        function submitTicket() {
+            if (isSubmitting) return;
+            if (!validateForm()) {
+                showToast('Please fill in the required fields', 'error');
+                return;
+            }
+
+            const data = {
+                business: document.getElementById('f-business').value.trim(),
+                phone: '91' + document.getElementById('f-phone').value.replace(/\D/g, ''),
+                concern: document.getElementById('f-concern').value.trim(),
+                mid: document.getElementById('f-mid').value.trim() || '-',
+                pos: document.getElementById('f-pos').value.trim() || '-',
+                remark: '',
+                supportType: 'Customer Support',
+                requestedBy: document.getElementById('f-business').value.trim()
+            };
+
+            isSubmitting = true;
+            const btn = document.getElementById('btn-submit');
+            btn.classList.add('loading');
+            btn.disabled = true;
+
+            google.script.run
+                .withSuccessHandler(function(result) {
+                    isSubmitting = false;
+                    btn.classList.remove('loading');
+                    btn.disabled = false;
+
+                    try {
+                        const res = typeof result === 'string' ? JSON.parse(result) : result;
+                        if (res.success) {
+                            document.getElementById('ticket-id-text').textContent = res.ticketId;
+                            document.getElementById('create-form-wrap').style.display = 'none';
+                            document.getElementById('success-card').classList.add('show');
+                            showToast('Ticket created successfully!', 'success');
+                        } else {
+                            showToast(res.error || 'Failed to create ticket. Please try again.', 'error', 5000);
+                        }
+                    } catch (e) {
+                        showToast('Unexpected response. Please try again.', 'error');
+                    }
+                })
+                .withFailureHandler(function(err) {
+                    isSubmitting = false;
+                    btn.classList.remove('loading');
+                    btn.disabled = false;
+                    showToast(err.message || 'Server error. Please try again.', 'error', 5000);
+                })
+                .portalCreateTicket(data);
+        }
+
+        // ══════════════════════════════════════════════════
+        //  RESET FORM
+        // ══════════════════════════════════════════════════
+        function resetForm() {
+            clearErrors();
+            ['f-mid', 'f-business', 'f-phone', 'f-concern', 'f-pos'].forEach(id => {
+                document.getElementById(id).value = '';
+            });
+            document.getElementById('create-form-wrap').style.display = 'block';
+            document.getElementById('success-card').classList.remove('show');
+        }
+
+        // ══════════════════════════════════════════════════
+        //  COPY TICKET ID
+        // ══════════════════════════════════════════════════
+        function copyTicketId() {
+            const id = document.getElementById('ticket-id-text').textContent;
+            if (navigator.clipboard) {
+                navigator.clipboard.writeText(id).then(() => {
+                    showToast('Ticket ID copied: ' + id, 'success', 2500);
+                });
+            } else {
+                const ta = document.createElement('textarea');
+                ta.value = id;
+                document.body.appendChild(ta);
+                ta.select();
+                document.execCommand('copy');
+                document.body.removeChild(ta);
+                showToast('Ticket ID copied: ' + id, 'success', 2500);
+            }
+        }
+
+        // ══════════════════════════════════════════════════
+        //  SEARCH TICKETS
+        // ══════════════════════════════════════════════════
+        let isSearching = false;
+
+        function searchTickets() {
+            if (isSearching) return;
+            const query = document.getElementById('search-input').value.trim();
+            if (!query) {
+                showToast('Please enter a search term', 'error');
+                return;
+            }
+            if (query.length < 2) {
+                showToast('Search term must be at least 2 characters', 'error');
+                return;
+            }
+
+            isSearching = true;
+            const btn = document.getElementById('btn-search');
+            btn.disabled = true;
+
+            document.getElementById('search-results').innerHTML =
+                '<div class="skeleton"></div><div class="skeleton"></div><div class="skeleton"></div>';
+
+            google.script.run
+                .withSuccessHandler(function(result) {
+                    isSearching = false;
+                    btn.disabled = false;
+                    try {
+                        const res = typeof result === 'string' ? JSON.parse(result) : result;
+                        renderResults(res);
+                    } catch (e) {
+                        document.getElementById('search-results').innerHTML =
+                            '<div class="results-empty"><i class="fas fa-exclamation-circle"></i><p>Error parsing results</p></div>';
+                    }
+                })
+                .withFailureHandler(function(err) {
+                    isSearching = false;
+                    btn.disabled = false;
+                    document.getElementById('search-results').innerHTML =
+                        '<div class="results-empty"><i class="fas fa-exclamation-circle"></i><p>' +
+                        escapeHtml(err.message || 'Search failed') + '</p></div>';
+                })
+                .portalLookupTicket(query);
+        }
+
+        // ══════════════════════════════════════════════════
+        //  RENDER RESULTS WITH FOLLOW-UP CONVERSATION
+        // ══════════════════════════════════════════════════
+        function renderResults(res) {
+            const container = document.getElementById('search-results');
+            if (!res.success || !res.tickets || res.tickets.length === 0) {
+                container.innerHTML =
+                    '<div class="results-empty">' +
+                    '<i class="fas fa-search"></i>' +
+                    '<p>No tickets found for your search.<br>Check the Ticket ID, MID, or Business Name and try again.</p>' +
+                    '</div>';
+                return;
+            }
+
+            let html = '<div class="results-count">Found <span>' + res.tickets.length + '</span> ticket(s)</div>';
+
+            res.tickets.forEach(function(t) {
+                const statusClass = getStatusClass(t.status);
+                const followupHtml = renderFollowup(t.followup);
+
+                html += `
+                <div class="result-card">
+                    <div class="result-header">
+                        <span class="result-ticket-id">${escapeHtml(t.ticketId)}</span>
+                        <span class="status-badge ${statusClass}">${escapeHtml(t.status)}</span>
+                    </div>
+                    <div class="result-body">
+                        <div class="result-field">
+                            <span class="result-field-label">Date</span>
+                            <span class="result-field-value">${escapeHtml(t.date)}</span>
+                        </div>
+                        <div class="result-field">
+                            <span class="result-field-label">MID</span>
+                            <span class="result-field-value">${escapeHtml(t.mid || '-')}</span>
+                        </div>
+                        <div class="result-field">
+                            <span class="result-field-label">Business</span>
+                            <span class="result-field-value">${escapeHtml(t.business || '-')}</span>
+                        </div>
+                        <div class="result-field">
+                            <span class="result-field-label"><i class="fas fa-user-tie" style="margin-right:3px;color:#6366F1;font-size:10px;"></i> Assigned To</span>
+                            <span class="result-field-value" style="font-weight:600;color:var(--primary-dark);">${escapeHtml(t.agent || 'Unassigned')}</span>
+                        </div>
+                        <div class="result-field" style="grid-column:1/-1;">
+                            <span class="result-field-label">Concern</span>
+                            <span class="result-field-value">${escapeHtml(t.concern || '-')}</span>
+                        </div>
+                    </div>
+                    ${followupHtml}
+                </div>`;
+            });
+
+            container.innerHTML = html;
+        }
+
+        // ══════════════════════════════════════════════════
+        //  FOLLOW-UP CONVERSATION RENDERER
+        // ══════════════════════════════════════════════════
+        function renderFollowup(followup) {
+            if (!followup || followup === '-' || followup.trim() === '') {
+                return `<div class="followup-section">
+                    <div class="followup-title"><i class="fas fa-comments"></i> Follow-up Updates</div>
+                    <div class="followup-none">No follow-up updates yet. Our team will update this ticket once reviewed.</div>
+                </div>`;
+            }
+
+            // Parse follow-up entries — format: "[DD/MM/YYYY HH:MM] Agent: message" or plain text lines
+            const entries = parseFollowupEntries(followup);
+
+            let timeline = '';
+            entries.forEach(function(entry) {
+                timeline += `
+                <div class="followup-entry">
+                    ${entry.date ? '<div class="followup-date">' + escapeHtml(entry.date) + '</div>' : ''}
+                    <div class="followup-text">${escapeHtml(entry.text)}</div>
+                </div>`;
+            });
+
+            return `<div class="followup-section">
+                <div class="followup-title"><i class="fas fa-comments"></i> Follow-up Updates</div>
+                <div class="followup-timeline">${timeline}</div>
+            </div>`;
+        }
+
+        function parseFollowupEntries(text) {
+            if (!text) return [];
+            const lines = text.split('\n').filter(l => l.trim());
+            const entries = [];
+
+            lines.forEach(function(line) {
+                line = line.trim();
+                if (!line) return;
+
+                // Try to match timestamped entries: [DD/MM/YYYY HH:MM] or [YYYY-MM-DD HH:MM]
+                const match = line.match(/^\[([^\]]+)\]\s*(.*)$/);
+                if (match) {
+                    entries.push({ date: match[1], text: match[2] || line });
+                } else {
+                    // Plain text entry — check for "date - message" pattern
+                    const dashMatch = line.match(/^(\d{1,2}[\/-]\d{1,2}[\/-]\d{2,4}[\s,]*\d{0,2}:?\d{0,2}\s*(?:AM|PM|am|pm)?)\s*[-:]\s*(.+)$/);
+                    if (dashMatch) {
+                        entries.push({ date: dashMatch[1], text: dashMatch[2] });
+                    } else {
+                        entries.push({ date: '', text: line });
+                    }
+                }
+            });
+
+            return entries;
+        }
+
+        function getStatusClass(status) {
+            if (!status) return 'status-not-completed';
+            const s = status.toLowerCase();
+            if (s === 'completed') return 'status-completed';
+            if (s === 'closed') return 'status-closed';
+            if (s.includes('cant') || s.includes("can't")) return 'status-cant-do';
+            if (s === 'pending') return 'status-pending';
+            if (s === 'in progress') return 'status-in-progress';
+            return 'status-not-completed';
+        }
+
+        function escapeHtml(str) {
+            if (!str) return '';
+            const div = document.createElement('div');
+            div.appendChild(document.createTextNode(String(str)));
+            return div.innerHTML;
+        }
+
+        // ══════════════════════════════════════════════════
+        //  INPUT FORMATTING
+        // ══════════════════════════════════════════════════
+        document.getElementById('f-phone').addEventListener('input', function(e) {
+            this.value = this.value.replace(/\D/g, '').substring(0, 10);
+        });
+
+        document.getElementById('f-mid').addEventListener('input', function(e) {
+            this.value = this.value.replace(/\D/g, '').substring(0, 20);
+        });
+
+    </script>
+</body>
+</html>

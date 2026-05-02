@@ -1,4 +1,25 @@
-# BillFree TechSupport Portal
+# 🎫 BillFree TechSupport Ops
+
+![Status](https://img.shields.io/badge/status-live-brightgreen)
+![Version](https://img.shields.io/badge/version-10.0-blue)
+![Platform](https://img.shields.io/badge/platform-Google%20Apps%20Script-orange)
+![License](https://img.shields.io/badge/license-private-lightgrey)
+
+> **Production IT support ticketing system** serving a live fintech team.
+> Handles ticket lifecycle, agent workload balancing, WhatsApp bot integration,
+> cross-functional team portal, and monthly performance reporting.
+
+| Module | URL | Users |
+|---|---|---|
+| 📊 Agent Dashboard | `...exec` | IT Agents & Admin |
+| 🔧 QuickFix Portal | `...exec?page=portal` | Customers & Merchants |
+| 🏢 Staff IT Portal | `...exec?page=cf-portal` | Ops, Finance, HR |
+| 🤖 WhatsApp Bot API | `POST ...exec` | Automated chatbot |
+
+---
+
+# 🎫 BillFree TechSupport Ops
+
 
 **BillFree TechSupport** is a premium, standalone TechSupport ticket portal designed for cross-functional teams and customers. It features a modern two-tab interface for creating and tracking IT support tickets with real-time status updates and follow-up conversation history.
 

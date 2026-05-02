@@ -205,7 +205,7 @@ Content-Type: application/json
 |:---|:---|:---|:---|
 | 🖥️ **Agent Dashboard** | `https://billfreetech.pages.dev` | IT Agents & Admin | ✅ Google OAuth |
 | 🔧 **Ticket Creaton & QuickFix Portal** | `...exec?page=portal` | Customers & Merchants | ❌ Public |
-| 🏢 **CFT Training & QuickFix for some cases** | Inside Sales, Field Sales, Service Team, Customer Success Team |
+| 🏢 **CFT Training & QuickFix for some cases** | BillFree_CFT_Training_v3.html |Inside Sales, Field Sales, Service Team, Customer Success Team |
 | 🤖 **WhatsApp API** | `POST ...exec` | Bot integrations | 🔑 API Key |
 
 ---

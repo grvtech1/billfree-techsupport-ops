@@ -16,7 +16,7 @@
 <br/>
 
 > **A production IT support operations platform** built entirely on Google Apps Script + Google Sheets.
-> Serving a live fintech POS support team — managing **3,674+ tickets**, **5 agents**,
+> Serving a live POS support team — managing **15000+ tickets**, **10 agents**,
 > real-time KPIs, gamified performance scoring, manager analytics, and monthly reporting.
 > Includes a WhatsApp bot REST API, a public QuickFix portal for merchants,
 > and a separate cross-functional staff portal for internal teams.
@@ -25,8 +25,8 @@
 
 [🌐 Live Dashboard](https://billfreetech.pages.dev) &nbsp;·&nbsp;
 [📖 API Docs](./API_DOCUMENTATION.md) &nbsp;·&nbsp;
-[🎫 QuickFix Portal](#-portals--urls) &nbsp;·&nbsp;
-[🏢 CF Staff Portal](#-portals--urls) &nbsp;·&nbsp;
+[🎫 TicketCreation Cf & QuickFix Portal](#-billfreequickfix.pages.dev) &nbsp;·&nbsp;
+[🏢 CFT Training & QuickFix for some cases](#-portals--urls) &nbsp;·&nbsp;
 [🚀 Deploy Guide](#-deployment-guide)
 
 </div>
@@ -72,9 +72,9 @@ Built to replace manual WhatsApp ticket tracking and Excel-based reporting for a
 
 | Metric | Value |
 |:---|:---|
-| 🎫 Total Tickets in Production | **12000+** |
-| 👥 Active Support Agents | **5** |
-| 🏢 Cross-Functional Teams Served | Ops, Finance, HR, Accounts |
+| 🎫 Total Tickets in Production | **15000+** |
+| 👥 Active Support Agents | **10** |
+| 🏢 Cross-Functional Teams Served | Inside Sales, Field Sales, Service Team, Customer Success Team |
 | ⚡ Dashboard Initial Load | **~2–3 seconds** (chunked cache) |
 | 🔍 Ticket Search Response | **< 300ms** |
 | 🔄 Data Sync Interval | **30 seconds** (version-based polling) |
@@ -141,11 +141,11 @@ The main operations hub for IT agents. Secured behind Google OAuth — only pre-
 
 ---
 
-### 🏢 6. Cross-Functional (CF) Staff Portal
+### 🏢 6. Cross-Functional (CF) Ticket Creation & Status Check Portal
 
 A **dedicated URL** for internal teams — **no login required**, fully mobile-responsive.
 
-**URL:** `https://script.google.com/.../exec?page=cf-portal`
+**URL:** `https://script.google.com/.../exec?page=portal`
 
 | Tab | Purpose | Key Fields |
 |:---|:---|:---|
@@ -204,8 +204,8 @@ Content-Type: application/json
 | Portal | URL Pattern | Users | Auth |
 |:---|:---|:---|:---|
 | 🖥️ **Agent Dashboard** | `https://billfreetech.pages.dev` | IT Agents & Admin | ✅ Google OAuth |
-| 🔧 **QuickFix Portal** | `...exec?page=portal` | Customers & Merchants | ❌ Public |
-| 🏢 **CF Staff Portal** | `...exec?page=cf-portal` | Ops · Finance · HR · Accounts | ❌ Public |
+| 🔧 **Ticket Creaton & QuickFix Portal** | `...exec?page=portal` | Customers & Merchants | ❌ Public |
+| 🏢 **CFT Training & QuickFix for some cases** | Inside Sales, Field Sales, Service Team, Customer Success Team |
 | 🤖 **WhatsApp API** | `POST ...exec` | Bot integrations | 🔑 API Key |
 
 ---

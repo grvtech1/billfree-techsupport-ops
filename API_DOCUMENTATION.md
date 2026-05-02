@@ -33,7 +33,7 @@ Every request must include an `apiKey` field. Keys are issued by BillFree.
   "concern": "POS machine not responding",
   "mid": "123456",
   "business": "ABC Store"
-  "pos": "Terminal-01"
+  "pos": "tally"
 }
 ```
 
@@ -46,7 +46,7 @@ Every request must include an `apiKey` field. Keys are issued by BillFree.
 | `business` | ✅ | Business name |
 | `phone` | Recommended | Customer phone number |
 | `requestedBy` | Optional | Customer name (default: `"WhatsApp User"`) |
-| `pos` | Optional | POS terminal ID |
+| `pos` | Optional | POS |
 
 ---
 

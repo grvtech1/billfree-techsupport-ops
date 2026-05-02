@@ -12,9 +12,8 @@
 | Module | URL | Users |
 |---|---|---|
 | 📊 Agent Dashboard | `...exec` | IT Agents & Admin |
-| 🔧 QuickFix Portal | `...exec?page=portal` | Customers & Merchants |
-| 🏢 Staff IT Portal | `...exec?page=cf-portal` | Ops, Finance, HR |
-| 🤖 WhatsApp Bot API | `POST ...exec` | Automated chatbot |
+| 🔧 TicketPortal for Cross Functional Team | QuickFix Portal | `...exec?page=portal` | Cross Functional Team | Can be use for customer as well
+| 🤖 WhatsApp Bot API | `POST ...exec` | Automated chatbot | Automated Ticket Creation -latest implementation 
 
 ---
 

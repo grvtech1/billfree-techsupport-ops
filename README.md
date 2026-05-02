@@ -12,13 +12,8 @@
 | Module | URL | Users |
 |---|---|---|
 | 📊 Agent Dashboard | `...exec` | IT Agents & Admin |
-| 🔧 QuickFix Portal | `...exec?page=portal` | Customers & Merchants |
-| 🏢 Staff IT Portal | `...exec?page=cf-portal` | Ops, Finance, HR |
-| 🤖 WhatsApp Bot API | `POST ...exec` | Automated chatbot |
-
----
-
-# 🎫 BillFree TechSupport Ops
+| 🔧 CF Ticket Creation & Check Status | `...exec?page=portal` | CrossFunctional team, Merchants |
+| 🤖 WhatsApp Bot API | `POST ...exec` | Automated Ticket Creation - Latest Implementation |
 
 
 **BillFree TechSupport** is a premium, standalone TechSupport ticket portal designed for cross-functional teams and customers. It features a modern two-tab interface for creating and tracking IT support tickets with real-time status updates and follow-up conversation history.

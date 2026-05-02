@@ -72,7 +72,7 @@ Built to replace manual WhatsApp ticket tracking and Excel-based reporting for a
 
 | Metric | Value |
 |:---|:---|
-| 🎫 Total Tickets in Production | **3,674+** |
+| 🎫 Total Tickets in Production | **12000+** |
 | 👥 Active Support Agents | **5** |
 | 🏢 Cross-Functional Teams Served | Ops, Finance, HR, Accounts |
 | ⚡ Dashboard Initial Load | **~2–3 seconds** (chunked cache) |

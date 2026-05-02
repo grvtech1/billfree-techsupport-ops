@@ -176,10 +176,10 @@ function isAdminEmail_(email) {
  * Use getAgentPhone() to retrieve phone numbers securely
  */
 const AGENT_DIRECTORY = Object.freeze({
-  "Suraj":        { email: "agent1@billfree.in",      role: "agent" },
-  "Veer Bahadur": { email: "agent2@billfree.in",      role: "agent" },
-  "Neeraj Kumar": { email: "agent3@billfree.in",      role: "agent" },
-  "Manjeet":      { email: "agent4@billfree.in",      role: "agent", active: false }, // resigned
+  "Agent 1":        { email: "agent1@billfree.in",      role: "agent" },
+  "Agent 2": { email: "agent2@billfree.in",      role: "agent" },
+  "Agent 3": { email: "agent3@billfree.in",      role: "agent" },
+  "Agent 4":      { email: "agent4@billfree.in",      role: "agent", active: false }, // resigned
   "Admin":        { email: "admin@billfree.in",       role: "admin" }
 });
 
@@ -426,9 +426,9 @@ function getAgentPhone(agentName) {
  * 
  * Usage:
  *   initializeAgentPhones({
- *     'MANJEET': '91XXXXXXXXXX',
- *     'SURAJ': '91XXXXXXXXXX', 
- *     'VEER_BAHADUR': '91XXXXXXXXXX'
+ *     'AGENT_4': '91XXXXXXXXXX',
+ *     'AGENT_1': '91XXXXXXXXXX',
+ *     'AGENT_2': '91XXXXXXXXXX'
  *   });
  * 
  * @param {Object} phoneNumbers - Map of agent name (uppercase, underscore for spaces) to phone number
@@ -452,9 +452,9 @@ function initializeAgentPhones(phoneNumbers) {
 |  To initialize, run from Apps Script editor:                  |
 |                                                               |
 |    initializeAgentPhones({                                    |
-|      'MANJEET': '91XXXXXXXXXX',                               |
-|      'SURAJ': '91XXXXXXXXXX',                                 |
-|      'VEER_BAHADUR': '91XXXXXXXXXX'                           |
+|      'AGENT_4': '91XXXXXXXXXX',                               |
+|      'AGENT_1': '91XXXXXXXXXX',                               |
+|      'AGENT_2': '91XXXXXXXXXX'                           |
 |    });                                                        |
 |                                                               |
 |  Replace X with actual phone digits.                          |

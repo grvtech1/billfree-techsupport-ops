@@ -130,7 +130,7 @@ const APP_TITLE = CONFIG.APP_TITLE;
  * (Duplicate const below is removed; this is now the single definition)
  */
 const ADMIN_EMAILS = Object.freeze([
-  "gaurav.pal@billfree.in"
+  "admin@billfree.in"
 ]);
 
 // Legacy compatibility alias
@@ -176,11 +176,11 @@ function isAdminEmail_(email) {
  * Use getAgentPhone() to retrieve phone numbers securely
  */
 const AGENT_DIRECTORY = Object.freeze({
-  "Suraj":        { email: "suraj.billfree2@gmail.com",      role: "agent" },
-  "Veer Bahadur": { email: "veer.billfree@gmail.com",        role: "agent" },
-  "Neeraj Kumar": { email: "neerajkumar.billfree@gmail.com", role: "agent" },
-  "Manjeet":      { email: "manjeetkashyap.billfree@gmail.com", role: "agent", active: false }, // resigned
-  "Admin":        { email: "gaurav.pal@billfree.in",         role: "admin" }
+  "Suraj":        { email: "agent1@billfree.in",      role: "agent" },
+  "Veer Bahadur": { email: "agent2@billfree.in",      role: "agent" },
+  "Neeraj Kumar": { email: "agent3@billfree.in",      role: "agent" },
+  "Manjeet":      { email: "agent4@billfree.in",      role: "agent", active: false }, // resigned
+  "Admin":        { email: "admin@billfree.in",       role: "admin" }
 });
 
 const AUTHORIZED_EMAILS_NORMALIZED_ = Object.freeze(
@@ -2611,7 +2611,7 @@ function doGet(e) {
 
   // ── URL PARAMETER IDENTITY (most reliable for Cloudflare iframe) ────────────
   // Cloudflare passes the authenticated user's email/name as URL query params:
-  //   <iframe src="GAS_URL?eml=neeraj@billfree.in&nm=Neeraj+Kumar">
+  //   <iframe src="GAS_URL?eml=agent@billfree.in&nm=Agent+Name">
   // This is the ONLY approach that works reliably regardless of:
   //   - Session.getActiveUser() being empty (Execute as Me + Anyone mode)
   //   - postMessage timing races

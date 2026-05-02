@@ -12,9 +12,9 @@
 | Module | URL | Users |
 |---|---|---|
 | 📊 Agent Dashboard | `...exec` | IT Agents & Admin |
-| 🔧 CF Ticket Creation & Check Status | `...exec?page=portal` | CrossFunctional team, Merchants |
-
-| 🤖 WhatsApp Bot API | `POST ...exec` | Automated Ticket Creation -latest implementation  |
+| 🔧 QuickFix Portal | `...exec?page=portal` | Customers & Merchants |
+| 🏢 Staff IT Portal | `...exec?page=cf-portal` | Ops, Finance, HR |
+| 🤖 WhatsApp Bot API | `POST ...exec` | Automated chatbot |
 
 ---
 

@@ -1,47 +1,214 @@
-# 🎫 BillFree TechSupport Ops
+<div align="center">
 
-![Status](https://img.shields.io/badge/status-live-brightgreen)
-![Version](https://img.shields.io/badge/version-10.0-blue)
-![Platform](https://img.shields.io/badge/platform-Google%20Apps%20Script-orange)
-![License](https://img.shields.io/badge/license-private-lightgrey)
+<img src="https://img.icons8.com/fluency/96/headset.png" width="96" alt="BillFree TechSupport"/>
 
-> **Production IT support ticketing system** serving a live fintech team.
-> Handles ticket lifecycle, agent workload balancing, WhatsApp bot integration,
-> cross-functional team portal, and monthly performance reporting.
+# BillFree TechSupport Ops
 
-| Module | URL | Users |
-|---|---|---|
-| 📊 Agent Dashboard | `...exec` | IT Agents & Admin |
-| 🔧 CF Ticket Creation & Check Status | `...exec?page=portal` | CrossFunctional team, Merchants |
-| 🤖 WhatsApp Bot API | `POST ...exec` | Automated Ticket Creation - Latest Implementation |
+### Production IT Support Ticketing System · Operations Dashboard v10.0 PRO
 
+[![Live](https://img.shields.io/badge/🟢%20LIVE-billfreetech.pages.dev-brightgreen?style=for-the-badge)](https://billfreetech.pages.dev)
+[![Version](https://img.shields.io/badge/Version-v10.0%20PRO-6C63FF?style=for-the-badge)](#changelog)
+[![Platform](https://img.shields.io/badge/Google%20Apps%20Script-Backend-F4B400?style=for-the-badge&logo=google)](#architecture)
+[![Hosted](https://img.shields.io/badge/Cloudflare%20Pages-Frontend-F6821F?style=for-the-badge&logo=cloudflare)](https://billfreetech.pages.dev)
+[![Tickets](https://img.shields.io/badge/Tickets%20Handled-3%2C674%2B-blue?style=for-the-badge)](#live-agent-stats)
+[![Auth](https://img.shields.io/badge/Auth-Google%20OAuth%202.0-red?style=for-the-badge&logo=google)](#security)
 
-**BillFree TechSupport** is a premium, standalone TechSupport ticket portal designed for cross-functional teams and customers. It features a modern two-tab interface for creating and tracking IT support tickets with real-time status updates and follow-up conversation history.
+<br/>
 
-## 🚀 Features
+> **A production IT support operations platform** built entirely on Google Apps Script + Google Sheets.
+> Serving a live fintech POS support team — managing **3,674+ tickets**, **5 agents**,
+> real-time KPIs, gamified performance scoring, manager analytics, and monthly reporting.
+> Includes a WhatsApp bot REST API, a public QuickFix portal for merchants,
+> and a separate cross-functional staff portal for internal teams.
 
-- **Quick Fix Self-Help**: Expandable troubleshooting guides for common issues (Popup, Delivery, Print).
-- **Create Support Ticket**: Simple form to raise IT issues with auto-assignment logic.
-- **Track Support Ticket**: Real-time status tracking with a timeline of follow-up conversations.
-- **Branding**: Premium Glassmorphism UI consistent with the BillFree design system.
-- **Backend Integration**: Powered by Google Apps Script and Google Sheets.
-- **Flexible Deployment**: Can be served via Google Apps Script or hosted on Cloudflare Pages.
+<br/>
 
-## 📂 Repository Structure
+[🌐 Live Dashboard](https://billfreetech.pages.dev) &nbsp;·&nbsp;
+[📖 API Docs](./API_DOCUMENTATION.md) &nbsp;·&nbsp;
+[🎫 QuickFix Portal](#-portals--urls) &nbsp;·&nbsp;
+[🏢 CF Staff Portal](#-portals--urls) &nbsp;·&nbsp;
+[🚀 Deploy Guide](#-deployment-guide)
 
-- `Code.gs`: The backend logic for Google Apps Script (REST API, routing, and sheet management).
-- `TicketPortal.html`: The frontend version designed to be served directly from Google Apps Script.
-- `Index.html`: The standalone frontend version optimized for Cloudflare Pages (uses REST API).
+</div>
 
-## 🔗 Direct Portal Links
+---
 
-Depending on your deployment method, use the following links:
+## 📸 Screenshots
 
-| Method | Link Format | Purpose |
-| :--- | :--- | :--- |
-| **Google Apps Script** | `https://script.google.com/.../exec?page=portal` | Direct access via GAS (uses `TicketPortal.html`) |
-| **Cloudflare Pages** | `https://billfreequickfix.pages.dev` | Standalone premium URL (uses `Index.html`) | https://billfreequickfix.pages.dev | Ticket Portal url ('TicketPortal.html')
-| **Main Dashboard** | `https://script.google.com/.../exec` | Admin view for agents to manage tickets |
+<table>
+  <tr>
+    <td align="center" width="50%"><b>🔐 Google OAuth Login</b></td>
+    <td align="center" width="50%"><b>📊 IT Command Center — Live Dashboard</b></td>
+  </tr>
+  <tr>
+    <td><img src="screenshots/login.png" alt="Google OAuth Login" width="100%"/></td>
+    <td><img src="screenshots/dashboard.png" alt="IT Command Center Dashboard" width="100%"/></td>
+  </tr>
+  <tr>
+    <td align="center"><b>➕ Create New Support Ticket</b></td>
+    <td align="center"><b>📈 Manager Analytics Dashboard</b></td>
+  </tr>
+  <tr>
+    <td><img src="screenshots/ticketcreation.png" alt="Create Ticket Modal" width="100%"/></td>
+    <td><img src="screenshots/analytics.png" alt="Manager Analytics" width="100%"/></td>
+  </tr>
+</table>
+
+<div align="center">
+
+🔗 **Live at** → [https://billfreetech.pages.dev](https://billfreetech.pages.dev) · Sign in with authorized `@billfree.in` Google account
+
+</div>
+
+---
+
+## 🔍 What Is This?
+
+**BillFree TechSupport Ops** is a production-grade IT helpdesk and operations management system built without any traditional server infrastructure. It runs entirely on **Google Apps Script** (backend) and **Cloudflare Pages** (frontend), using **Google Sheets** as the database.
+
+Built to replace manual WhatsApp ticket tracking and Excel-based reporting for a fintech company's merchant POS support team. Today it handles the **complete ticket lifecycle** — from creation (via dashboard, portal, or WhatsApp bot) to resolution, follow-up, reporting, and performance scoring.
+
+### 📊 At a Glance
+
+| Metric | Value |
+|:---|:---|
+| 🎫 Total Tickets in Production | **3,674+** |
+| 👥 Active Support Agents | **5** |
+| 🏢 Cross-Functional Teams Served | Ops, Finance, HR, Accounts |
+| ⚡ Dashboard Initial Load | **~2–3 seconds** (chunked cache) |
+| 🔍 Ticket Search Response | **< 300ms** |
+| 🔄 Data Sync Interval | **30 seconds** (version-based polling) |
+| 🛡️ Authentication | Google OAuth 2.0 + HMAC tokens |
+| 📅 In Production Since | **2025** |
+| 🏗️ Built With | Google Apps Script · Google Sheets · Cloudflare Pages · Vanilla JS |
+
+---
+
+## ✨ Full Feature Breakdown
+
+### 📊 1. IT Command Center — Live Dashboard
+
+The main operations hub for IT agents. Secured behind Google OAuth — only pre-authorized `@billfree.in` accounts can access it.
+
+- **Real-time KPI cards** — Total Tickets · Completed · Pending · Closed · Can't Do — each clickable to filter the ticket table
+- **Time range filters** — All Time · Today · Yesterday · Last 7 Days · Last 30 Days · Custom Date Range
+- **Master ticket table** — fully searchable, sortable by any column, with inline status update
+- **Follow-up conversation thread** per ticket — complete audit trail of every agent interaction
+- **Version-based polling** — checks for backend changes every 30 seconds; only re-fetches data when the version stamp changes
+- **Chunked caching** — ticket data split into 100KB chunks, version-stamped, gives sub-3-second loads on 3,674+ rows
+
+---
+
+### ➕ 2. Ticket Creation — Agent Modal
+
+- **Fields:** Agent Email (auto-filled) · IT Person · Requested By · MID · Business Name · POS Device · Support Type · Concern · Configuration · Remark · Status
+- **Auto-assignment** — picks agent with lowest open ticket count at time of creation
+- **CSRF token** — every session gets a unique token; all writes validated server-side
+- **Globally sequential Ticket IDs** — format `BF-TKT-YYYY-MM-NNNN`, counter never resets
+
+---
+
+### 🏆 3. Team Performance & Gamified Scoring
+
+| Action | Points |
+|:---|:---:|
+| ✅ Ticket Completed | **+10** |
+| 🔒 Valid Closed | **+0** |
+| ❌ Can't Do | **-5** |
+| 🚫 Invalid Ticket | **-10** |
+| ⏳ Pending > 7 Days | **-3** |
+
+**Per-Agent Card shows:** Total · Done · Pending · Closed · Can't Do · Invalid · Pending >7d SLA flag · Points · Completion Rate · Rank · Performance vs Team Average bar · 🥇 TOP AGENT badge
+
+---
+
+### 📊 4. Manager Analytics Dashboard
+
+| Chart | What It Reveals |
+|:---|:---|
+| 🔴 **Top 10 MIDs — Same Recurring Issue** | Merchants with repeated identical problems |
+| 🟠 **Top 10 MIDs — Multiple Different Issues** | Merchants experiencing diverse failure patterns |
+| 🍩 **Top 10 POS Systems by Issue Count** | Which POS device models generate most tickets |
+| 📊 **Repeat Customers — High Ticket Volume** | Bar + completion rate overlay |
+
+---
+
+### 📅 5. Monthly Reports
+
+- Auto-aggregated monthly summary per agent for any selected month
+- Breakdown by status, support type, and agent
+- Management-ready format for operational review
+
+---
+
+### 🏢 6. Cross-Functional (CF) Staff Portal
+
+A **dedicated URL** for internal teams — **no login required**, fully mobile-responsive.
+
+**URL:** `https://script.google.com/.../exec?page=cf-portal`
+
+| Tab | Purpose | Key Fields |
+|:---|:---|:---|
+| 📝 **Raise Ticket** | Submit an IT issue | Name · Dept · Priority · Concern · Location · Asset ID · Phone |
+| 🔍 **Track Status** | Check ticket by ID | Only IT Floor Support tickets returned — customer data hidden |
+| 💡 **Common Issues** | Self-help guide | Network · Printer · Tally ERP · Slow PC |
+
+Auto-tagged remark: `CF-Portal | Dept: X | Raised by: Y | Priority: Z` · Support Type = `IT Floor Support`
+
+---
+
+### 🤖 7. WhatsApp Bot API
+
+```http
+POST https://script.google.com/macros/s/{DEPLOYMENT_ID}/exec
+Content-Type: application/json
+```
+
+```json
+{
+  "action": "createticket",
+  "apiKey": "YOUR_API_KEY",
+  "concern": "POS not printing receipts",
+  "mid": "123456",
+  "business": "ABC Garments",
+  "phone": "9876543210"
+}
+```
+
+**Response:**
+```json
+{
+  "success": true,
+  "ticketId": "BF-TKT-2026-05-2527",
+  "assignedAgent": "Suraj",
+  "status": "Not Completed",
+  "requestId": "LK3F8A2B-X9QR"
+}
+```
+
+| Code | Cause | Action |
+|:---|:---|:---|
+| `E001` | Rate limit / duplicate | Wait 60s |
+| `E002` | Invalid API key | Fix key |
+| `E004` | Missing field / bad MID | Fix payload |
+| `E005` | DB unavailable | Retry 10s |
+| `E006` | Server busy | Retry 5s |
+| `E999` | Internal error | Contact support |
+
+> 📖 Full reference → **[API_DOCUMENTATION.md](./API_DOCUMENTATION.md)**
+
+---
+
+## 🌐 Portals & URLs
+
+| Portal | URL Pattern | Users | Auth |
+|:---|:---|:---|:---|
+| 🖥️ **Agent Dashboard** | `https://billfreetech.pages.dev` | IT Agents & Admin | ✅ Google OAuth |
+| 🔧 **QuickFix Portal** | `...exec?page=portal` | Customers & Merchants | ❌ Public |
+| 🏢 **CF Staff Portal** | `...exec?page=cf-portal` | Ops · Finance · HR · Accounts | ❌ Public |
+| 🤖 **WhatsApp API** | `POST ...exec` | Bot integrations | 🔑 API Key |
+
+---
 
 ## 🛠️ Deployment Guide
 
@@ -64,17 +231,18 @@ Depending on your deployment method, use the following links:
 3. Push this repository to GitHub.
 4. Connect the repository to **Cloudflare Pages**.
 5. Set the build output directory to `/`.
-6. **(Optional) Custom Subdomain**: 
-   - Go to Cloudflare Pages → Your Project → **Custom domains**.
-   - Add your own subdomain (e.g., `quickfix.billfree.in`).
-
-## 🤖 Auto-Assignment Logic
-Tickets created via this portal are automatically assigned to available IT agents using a round-robin logic to ensure balanced workload distribution.
-
-## 🔒 Security & Performance
-- **Rate Limiting**: Prevents spam by limiting searches and ticket creations per session.
-- **Data Protection**: Public portal only exposes status, agent name, and follow-up history. Private notes remain hidden.
-- **Fast Search**: Uses projected data caching to handle 3,000+ tickets with sub-second search times.
 
 ---
+
+## 🏗️ Architecture
+
+The system follows a modern decoupled architecture:
+
+1. **Frontend**: Standalone HTML5/JS/CSS application hosted on Cloudflare Pages. It uses the `fetch()` API to communicate with the GAS backend.
+2. **Backend**: Google Apps Script acting as a REST API. It handles authentication, validation, and database operations.
+3. **Database**: Google Sheets for low-cost, real-time data persistence.
+4. **Caching**: Uses `CacheService` and browser `localStorage` for high-speed data retrieval.
+
+---
+
 Built with ❤️ for the BillFree Support Team.

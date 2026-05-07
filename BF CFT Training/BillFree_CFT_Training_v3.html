@@ -266,6 +266,24 @@ table.std{width:100%;border-collapse:collapse;background:var(--surface)}
 .fade{animation:fadeUp .4s ease both}
 @keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.04)}}
 .pulse{animation:pulse 2.4s infinite}
+@keyframes flowGlow{0%,100%{box-shadow:0 0 0 0 rgba(1,109,116,.2)}50%{box-shadow:0 0 18px 4px rgba(1,109,116,.25)}}
+.glow-pulse{animation:flowGlow 2.4s ease infinite}
+@keyframes arrowBounce{0%,100%{transform:translateX(0)}50%{transform:translateX(5px)}}
+.arrow-anim{animation:arrowBounce 1.5s ease infinite}
+
+/* ANALOGY CARD */
+.analogy{border-radius:22px;padding:24px;position:relative;overflow:hidden;border:2px solid color-mix(in srgb,var(--primary) 22%,transparent);background:color-mix(in srgb,var(--primary) 5%,transparent)}
+.analogy-vs{display:grid;grid-template-columns:1fr auto 1fr;gap:14px;align-items:center;margin:16px 0}
+.analogy-side{text-align:center;padding:18px 14px;border-radius:16px;background:var(--surface);border:1.5px solid var(--border);box-shadow:var(--sh)}
+.analogy-side .a-emoji{font-size:2.8rem;margin-bottom:8px}
+.analogy-side .a-label{font-weight:800;font-size:.92rem}
+.analogy-side .a-desc{font-size:.78rem;color:var(--muted);margin-top:4px}
+.analogy-equal{font-size:2rem;font-weight:900;color:var(--primary);text-align:center}
+
+/* VISUAL METAPHOR STRIP */
+.metaphor-strip{display:flex;align-items:center;gap:6px;flex-wrap:wrap;padding:14px 16px;background:color-mix(in srgb,var(--yellow) 8%,transparent);border:1.5px solid color-mix(in srgb,var(--yellow) 22%,transparent);border-radius:14px;font-size:.84rem;font-weight:600;margin-top:14px}
+.metaphor-strip .m-icon{font-size:1.3rem}
+.metaphor-strip .m-arrow{color:var(--primary);font-weight:900;font-size:1.1rem}
 
 /* RESPONSIVE */
 @media(max-width:900px){.grid2,.grid3,.roles{grid-template-columns:1fr}.stats-row{grid-template-columns:1fr}}
@@ -345,8 +363,8 @@ table.std{width:100%;border-collapse:collapse;background:var(--surface)}
     </a>
     <a class="ag-item" href="#s3">
       <div class="ag-num">2</div>
-      <div class="ag-info"><div class="ag-title">Universal Setup — How It Works</div><div class="ag-desc">From virtual printer to WhatsApp — exactly how it functions</div></div>
-      <div class="ag-time">8 min</div>
+      <div class="ag-info"><div class="ag-title">Universal Setup — How It Works + ANY POS Integration</div><div class="ag-desc">Virtual printer trick, why it works with ALL POS, ready merchant script</div></div>
+      <div class="ag-time">10 min</div>
     </a>
     <a class="ag-item" href="#s4">
       <div class="ag-num">3</div>
@@ -365,8 +383,8 @@ table.std{width:100%;border-collapse:collapse;background:var(--surface)}
     </a>
     <a class="ag-item" href="#s7">
       <div class="ag-num">6</div>
-      <div class="ag-info"><div class="ag-title">Quiz + Cheat Sheet 🧪</div><div class="ag-desc">Test karo, print karo, desk pe chipkao!</div></div>
-      <div class="ag-time">8 min</div>
+      <div class="ag-info"><div class="ag-title">Quiz + Cheat Sheet 🧪</div><div class="ag-desc">10 questions — test karo, print karo, desk pe chipkao!</div></div>
+      <div class="ag-time">10 min</div>
     </a>
   </div>
 </section>
@@ -455,6 +473,8 @@ table.std{width:100%;border-collapse:collapse;background:var(--surface)}
       <div><strong>Business angle:</strong> Digital bill = professional image. Customers trust businesses more. BillFree is a business upgrade, not just software.</div>
     </div>
   </div>
+
+
 </section>
 
 <div class="divider"></div>
@@ -474,6 +494,104 @@ table.std{width:100%;border-collapse:collapse;background:var(--surface)}
   <div class="callout orange" style="margin-bottom:16px">
     <div>🎤</div>
     <div><strong>Note:</strong> Universal Setup is BillFree's most common method. Understand how it works — phir issues khud solve hone lagenge!</div>
+  </div>
+
+  <!-- ══════ WHY UNIVERSAL WORKS WITH ANY POS ══════ -->
+  <div class="card" style="margin-bottom:16px;border:2px solid color-mix(in srgb,var(--primary) 25%,transparent)">
+    <div style="font-weight:900;font-size:1.08rem;margin-bottom:4px">🔑 The Big Secret — Why Universal Works with ANY POS?</div>
+    <div style="font-size:.84rem;color:var(--muted);margin-bottom:16px">Yeh samajh lo toh sab samajh aa jayega. Merchant bhi puchega — "hamare POS ke saath kaise integrate hoga?" — toh confidently explain karna!</div>
+
+
+
+    <!-- The Trick Explained -->
+    <div style="font-weight:800;font-size:.92rem;margin-bottom:10px">🎯 The Trick — Simple 3-Line Logic</div>
+    <div style="display:grid;gap:8px;margin-bottom:16px">
+      <div style="display:flex;gap:12px;align-items:center;padding:14px 16px;border-radius:14px;background:color-mix(in srgb,var(--blue) 7%,transparent);border:1.5px solid color-mix(in srgb,var(--blue) 18%,transparent)">
+        <div style="width:40px;height:40px;border-radius:50%;background:var(--blue);color:#fff;display:grid;place-items:center;font-weight:900;flex:0 0 40px">1</div>
+        <div>
+          <div style="font-weight:800;font-size:.88rem">Har POS software mein ek "Print" button hota hai</div>
+          <div style="font-size:.78rem;color:var(--muted);margin-top:2px">Tally ho, Busy ho, Marg ho, GoFrugal ho — sabmein bill print hota hai. Yeh Windows ka basic feature hai.</div>
+        </div>
+      </div>
+      <div style="text-align:center;font-size:1.2rem;color:var(--primary)" class="arrow-anim">⬇️</div>
+      <div style="display:flex;gap:12px;align-items:center;padding:14px 16px;border-radius:14px;background:color-mix(in srgb,var(--primary) 7%,transparent);border:1.5px solid color-mix(in srgb,var(--primary) 18%,transparent)" class="glow-pulse">
+        <div style="width:40px;height:40px;border-radius:50%;background:var(--primary);color:#fff;display:grid;place-items:center;font-weight:900;flex:0 0 40px">2</div>
+        <div>
+          <div style="font-weight:800;font-size:.88rem">Hum POS mein printer change karte hain → "BillFree" select karte hain</div>
+          <div style="font-size:.78rem;color:var(--muted);margin-top:2px">Yeh asli printer NAHI hai — yeh ek <strong>virtual (nakli) printer</strong> hai jo BillFree ne install kiya hai. POS ko lagta hai wo real printer pe bhej raha hai, but actually BillFree catch kar leta hai! 🎣</div>
+        </div>
+      </div>
+      <div style="text-align:center;font-size:1.2rem;color:var(--primary)" class="arrow-anim">⬇️</div>
+      <div style="display:flex;gap:12px;align-items:center;padding:14px 16px;border-radius:14px;background:color-mix(in srgb,var(--green) 7%,transparent);border:1.5px solid color-mix(in srgb,var(--green) 18%,transparent)">
+        <div style="width:40px;height:40px;border-radius:50%;background:var(--green);color:#fff;display:grid;place-items:center;font-weight:900;flex:0 0 40px">3</div>
+        <div>
+          <div style="font-weight:800;font-size:.88rem">BillFree bill ko padhta hai → PDF banata hai → Customer ko bhejta hai</div>
+          <div style="font-size:.78rem;color:var(--muted);margin-top:2px">Aur saath mein asli printer pe bhi forward kar deta hai — so physical print BHI aata hai! <strong>Win-win.</strong></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Key Insight Box -->
+    <div style="border-radius:14px;background:linear-gradient(135deg,var(--primary),#0aa28d);color:#fff;padding:18px 20px;margin-bottom:16px;position:relative;overflow:hidden">
+      <div style="position:absolute;right:12px;top:8px;font-size:3.5rem;opacity:.1">🔑</div>
+      <div style="font-weight:900;font-size:.95rem;margin-bottom:8px">🔑 Key Insight — Why "Universal"?</div>
+      <div style="font-size:.86rem;line-height:1.7;opacity:.95">
+        Because <strong>we never touch the POS software</strong>. Hum POS mein koi change nahi karte, koi plugin nahi daaltein, koi code nahi likhte.<br>
+        Bas ek kaam karte hain — POS ke Printer Settings mein jaake printer name <strong>"BillFree"</strong> select kar dete hain.<br><br>
+        <strong>Isliye</strong> yeh Tally ke saath bhi kaam karta hai, Busy ke saath bhi, Marg ke saath bhi, aur koi bhi naya POS aaye — uske saath bhi kaam karega! 🎯<br>
+        Jab tak POS mein "Print" button hai — BillFree integrate ho sakta hai.
+      </div>
+    </div>
+
+    <!-- POS Compatibility Grid -->
+    <div style="font-weight:800;font-size:.92rem;margin-bottom:10px">✅ Tested & Working — Ye Sab POS Support Karte Hain</div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(100px,1fr));gap:8px;margin-bottom:16px">
+      <div style="text-align:center;padding:12px 8px;border-radius:12px;background:color-mix(in srgb,var(--green) 6%,transparent);border:1px solid color-mix(in srgb,var(--green) 15%,transparent)"><div style="font-size:1.3rem">📘</div><div style="font-weight:700;font-size:.78rem;margin-top:4px">Tally</div><div style="font-size:.65rem;color:var(--green)">✅</div></div>
+      <div style="text-align:center;padding:12px 8px;border-radius:12px;background:color-mix(in srgb,var(--green) 6%,transparent);border:1px solid color-mix(in srgb,var(--green) 15%,transparent)"><div style="font-size:1.3rem">📊</div><div style="font-weight:700;font-size:.78rem;margin-top:4px">Busy</div><div style="font-size:.65rem;color:var(--green)">✅</div></div>
+      <div style="text-align:center;padding:12px 8px;border-radius:12px;background:color-mix(in srgb,var(--green) 6%,transparent);border:1px solid color-mix(in srgb,var(--green) 15%,transparent)"><div style="font-size:1.3rem">📋</div><div style="font-weight:700;font-size:.78rem;margin-top:4px">Marg</div><div style="font-size:.65rem;color:var(--green)">✅</div></div>
+      <div style="text-align:center;padding:12px 8px;border-radius:12px;background:color-mix(in srgb,var(--green) 6%,transparent);border:1px solid color-mix(in srgb,var(--green) 15%,transparent)"><div style="font-size:1.3rem">🛒</div><div style="font-weight:700;font-size:.78rem;margin-top:4px">GoFrugal</div><div style="font-size:.65rem;color:var(--green)">✅</div></div>
+      <div style="text-align:center;padding:12px 8px;border-radius:12px;background:color-mix(in srgb,var(--green) 6%,transparent);border:1px solid color-mix(in srgb,var(--green) 15%,transparent)"><div style="font-size:1.3rem">⚙️</div><div style="font-weight:700;font-size:.78rem;margin-top:4px">Logics</div><div style="font-size:.65rem;color:var(--green)">✅</div></div>
+      <div style="text-align:center;padding:12px 8px;border-radius:12px;background:color-mix(in srgb,var(--green) 6%,transparent);border:1px solid color-mix(in srgb,var(--green) 15%,transparent)"><div style="font-size:1.3rem">🏪</div><div style="font-weight:700;font-size:.78rem;margin-top:4px">Zorder</div><div style="font-size:.65rem;color:var(--green)">✅</div></div>
+      <div style="text-align:center;padding:12px 8px;border-radius:12px;background:color-mix(in srgb,var(--green) 6%,transparent);border:1px solid color-mix(in srgb,var(--green) 15%,transparent)"><div style="font-size:1.3rem">🛍️</div><div style="font-weight:700;font-size:.78rem;margin-top:4px">Shopper</div><div style="font-size:.65rem;color:var(--green)">✅</div></div>
+      <div style="text-align:center;padding:12px 8px;border-radius:12px;background:color-mix(in srgb,var(--yellow) 8%,transparent);border:1px solid color-mix(in srgb,var(--yellow) 18%,transparent)"><div style="font-size:1.3rem">🆕</div><div style="font-weight:700;font-size:.78rem;margin-top:4px">Any New POS</div><div style="font-size:.65rem;color:var(--yellow);font-weight:700">Works! 🎯</div></div>
+    </div>
+
+    <!-- Ready-to-use Merchant Script -->
+    <div style="font-weight:800;font-size:.92rem;margin-bottom:10px">💬 Merchant Bole: "Hamare POS ke saath kaise integrate hoga?"</div>
+    <div style="border-radius:14px;background:color-mix(in srgb,var(--primary) 5%,transparent);border:1.5px solid color-mix(in srgb,var(--primary) 15%,transparent);overflow:hidden">
+      <div style="padding:4px 14px;background:color-mix(in srgb,var(--red) 8%,transparent);font-size:.75rem;font-weight:800;color:var(--red);display:flex;align-items:center;gap:6px"><span>❌</span> GALAT jawab — Ye mat bolo:</div>
+      <div style="padding:8px 14px;font-size:.82rem;color:var(--muted);text-decoration:line-through;opacity:.6">"Sir, mujhe POS ka naam batao, main check karke batata hoon..."</div>
+      <div style="padding:4px 14px;background:color-mix(in srgb,var(--green) 8%,transparent);font-size:.75rem;font-weight:800;color:var(--green);display:flex;align-items:center;gap:6px"><span>✅</span> SAHI jawab — Ye bolo (confidently!):</div>
+      <div id="merchantScript" style="padding:12px 14px;font-size:.86rem;line-height:1.7">
+        <strong>"Sir, BillFree har POS ke saath kaam karta hai — chahe aap Tally use karo, Busy karo, ya koi bhi software.</strong><br><br>
+        Kaise? Simple hai — aapke PC mein ek BillFree printer install hota hai. Aapko bas apne POS ki settings mein jaake printer 'BillFree' select karna hota hai.<br><br>
+        Uske baad jab bhi aap bill print karenge — customer ko automatically WhatsApp aur SMS pe digital bill chala jayega. <strong>Aapke POS mein koi change nahi hoga, koi software nahi install hoga, sab kuch as-it-is rahega.</strong> Bas printer change — that's it! 🙏"
+      </div>
+      <div style="padding:8px 14px;border-top:1px solid var(--border)">
+        <button class="copy-btn" style="background:var(--primary);border-color:var(--primary)" onclick="copyText('merchantScript',this)">📋 Copy This Script</button>
+      </div>
+    </div>
+
+    <!-- Common Follow-up Questions -->
+    <div style="margin-top:16px;font-weight:800;font-size:.92rem;margin-bottom:10px">🤔 Merchant Follow-Up Questions (& Your Answers)</div>
+    <div style="display:grid;gap:8px">
+      <div style="padding:12px 14px;border-radius:12px;background:color-mix(in srgb,var(--blue) 5%,transparent);border:1px solid color-mix(in srgb,var(--blue) 15%,transparent)">
+        <div style="font-weight:700;font-size:.84rem;color:var(--blue)">❓ "Hamare POS mein changes karne padenge?"</div>
+        <div style="font-size:.82rem;color:var(--muted);margin-top:4px">✅ "Nahi sir, sirf printer settings mein jaake printer BillFree select karna hai. Baaki sab same rahega — aapka billing process bilkul nahi badlega."</div>
+      </div>
+      <div style="padding:12px 14px;border-radius:12px;background:color-mix(in srgb,var(--blue) 5%,transparent);border:1px solid color-mix(in srgb,var(--blue) 15%,transparent)">
+        <div style="font-weight:700;font-size:.84rem;color:var(--blue)">❓ "Physical print bhi aayega na?"</div>
+        <div style="font-size:.82rem;color:var(--muted);margin-top:4px">✅ "Haan sir, dono — physical print BHI aayega aur digital bill BHI jayega customer ko. Ek bill print karo, dono kaam ho jaate hain!"</div>
+      </div>
+      <div style="padding:12px 14px;border-radius:12px;background:color-mix(in srgb,var(--blue) 5%,transparent);border:1px solid color-mix(in srgb,var(--blue) 15%,transparent)">
+        <div style="font-weight:700;font-size:.84rem;color:var(--blue)">❓ "Internet nahi hai toh kya hoga?"</div>
+        <div style="font-size:.82rem;color:var(--muted);margin-top:4px">✅ "Bills safe rehte hain folder mein. Jaise hi internet aayega, automatically upload ho jayenge. Koi bill lose nahi hota!"</div>
+      </div>
+      <div style="padding:12px 14px;border-radius:12px;background:color-mix(in srgb,var(--blue) 5%,transparent);border:1px solid color-mix(in srgb,var(--blue) 15%,transparent)">
+        <div style="font-weight:700;font-size:.84rem;color:var(--blue)">❓ "Humara POS bahut purana hai / custom hai..."</div>
+        <div style="font-size:.82rem;color:var(--muted);margin-top:4px">✅ "Koi dikkat nahi sir. Jab tak aapke software mein 'Print' ka button hai — BillFree kaam karega. Kyunki hum aapke software ko nahi choote, sirf printer ko change karte hain!"</div>
+      </div>
+    </div>
   </div>
 
   <!-- Visual Step-by-Step Flow -->
@@ -592,6 +710,45 @@ table.std{width:100%;border-collapse:collapse;background:var(--surface)}
     <div>🧠</div>
     <div><strong>Golden Rule:</strong> First question always — <strong>"Is popup appearing?"</strong> — Not appearing → Reset. Appearing but print/delivery issue → diagnose further.</div>
   </div>
+
+  <!-- What Happens Inside the PC -->
+  <div class="card" style="margin-top:16px">
+    <div style="font-weight:900;margin-bottom:6px;font-size:1rem">🔬 Inside the PC — What Actually Happens (Simplified!)</div>
+    <div style="font-size:.82rem;color:var(--muted);margin-bottom:16px">Yeh diagram dikhata hai ki jab merchant "Print" press karta hai, andar kya hota hai!</div>
+    <div style="display:grid;grid-template-columns:1fr auto 1fr auto 1fr;gap:8px;align-items:center">
+      <!-- Col 1: POS -->
+      <div style="text-align:center;padding:16px 10px;border-radius:16px;border:2px dashed color-mix(in srgb,var(--blue) 30%,transparent);background:color-mix(in srgb,var(--blue) 5%,transparent)">
+        <div style="font-size:2rem">🖥️</div>
+        <div style="font-weight:800;font-size:.82rem;margin-top:6px">POS Software</div>
+        <div style="font-size:.68rem;color:var(--muted);margin-top:4px;padding:4px 8px;border-radius:8px;background:color-mix(in srgb,var(--blue) 8%,transparent)">Ctrl+P → Print Command</div>
+      </div>
+      <div style="font-size:1.3rem;color:var(--primary)" class="arrow-anim">→</div>
+      <!-- Col 2: BillFree Intercept -->
+      <div style="text-align:center;padding:16px 10px;border-radius:16px;border:2px solid color-mix(in srgb,var(--primary) 35%,transparent);background:color-mix(in srgb,var(--primary) 8%,transparent)" class="glow-pulse">
+        <div style="font-size:2rem">💸</div>
+        <div style="font-weight:800;font-size:.82rem;margin-top:6px;color:var(--primary)">BillFree Catches It!</div>
+        <div style="font-size:.68rem;color:var(--muted);margin-top:4px;display:grid;gap:3px">
+          <span style="padding:3px 8px;border-radius:6px;background:color-mix(in srgb,var(--primary) 10%,transparent)">📄 Bill → PDF banao</span>
+          <span style="padding:3px 8px;border-radius:6px;background:color-mix(in srgb,var(--primary) 10%,transparent)">📊 Data → JSON banao</span>
+          <span style="padding:3px 8px;border-radius:6px;background:color-mix(in srgb,var(--primary) 10%,transparent)">📱 Mobile no. nikalo</span>
+        </div>
+      </div>
+      <div style="font-size:1.3rem;color:var(--primary)" class="arrow-anim">→</div>
+      <!-- Col 3: Output -->
+      <div style="text-align:center;padding:16px 10px;border-radius:16px;border:2px dashed color-mix(in srgb,var(--green) 30%,transparent);background:color-mix(in srgb,var(--green) 5%,transparent)">
+        <div style="font-size:2rem">📤</div>
+        <div style="font-weight:800;font-size:.82rem;margin-top:6px">Two Things Happen</div>
+        <div style="font-size:.68rem;margin-top:4px;display:grid;gap:3px">
+          <span style="padding:3px 8px;border-radius:6px;background:color-mix(in srgb,var(--green) 10%,transparent);color:var(--green);font-weight:700">🖨️ Physical print</span>
+          <span style="padding:3px 8px;border-radius:6px;background:color-mix(in srgb,var(--green) 10%,transparent);color:var(--green);font-weight:700">📱 Digital bill to customer</span>
+        </div>
+      </div>
+    </div>
+    <div class="callout yellow" style="margin-top:14px">
+      <div>💡</div>
+      <div><strong>Isko yaad rakho:</strong> BillFree ek <em>nachman</em> (middleman) hai! POS aur printer ke beech mein baithta hai, bill ko copy karta hai, aur customer tak digitally bhejta hai. Physical print bhi hota hai, digital bhi!</div>
+    </div>
+  </div>
 </section>
 
 <div class="divider"></div>
@@ -613,7 +770,7 @@ table.std{width:100%;border-collapse:collapse;background:var(--surface)}
       <ul>
         <li>✅ Talk to merchant, understand the problem</li>
         <li>✅ Try quick fix on call first</li>
-        <li>✅ Identify issue: A, B, C, D</li>
+        <li>✅ Identify issue: A, B, C, D </li>
         <li>✅ Send clear, specific concern to bot</li>
         <li>✅ Share Ticket ID with merchant</li>
       </ul>
@@ -632,6 +789,41 @@ table.std{width:100%;border-collapse:collapse;background:var(--surface)}
   <div class="callout orange" style="margin-top:14px">
     <div>⚠️</div>
     <div><strong>Remember:</strong> Bot can't do everything on its own. Writing "nothing is working" wastes time. The more specific you are, the faster the bot acts.</div>
+  </div>
+
+  <!-- Expert vs Noob Visual -->
+  <div style="margin-top:18px">
+    <div style="font-weight:900;font-size:1rem;margin-bottom:14px">🎬 Expert Agent vs Noob Agent — Spot the Difference!</div>
+    <div class="grid2">
+      <div style="padding:18px;border-radius:16px;background:color-mix(in srgb,var(--red) 6%,transparent);border:2px solid color-mix(in srgb,var(--red) 22%,transparent)">
+        <div style="display:flex;align-items:center;gap:8px;margin-bottom:12px">
+          <span style="font-size:1.5rem">😬</span>
+          <span style="font-weight:900;font-size:.92rem;color:var(--red)">Noob Agent</span>
+          <span class="mini mini-r" style="margin-left:auto">AVOID</span>
+        </div>
+        <div style="font-family:monospace;font-size:.82rem;line-height:1.8;color:var(--muted)">
+          <div>🗣️ Merchant: "BillFree kaam nahi kar raha"</div>
+          <div style="margin-top:6px">😐 Agent: "Okay bhai, ticket raise karta hoon"</div>
+          <div style="margin-top:8px;font-size:.76rem;color:var(--red);font-weight:700">❌ Koi question nahi pucha → Vague ticket → Tech team confused → Delay!</div>
+        </div>
+      </div>
+      <div style="padding:18px;border-radius:16px;background:color-mix(in srgb,var(--green) 6%,transparent);border:2px solid color-mix(in srgb,var(--green) 22%,transparent)">
+        <div style="display:flex;align-items:center;gap:8px;margin-bottom:12px">
+          <span style="font-size:1.5rem">😎</span>
+          <span style="font-weight:900;font-size:.92rem;color:var(--green)">Expert Agent (YOU!)</span>
+          <span class="mini mini-g" style="margin-left:auto">GOAL</span>
+        </div>
+        <div style="font-family:monospace;font-size:.82rem;line-height:1.8;color:var(--muted)">
+          <div>🗣️ Merchant: "BillFree kaam nahi kar raha"</div>
+          <div style="margin-top:6px">😎 Agent: "Sir, popup issue hai, bill delivery nahi ho rahi, ya print nahi aa raha?"</div>
+          <div style="margin-top:8px;font-size:.76rem;color:var(--green);font-weight:700">✅ Specific question → Quick diagnosis → Instant fix OR precise ticket!</div>
+        </div>
+      </div>
+    </div>
+    <div class="callout teal" style="margin-top:12px">
+      <div>🏆</div>
+      <div><strong>Pro Tip:</strong> Difference is just <em>ONE question</em>. Ek sahi sawaal puchne se aap noob se expert ban jaate ho. Merchant bhi impress hota hai — "ye toh jaanta hai!" 💪</div>
+    </div>
   </div>
 </section>
 
@@ -692,6 +884,62 @@ table.std{width:100%;border-collapse:collapse;background:var(--surface)}
         <div class="path-label">🚫 No Print</div>
         <div class="path-sub">Nothing coming from printer</div>
         <div class="path-tag" style="background:color-mix(in srgb,var(--green) 14%,transparent);color:var(--green)">⚡ Quick Fix First</div>
+    </div>
+  </div>
+
+  <!-- VISUAL DECISION FLOWCHART -->
+  <div class="card" style="margin-bottom:18px">
+    <div style="font-weight:900;margin-bottom:6px;font-size:1rem">🗺️ Visual Decision Map — Follow the Arrows!</div>
+    <div style="font-size:.82rem;color:var(--muted);margin-bottom:16px">Har call pe yahi flow follow karo. Yaad karne ki zaroorat nahi — sirf arrows follow karo!</div>
+    
+    <!-- Visual Flow: Step by step -->
+    <div style="background:color-mix(in srgb,var(--primary) 5%,transparent);border-radius:18px;padding:20px;border:1.5px solid color-mix(in srgb,var(--primary) 15%,transparent)">
+      <!-- Entry Point -->
+      <div style="text-align:center;margin-bottom:16px">
+        <div style="display:inline-flex;align-items:center;gap:8px;padding:12px 22px;border-radius:999px;background:var(--primary);color:#fff;font-weight:900;font-size:.9rem" class="glow-pulse">📞 Merchant Calls With Problem</div>
+      </div>
+      <div style="text-align:center;font-size:1.3rem;margin-bottom:12px;color:var(--primary)">⬇️</div>
+      
+      <!-- First Question -->
+      <div style="text-align:center;padding:14px 20px;border-radius:14px;background:color-mix(in srgb,var(--yellow) 10%,transparent);border:2px solid color-mix(in srgb,var(--yellow) 25%,transparent);font-weight:800;font-size:.9rem;max-width:500px;margin:0 auto 16px">🤔 Puchho: "Popup issue hai, bill delivery nahi ho rahi, ya print nahi aa raha?"</div>
+      <div style="text-align:center;font-size:1.3rem;margin-bottom:12px;color:var(--primary)">⬇️</div>
+      
+      <!-- 4 Paths -->
+      <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:8px">
+        <div style="text-align:center;padding:14px 8px;border-radius:14px;background:color-mix(in srgb,var(--primary) 8%,transparent);border:1.5px solid color-mix(in srgb,var(--primary) 22%,transparent)">
+          <div style="font-weight:900;color:var(--primary);font-size:.85rem">A 💬</div>
+          <div style="font-size:.75rem;margin-top:4px">Popup nahi</div>
+          <div style="margin-top:8px;font-size:1.1rem;color:var(--primary)">⬇️</div>
+          <div style="font-size:.72rem;margin-top:4px;padding:6px;border-radius:8px;background:color-mix(in srgb,var(--green) 12%,transparent);color:var(--green);font-weight:700">⚡ RESET → Fixed? Done!
+            <br>Still no? 🎫 Ticket</div>
+        </div>
+        <div style="text-align:center;padding:14px 8px;border-radius:14px;background:color-mix(in srgb,var(--green) 8%,transparent);border:1.5px solid color-mix(in srgb,var(--green) 22%,transparent)">
+          <div style="font-weight:900;color:var(--green);font-size:.85rem">B 📦</div>
+          <div style="font-size:.75rem;margin-top:4px">Bill not delivered</div>
+          <div style="margin-top:8px;font-size:1.1rem;color:var(--green)">⬇️</div>
+          <div style="font-size:.72rem;margin-top:4px;padding:6px;border-radius:8px;background:color-mix(in srgb,var(--green) 12%,transparent);color:var(--green);font-weight:700">Internet? SMS?
+            <br>SMS ✅ = Wait! No SMS? 🎫</div>
+        </div>
+        <div style="text-align:center;padding:14px 8px;border-radius:14px;background:color-mix(in srgb,var(--accent) 8%,transparent);border:1.5px solid color-mix(in srgb,var(--accent) 22%,transparent)">
+          <div style="font-weight:900;color:var(--accent);font-size:.85rem">C 🖨️</div>
+          <div style="font-size:.75rem;margin-top:4px">Wrong print</div>
+          <div style="margin-top:8px;font-size:1.1rem;color:var(--accent)">⬇️</div>
+          <div style="font-size:.72rem;margin-top:4px;padding:6px;border-radius:8px;background:color-mix(in srgb,var(--accent) 12%,transparent);color:var(--accent);font-weight:700">🎫 Direct Ticket
+            <br>Can't fix on call</div>
+        </div>
+        <div style="text-align:center;padding:14px 8px;border-radius:14px;background:color-mix(in srgb,var(--purple) 8%,transparent);border:1.5px solid color-mix(in srgb,var(--purple) 22%,transparent)">
+          <div style="font-weight:900;color:var(--purple);font-size:.85rem">D 🚫</div>
+          <div style="font-size:.75rem;margin-top:4px">No print</div>
+          <div style="margin-top:8px;font-size:1.1rem;color:var(--purple)">⬇️</div>
+          <div style="font-size:.72rem;margin-top:4px;padding:6px;border-radius:8px;background:color-mix(in srgb,var(--green) 12%,transparent);color:var(--green);font-weight:700">Popup hai? ⚡ RESET
+            <br>Popup hai + no print? 🎫</div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="callout blue" style="margin-top:14px">
+      <div>🎯</div>
+      <div><strong>Memory trick:</strong> 🎯 A-B mein pehle <strong>Quick Fix try</strong> karo. C mein <strong>Direct Ticket</strong>. D mein pehle check karo <strong>popup aa raha hai ya nahi</strong> — phir decide karo!</div>
     </div>
   </div>
 
@@ -1017,6 +1265,59 @@ table.std{width:100%;border-collapse:collapse;background:var(--surface)}
       <div class="reveal-box" id="r3"><strong>Path D → Popup APPEARING + Print NOT COMING → Ticket (PRINT_FAIL)</strong><br>Printer changed = printer name in .comp file must be updated. Tech team's job.</div>
     </div>
   </div>
+
+  <!-- NEW FUNNY SCENARIO: Gym Bhai -->
+  <div class="scenario-block">
+    <div class="sc-head primary" data-sc="four">
+      <div>💪 Gym Bhai Supplements — MID 77777 | Path A → Quick Fix</div><div>▼</div>
+    </div>
+    <div class="sc-body" id="four">
+      <div class="chat-wrap">
+        <div class="msg"><div class="av" style="background:#dcf8c6">💪</div><div><div class="who">Rocky Bhai</div><div class="m mer">BHAI! Mera BillFree bilkul dead ho gaya hai! Jaise gym ke baad legs — KUCH NAHI CHAL RAHA! 💀 Screen pe popup nahi, printer se paper nahi, NOTHING! Customer wait kar raha hai protein powder leke!</div></div></div>
+        <div class="msg right"><div class="av" style="background:color-mix(in srgb,var(--primary) 16%,transparent)">😅</div><div><div class="who">You</div><div class="m agent">Sir, ek chhota sa exercise try karte hain — Desktop pe "BillFree Reset" icon dikhega, please double-click karo. Sirf 2-3 second ka warm-up hai! 😄</div></div></div>
+        <div class="msg"><div class="av" style="background:#dcf8c6">💪</div><div><div class="who">Rocky Bhai</div><div class="m mer">Bhai... CLICKED... wait... *dramatic pause*... POPUP AAYA! AAYA BHAI! 💥 Jaise deadlift ke baad rush aata hai! THANK YOU BRO! 🏋️</div></div></div>
+        <div class="msg right"><div class="av" style="background:color-mix(in srgb,var(--primary) 16%,transparent)">😎</div><div><div class="who">You</div><div class="m agent">Agle baar bhi yahi Reset karna — it's like a quick stretch before workout! No need to call us! 💪</div></div></div>
+      </div>
+      <button class="reveal-btn" data-rev="r4">✅ Show Correct Answer</button>
+      <div class="reveal-box" id="r4"><strong>Path A → No popup + No print = BillFree Reset!</strong><br>Fixed in 3 seconds. No ticket needed. Yaad rakho — Reset is the FIRST step ALWAYS when both popup and print are missing.</div>
+    </div>
+  </div>
+
+  <!-- NEW FUNNY SCENARIO: Aunty Jewellers -->
+  <div class="scenario-block">
+    <div class="sc-head green" data-sc="five">
+      <div>💍 Sona Aunty Jewellers — MID 99999 | Path B → Delivery Check</div><div>▼</div>
+    </div>
+    <div class="sc-body" id="five">
+      <div class="chat-wrap">
+        <div class="msg"><div class="av" style="background:#dcf8c6">💍</div><div><div class="who">Sona Aunty</div><div class="m mer">Beta sunooo! Mera ek VIP customer hai — Sharma ji ki bahu! Unko WhatsApp pe bill nahi gaya! Abhi phone pe chilla rahi hain ki "digital bill chahiye warranty ke liye"! Meri ijjat ka sawaal hai beta! 😤</div></div></div>
+        <div class="msg right"><div class="av" style="background:color-mix(in srgb,var(--primary) 16%,transparent)">🙏</div><div><div class="who">You</div><div class="m agent">Aunty ji, don't worry! Pehle batao — unko koi BillFree ka SMS aaya tha? WhatsApp nahi, sirf SMS check karo!</div></div></div>
+        <div class="msg"><div class="av" style="background:#dcf8c6">💍</div><div><div class="who">Sona Aunty</div><div class="m mer">Ruko... *calls Sharma ji ki bahu*... Haan beta! SMS aaya hai! Toh WhatsApp kyun nahi aaya?! 😠</div></div></div>
+        <div class="msg right"><div class="av" style="background:color-mix(in srgb,var(--primary) 16%,transparent)">😎</div><div><div class="who">You</div><div class="m agent">Aunty ji, SMS aaya matlab bill successfully deliver ho chuka hai ✅! WhatsApp mein 5-10 minute ka chhota sa delay hota hai — bilkul normal hai. Sharma ji ki bahu ko bol dijiye thoda wait kare! 🙏</div></div></div>
+        <div class="msg"><div class="av" style="background:#dcf8c6">💍</div><div><div class="who">Sona Aunty</div><div class="m mer">*5 min later* Beta WhatsApp bhi aa gaya! Sharma ji ki bahu khush! Meri ijjat bach gayi! Tum toh genius ho beta! 🥰💍</div></div></div>
+      </div>
+      <button class="reveal-btn" data-rev="r5">✅ Show Correct Answer</button>
+      <div class="reveal-box" id="r5"><strong>Path B → Internet OK → SMS received = BillFree is WORKING!</strong><br>WhatsApp delay of 5-10 min is 100% normal. SMS = delivery confirmed. NO TICKET needed. Aunty ki ijjat bach gayi! 💍</div>
+    </div>
+  </div>
+
+  <!-- NEW FUNNY SCENARIO: Jugaad Electricals -->
+  <div class="scenario-block">
+    <div class="sc-head purple" data-sc="six">
+      <div>⚡ Jugaad Electricals — MID 12345 | Path C → Direct Ticket</div><div>▼</div>
+    </div>
+    <div class="sc-body" id="six">
+      <div class="chat-wrap">
+        <div class="msg"><div class="av" style="background:#dcf8c6">⚡</div><div><div class="who">Chhotu</div><div class="m mer">Bhaiya suniye na! Bill print toh ho raha hai but... aadha bill ek page pe aur aadha doosre page pe! Customer bola "yeh kya Picasso ki painting de rahe ho bill ki jagah?" 🎨😂</div></div></div>
+        <div class="msg right"><div class="av" style="background:color-mix(in srgb,var(--primary) 16%,transparent)">😅</div><div><div class="who">You</div><div class="m agent">Haha! Chhotu bhai, pehle confirm karo — BillFree popup screen pe dikhta hai na? Wo toh sahi kaam kar raha hai?</div></div></div>
+        <div class="msg"><div class="av" style="background:#dcf8c6">⚡</div><div><div class="who">Chhotu</div><div class="m mer">Haan popup toh ekdum perfect aata hai! Bas print Picasso style mein aa raha hai! 🖼️ Ek page pe items, doosre pe total — customer confuse! 😵</div></div></div>
+        <div class="msg right"><div class="av" style="background:color-mix(in srgb,var(--primary) 16%,transparent)">😎</div><div><div class="who">You</div><div class="m agent">Samajh gaya! Yeh print format issue hai — yeh call pe fix nahi hota. Main abhi ticket raise karta hoon, tech team printer settings adjust kar degi. Concern: "Print Format Issue — Popup is working. Print cutting on side."</div></div></div>
+        <div class="msg"><div class="av" style="background:#dcf8c6">⚡</div><div><div class="who">Chhotu</div><div class="m mer">Thank you bhaiya! Jaldi fix karna — customer ne bola agar aur Picasso bill aaya toh dukan change kar lega! 😂🙏</div></div></div>
+      </div>
+      <button class="reveal-btn" data-rev="r6">✅ Show Correct Answer</button>
+      <div class="reveal-box" id="r6"><strong>Path C → Popup is WORKING + Print is WRONG format = Direct Ticket!</strong><br>Yeh call pe fix nahi hota. Concern: "Print Format Issue — Popup is working. Print [cutting on side / wrong size / garbled text]." Tech team printer settings adjust karegi. Picasso ko rest do! 🎨</div>
+    </div>
+  </div>
 </section>
 
 <div class="divider"></div>
@@ -1111,7 +1412,7 @@ table.std{width:100%;border-collapse:collapse;background:var(--surface)}
   </div>
 
   <div class="score-bar">
-    <div class="score-num" id="quizScore">0/8</div>
+    <div class="score-num" id="quizScore">0/10</div>
     <div>
       <div style="font-weight:900">Live Score</div>
       <div style="font-size:.8rem;color:var(--muted)">Answer and see your score</div>
@@ -1134,6 +1435,34 @@ table.std{width:100%;border-collapse:collapse;background:var(--surface)}
 
   <div style="height:20px"></div>
 
+  <!-- GOLDEN RULES POSTER -->
+  <div style="margin-bottom:20px;border-radius:22px;background:linear-gradient(135deg,#f97316 0%,#fbbf24 100%);padding:26px;color:#0f1c1d;position:relative;overflow:hidden">
+    <div style="position:absolute;right:14px;top:14px;font-size:4rem;opacity:.12">⭐</div>
+    <div style="font-weight:900;font-size:1.15rem;margin-bottom:16px">⭐ 5 Golden Rules — Desk Pe Chipkao!</div>
+    <div style="display:grid;gap:10px">
+      <div style="display:flex;gap:12px;align-items:flex-start;padding:12px 16px;background:rgba(255,255,255,.45);border-radius:14px">
+        <div style="width:36px;height:36px;border-radius:50%;background:rgba(0,0,0,.1);display:grid;place-items:center;font-weight:900;flex:0 0 36px">1</div>
+        <div><strong>Pehle Suno, Phir Puchho</strong><br><span style="font-size:.82rem;opacity:.8">Merchant jab bole "kuch nahi chal raha" — seedha ticket mat karo. Ek clarifying question puchho.</span></div>
+      </div>
+      <div style="display:flex;gap:12px;align-items:flex-start;padding:12px 16px;background:rgba(255,255,255,.45);border-radius:14px">
+        <div style="width:36px;height:36px;border-radius:50%;background:rgba(0,0,0,.1);display:grid;place-items:center;font-weight:900;flex:0 0 36px">2</div>
+        <div><strong>Quick Fix Pehle, Ticket Baad Mein</strong><br><span style="font-size:.82rem;opacity:.8">A aur D mein RESET try karo. B mein SMS check karo. Fix ho gaya = No ticket = Happy merchant!</span></div>
+      </div>
+      <div style="display:flex;gap:12px;align-items:flex-start;padding:12px 16px;background:rgba(255,255,255,.45);border-radius:14px">
+        <div style="width:36px;height:36px;border-radius:50%;background:rgba(0,0,0,.1);display:grid;place-items:center;font-weight:900;flex:0 0 36px">3</div>
+        <div><strong>Concern Specific Likho</strong><br><span style="font-size:.82rem;opacity:.8">"BillFree not working" ≠ good. "Popup not appearing, no print, reset tried, no change" = ✅ perfect!</span></div>
+      </div>
+      <div style="display:flex;gap:12px;align-items:flex-start;padding:12px 16px;background:rgba(255,255,255,.45);border-radius:14px">
+        <div style="width:36px;height:36px;border-radius:50%;background:rgba(0,0,0,.1);display:grid;place-items:center;font-weight:900;flex:0 0 36px">4</div>
+        <div><strong>SMS Check = Magic Question (Path B)</strong><br><span style="font-size:.82rem;opacity:.8">Customer ne SMS mila? Toh WhatsApp aa jayega 5-10 min mein. No ticket required. 90% delivery calls yahi hai!</span></div>
+      </div>
+      <div style="display:flex;gap:12px;align-items:flex-start;padding:12px 16px;background:rgba(255,255,255,.45);border-radius:14px">
+        <div style="width:36px;height:36px;border-radius:50%;background:rgba(0,0,0,.1);display:grid;place-items:center;font-weight:900;flex:0 0 36px">5</div>
+        <div><strong>Confident Raho — Merchant Trust Karta Hai</strong><br><span style="font-size:.82rem;opacity:.8">Jab aap confidently baat karte ho, merchant relax hota hai. "Sir, main aapki help karunga" — yahi hero moment hai! 🦸</span></div>
+      </div>
+    </div>
+  </div>
+
   <!-- CHEAT SHEET -->
   <div class="cheat">
     <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px">
@@ -1154,6 +1483,8 @@ table.std{width:100%;border-collapse:collapse;background:var(--surface)}
       <div class="cheat-item"><strong>Path C: Wrong print format</strong>→ Direct Ticket (PRINT_FORMAT)</div>
       <div class="cheat-item"><strong>Path D: Popup OK + No print</strong>→ Printer changed? → Ticket (PRINT_FAIL)</div>
       <div class="cheat-item"><strong>PC Slow / Config / Logo / Reinstall / New Setup</strong>→ Direct Ticket — no call fix</div>
+      <div class="cheat-item" style="border-left:3px solid var(--primary);padding-left:10px"><strong>🔑 Universal: Any POS integration?</strong>→ "Sirf printer settings mein BillFree select karo — koi aur change nahi!"</div>
+      <div class="cheat-item" style="border-left:3px solid var(--primary);padding-left:10px"><strong>🔑 Universal: Why it works with ALL POS?</strong>→ Hum POS ko nahi choote — sirf Virtual Printer se bill capture hota hai!</div>
     </div>
     <div style="margin-top:14px;font-size:.84rem;background:rgba(255,255,255,.11);border-radius:10px;padding:10px 14px">
       <strong>How to write concern:</strong> [Issue Type] — [What happened]. [What was tried]. [Result].<br>
@@ -1243,11 +1574,16 @@ const quizData=[
   ['PC was formatted. BillFree needs to be set up again. Which concern to raise:',
    ['Config Issue — Mobile number not auto-filling in popup.','New Integration — New BillFree setup required.','Reinstallation — PC formatted / software corrupted.','Print Format Issue — Popup is working.'],2],
   ['Print is cutting on one side. Popup is working fine. Which concern to raise:',
-   ['Print Not Coming — Popup is appearing. No print. New printer installed. (PRINT_FAIL)','Print Format Issue — Popup is working. Print [cutting on side / wrong size / garbled text].','Config Issue — Mobile number not auto-filling in popup.','Bill Delivery — Internet is working. SMS not received.'],1]
+   ['Print Not Coming — Popup is appearing. No print. New printer installed. (PRINT_FAIL)','Print Format Issue — Popup is working. Print [cutting on side / wrong size / garbled text].','Config Issue — Mobile number not auto-filling in popup.','Bill Delivery — Internet is working. SMS not received.'],1],
+  ['Merchant asks: "Hamare POS ke saath integrate karne ke liye kya karna padega?" Best answer:',
+   ['Hum aapke POS mein ek plugin install karenge','Aapko apna POS software change karna padega','Sirf aapke POS ki printer settings mein "BillFree" printer select karna hai — koi aur change nahi','Hum aapke POS developer se baat karenge'],2],
+  ['Universal Setup kisi bhi POS ke saath kaam karta hai kyunki:',
+   ['BillFree har POS ka code jaanta hai','Hum POS software ko nahi choote — sirf printer ko change karte hain, isliye koi bhi POS chalega','BillFree sirf Tally aur Busy ke saath kaam karta hai','Internet se automatically detect hota hai'],1]
 ];
 
 const qWrap=document.getElementById('quizWrap');
 let qAnswered=new Array(quizData.length).fill(false), qScore=0;
+const totalQ=quizData.length;
 
 quizData.forEach((q,idx)=>{
   const el=document.createElement('div');
@@ -1276,16 +1612,17 @@ function answerQ(idx,i,b,card,correct){
     b.classList.add('bad'); bs[correct].classList.add('good');
     fb.className='q-fb show bad'; fb.textContent='❌ Galat. Sahi answer highlight ho gaya.';
   }
-  document.getElementById('quizScore').textContent=qScore+'/8';
+  document.getElementById('quizScore').textContent=qScore+'/'+totalQ;
 }
 
 function submitQuiz(){
   document.getElementById('complete').classList.add('show');
-  document.getElementById('finalScore').textContent=qScore+'/8';
-  const msg=qScore>=8?'You are a legend! Ramesh, Pappu, Bunty — all will learn from you! 🏆':
-    qScore>=6?'Excellent! Almost a pro — review the concern table once more! 💪':
-    qScore>=4?'Good effort! Read the Concern Reference once more! 📚':
-    'No worries! Read again — you can do this! 😄';
+  document.getElementById('finalScore').textContent=qScore+'/'+totalQ;
+  const pct=qScore/totalQ;
+  const msg=pct===1?'PERFECT SCORE! You are a BillFree LEGEND! Rocky Bhai, Sona Aunty, Chhotu — sab aapke fan hain! 🏆🎉':
+    pct>=0.8?'Excellent! Almost a pro — review the Universal Setup section once more! 💪':
+    pct>=0.6?'Good effort! Read the Concern Reference and Universal Setup once more! 📚':
+    'No worries! Read again — yeh training aapko expert banayegi! 😄';
   document.getElementById('finalMsg').textContent=msg;
 }
 function resetQuiz(){location.reload()}

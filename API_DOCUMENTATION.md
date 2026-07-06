@@ -6,6 +6,13 @@
 
 ## Endpoint
 
+### Recommended (Direct 200 OK Response)
+Use this endpoint to avoid handling HTTP `302 Moved Temporarily` redirects on your client:
+```
+POST https://billfreetech.pages.dev/api/ticket
+```
+
+### Direct Google Apps Script Endpoint (Returns 302 Redirect)
 ```
 POST https://script.google.com/macros/s/AKfycbwJcHg5ToptJlv2OV4r3eCdOnmtzh0HC-ahvBmriI5OsnNo1eB5_PxuZGrli83Fz0s6Mw/exec
 ```
